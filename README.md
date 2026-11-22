@@ -82,6 +82,8 @@ Then open <http://localhost:8000/preview/>.
 2. Run `bun run build`. The script writes `tokens/cozy.css`, `tokens/cozy.ts`, `docs/contrast.md`, the palette images and the preview page.
 3. Run `bun run check`. It fails when a generated file is out of date or a color pair is below its contrast minimum.
 
+After you edit `css/effects.css` or `js/cozy-motion.js`, run `bun run build` too. The preview page links each file with a content hash, so browsers do not use an old cached copy.
+
 The script runs on [Bun](https://bun.sh). It has no dependencies.
 
 ## Browser support

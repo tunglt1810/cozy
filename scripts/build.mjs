@@ -3,6 +3,7 @@
 //        bun run check   fail if a file is out of date or a contrast pair fails
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -197,9 +198,14 @@ const swatchHtml = groups
 		return `\t\t\t<h3>${g}</h3>\n\t\t\t<ul class="swatches">\n${items}\n\t\t\t</ul>`;
 	})
 	.join('\n');
+// GitHub Pages lets browsers cache files for 10 minutes. A content hash in each URL stops a new page from using an old file.
+const hash = (text) => createHash('sha1').update(text).digest('hex').slice(0, 8);
 const preview = readFileSync(join(root, 'scripts/preview.template.html'), 'utf8')
 	.replace('<!-- SWATCHES -->', swatchHtml.trimStart())
-	.replaceAll('{{VERSION}}', tokens.version);
+	.replaceAll('{{VERSION}}', tokens.version)
+	.replace('../tokens/cozy.css', `../tokens/cozy.css?v=${hash(css)}`)
+	.replace('../css/effects.css', `../css/effects.css?v=${hash(readFileSync(join(root, 'css/effects.css'), 'utf8'))}`)
+	.replace("'../js/cozy-motion.js'", `'../js/cozy-motion.js?v=${hash(readFileSync(join(root, 'js/cozy-motion.js'), 'utf8'))}'`);
 
 // ---------- write or check ----------
 
