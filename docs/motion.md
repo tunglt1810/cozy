@@ -49,11 +49,13 @@ Every effect MUST stop when the user sets `prefers-reduced-motion: reduce`. The 
 | Clickable row | [Row hover](#table-and-list-rows) | `overlay-hover` background, 150ms | `.cozy-row-interactive` |
 | Dragged row | [Drag and drop](#drag-and-drop) | Opacity 0.4 while held, others move with a spring | `COZY_LAYOUT_SPRING` |
 | Bulk-action bar, inserted field, warning | [Inline reveal](#inline-reveal) | Drop in from 6px above, 160ms. Leave the same way | Motion library |
+| Buttons, chips, segments | [Press](#press) | Colors change in 160ms. Press: scale 0.97 in 120ms | `.cozy-press` |
+| Segmented control | [Segment thumb](#segment-thumb) | Thumb slides to the selected segment, 260ms | `.cozy-seg-thumb` |
 | Tabs | [Tab underline and panel](#tabs) | Underline moves with a spring. Panel fades in, rises 6px, 160ms | `COZY_SPRING` |
 | Cards that open something | [Card lift](#card-lift) | Rise 2px, larger shadow, 180ms. Press: scale 0.985 | `.cozy-lift` |
 | Theme toggle | [Circular theme reveal](#circular-theme-reveal) | New theme grows as a circle, 480ms | `revealTheme(apply, origin)` |
 
-The expressive level uses every effect. The operational level uses only page enter, navigation indicator, row stagger, row hover, drag and drop, inline reveal, tabs and theme reveal.
+The expressive level uses every effect. The operational level uses only page enter, navigation indicator, row stagger, row hover, drag and drop, inline reveal, press, segment thumb, tabs and theme reveal.
 
 ## Page enter
 
@@ -167,6 +169,24 @@ Use it for a part that appears inside a screen. Examples: a bulk-action bar afte
 - Give each part a stable key. Do not use the list index as the key. Otherwise the wrong part leaves.
 - Set `pointer-events: none` while the part leaves, so a second click does not hit it.
 - Do not animate parts that are already on screen when the page loads (`initial={false}` on `AnimatePresence`).
+
+## Press
+
+For every control that the user clicks: buttons, chips, segments, icon buttons.
+
+- Background, border, text color and shadow change in 160ms. The change is a fade, not a cut.
+- While the pointer is down, the control scales to 0.97 in 120ms. It returns when the pointer goes up.
+- Do not move a control on hover. Only the color changes.
+- A disabled control has no press effect.
+
+## Segment thumb
+
+The selected segment of a segmented control has one `bg-surface` pill behind it. The pill slides to the new segment.
+
+1. Put one `.cozy-seg-thumb` element inside the track. The track has `position: relative`.
+2. Set `--cozy-seg-x` and `--cozy-seg-w` from the `offsetLeft` and `offsetWidth` of the selected segment.
+3. The first placement has no animation.
+4. Place the thumb again after the web font loads (`document.fonts.ready`). The segment width changes when the font changes.
 
 ## Tabs
 

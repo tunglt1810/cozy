@@ -12,7 +12,7 @@ Three controls look alike. They do different jobs. Do not swap them.
 | **Segmented control** | Change the view, the sort order, or a small option (`2D / 3D`, `EN / VI`). Put it in a toolbar or a card corner | Change between large content areas |
 | **Filter chips** | Filter by category, often with a count. The active chip uses `bg-inverted` and `text-on-inverted` | Replace tabs |
 
-The segmented control is a pill on a `bg-muted` track. The selected segment is a `bg-surface` pill that slides.
+The segmented control is a pill on a `bg-muted` track. The selected segment is a `bg-surface` pill that slides. See [segment thumb](motion.md#segment-thumb).
 
 ### Tab layout
 

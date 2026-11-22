@@ -77,6 +77,25 @@
 	background-color: var(--cozy-overlay-hover);
 }
 
+/* ---------- Segmented control thumb ---------- */
+
+/*
+ * One pill behind the segments. Script contract: set --cozy-seg-x (offset from the track start)
+ * and --cozy-seg-w (segment width) from the selected segment. The segments sit above the thumb (z-index 1).
+ */
+.cozy-seg-thumb {
+	position: absolute;
+	top: 3px;
+	bottom: 3px;
+	left: 0;
+	width: var(--cozy-seg-w, 0);
+	transform: translateX(var(--cozy-seg-x, 0));
+	border-radius: var(--cozy-radius-full);
+	background: var(--cozy-bg-surface);
+	box-shadow: var(--cozy-shadow-low);
+	pointer-events: none;
+}
+
 /* ---------- Stat card ---------- */
 
 .cozy-stat-card {
@@ -203,6 +222,26 @@ html.cozy-theme-transition::view-transition-new(root) {
 
 	.cozy-row-interactive {
 		transition: background-color 150ms ease;
+	}
+
+	/* Buttons, chips, segments: colors change in 160ms. A press scales the control down a little. */
+	.cozy-press {
+		transition:
+			transform 120ms var(--cozy-motion-ease-out),
+			background-color var(--cozy-motion-duration-fast) ease,
+			border-color var(--cozy-motion-duration-fast) ease,
+			color var(--cozy-motion-duration-fast) ease,
+			box-shadow var(--cozy-motion-duration-fast) ease;
+	}
+
+	.cozy-press:active {
+		transform: scale(0.97);
+	}
+
+	.cozy-seg-thumb {
+		transition:
+			transform var(--cozy-motion-duration-medium) var(--cozy-motion-ease-out),
+			width var(--cozy-motion-duration-medium) var(--cozy-motion-ease-out);
 	}
 
 	.cozy-lift {

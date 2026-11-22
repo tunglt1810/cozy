@@ -13,7 +13,7 @@ First public release.
 - `text-on-inverted` token for text on `bg-inverted`.
 - Typography, 4px spacing, radius, shadow and motion tokens.
 - `tokens/cozy.css` with `light-dark()` values, and `tokens/cozy.ts`.
-- `css/effects.css`: highlighter, title reveal, list row stagger, row hover, navigation indicator, stat card, card lift, circular theme reveal.
+- `css/effects.css`: highlighter, title reveal, list row stagger, row hover, press, segment thumb, navigation indicator, stat card, card lift, circular theme reveal.
 - `js/cozy-motion.js`: `COZY_EASE`, `COZY_SPRING`, `COZY_LAYOUT_SPRING`, `COZY_COUNT_SPRING`, `enterPage`, `createNavIndicator`, `rowDelayStyle`, `splitGraphemes`, `titleStepMs`, `splitTitle`, `revealTheme`.
 - Optional Astryx adapter.
 - Build script with a contrast check, palette images and a preview page.
