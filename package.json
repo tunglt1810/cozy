@@ -1,0 +1,24 @@
+{
+	"name": "cozy",
+	"version": "0.1.0",
+	"description": "A warm design system: tokens, CSS effects and motion helpers with light and dark mode.",
+	"license": "MIT",
+	"type": "module",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/tunglt1810/cozy.git"
+	},
+	"exports": {
+		"./tokens.css": "./tokens/cozy.css",
+		"./tokens.json": "./tokens/cozy.tokens.json",
+		"./tokens": "./tokens/cozy.ts",
+		"./effects.css": "./css/effects.css",
+		"./motion": "./js/cozy-motion.js",
+		"./adapters/astryx": "./adapters/astryx/cozy-theme.ts"
+	},
+	"files": ["tokens", "css", "js", "adapters", "LICENSE"],
+	"scripts": {
+		"build": "bun scripts/build.mjs",
+		"check": "bun scripts/build.mjs --check"
+	}
+}

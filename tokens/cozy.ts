@@ -1,0 +1,697 @@
+// Cozy design tokens 0.1.0. Generated from tokens/cozy.tokens.json. Do not edit by hand.
+
+export const cozyTokens = {
+	"name": "cozy",
+	"version": "0.1.0",
+	"color": {
+		"bg-body": {
+			"light": "#FAEBDA",
+			"dark": "#18140E",
+			"group": "surface",
+			"role": "Page canvas"
+		},
+		"bg-surface": {
+			"light": "#FBF1E1",
+			"dark": "#231D16",
+			"group": "surface",
+			"role": "Cards, tables, panels, popovers"
+		},
+		"bg-muted": {
+			"light": "#F3DFC8",
+			"dark": "#30261D",
+			"group": "surface",
+			"role": "Segmented-control track, quiet emphasis"
+		},
+		"bg-inverted": {
+			"light": "#3B2A1C",
+			"dark": "#FFFEF7",
+			"group": "surface",
+			"role": "Active filter chip, inverted badge"
+		},
+		"text-on-inverted": {
+			"light": "#FBF1E1",
+			"dark": "#231D16",
+			"group": "surface",
+			"role": "Text on bg-inverted"
+		},
+		"text-primary": {
+			"light": "#261101",
+			"dark": "#FFFEF7",
+			"group": "text",
+			"role": "Body text, headings, primary icons"
+		},
+		"text-secondary": {
+			"light": "#5B4C3B",
+			"dark": "#C2B7B1",
+			"group": "text",
+			"role": "Supporting text, secondary icons"
+		},
+		"text-disabled": {
+			"light": "#968574",
+			"dark": "#70655C",
+			"group": "text",
+			"role": "Disabled text and icons"
+		},
+		"text-accent": {
+			"light": "#A84A24",
+			"dark": "#F2A57E",
+			"group": "text",
+			"role": "Links and accent text on body or surface"
+		},
+		"focus-ring": {
+			"light": "#A84A24",
+			"dark": "#F2A57E",
+			"group": "accent",
+			"role": "Keyboard focus outline"
+		},
+		"accent": {
+			"light": "#EF8F63",
+			"dark": "#EE8F64",
+			"group": "accent",
+			"role": "Primary action fill, active tab underline"
+		},
+		"on-accent": {
+			"light": "#261101",
+			"dark": "#18140E",
+			"group": "accent",
+			"role": "Text and icons on accent"
+		},
+		"accent-muted": {
+			"light": "#EF8F6333",
+			"dark": "#EE8F6438",
+			"group": "accent",
+			"role": "Selected-row tint, soft accent fill"
+		},
+		"success": {
+			"light": "#2D7A4D",
+			"dark": "#6FBF8E",
+			"group": "status",
+			"role": "Success fill, border, icon"
+		},
+		"on-success": {
+			"light": "#FFFEF7",
+			"dark": "#18140E",
+			"group": "status",
+			"role": "Text on success"
+		},
+		"success-muted": {
+			"light": "#E2DEC4",
+			"dark": "#31392C",
+			"group": "status",
+			"role": "Success banner background"
+		},
+		"on-success-muted": {
+			"light": "#234930",
+			"dark": "#C3E6CC",
+			"group": "status",
+			"role": "Text on success-muted"
+		},
+		"text-success": {
+			"light": "#276B43",
+			"dark": "#82CF9E",
+			"group": "status",
+			"role": "Success text on body or surface"
+		},
+		"warning": {
+			"light": "#D99220",
+			"dark": "#F5C156",
+			"group": "status",
+			"role": "Warning fill, border, icon"
+		},
+		"on-warning": {
+			"light": "#261101",
+			"dark": "#18140E",
+			"group": "status",
+			"role": "Text on warning"
+		},
+		"warning-muted": {
+			"light": "#FAE1B5",
+			"dark": "#443A26",
+			"group": "status",
+			"role": "Warning banner background"
+		},
+		"on-warning-muted": {
+			"light": "#6B4408",
+			"dark": "#FCE09B",
+			"group": "status",
+			"role": "Text on warning-muted"
+		},
+		"text-warning": {
+			"light": "#8A5406",
+			"dark": "#F5C96B",
+			"group": "status",
+			"role": "Warning text on body or surface"
+		},
+		"error": {
+			"light": "#C8433B",
+			"dark": "#F27B70",
+			"group": "status",
+			"role": "Error fill, border, icon"
+		},
+		"on-error": {
+			"light": "#FFFEF7",
+			"dark": "#18140E",
+			"group": "status",
+			"role": "Text on error"
+		},
+		"error-muted": {
+			"light": "#F9CFC8",
+			"dark": "#472826",
+			"group": "status",
+			"role": "Error banner and destructive button background"
+		},
+		"on-error-muted": {
+			"light": "#7E211C",
+			"dark": "#F9BEB8",
+			"group": "status",
+			"role": "Text on error-muted"
+		},
+		"text-error": {
+			"light": "#B0322B",
+			"dark": "#F5938A",
+			"group": "status",
+			"role": "Error text on body or surface"
+		},
+		"info": {
+			"light": "#3B6E9C",
+			"dark": "#8BB8E0",
+			"group": "status",
+			"role": "Info fill, border, icon"
+		},
+		"on-info": {
+			"light": "#FFFEF7",
+			"dark": "#18140E",
+			"group": "status",
+			"role": "Text on info"
+		},
+		"info-muted": {
+			"light": "#D2D7DA",
+			"dark": "#2B333D",
+			"group": "status",
+			"role": "Info banner background"
+		},
+		"on-info-muted": {
+			"light": "#234463",
+			"dark": "#C5DEF5",
+			"group": "status",
+			"role": "Text on info-muted"
+		},
+		"text-info": {
+			"light": "#2F5B84",
+			"dark": "#9BC5EA",
+			"group": "status",
+			"role": "Info text on body or surface"
+		},
+		"border": {
+			"light": "#5B4C3B22",
+			"dark": "#3E3831",
+			"group": "line",
+			"role": "Default divider and outline"
+		},
+		"border-emphasized": {
+			"light": "#DFCBB5",
+			"dark": "#52493F",
+			"group": "line",
+			"role": "Input outline, emphasized divider"
+		},
+		"overlay": {
+			"light": "#26110166",
+			"dark": "#0D0A07B3",
+			"group": "line",
+			"role": "Modal scrim"
+		},
+		"overlay-hover": {
+			"light": "#2611010D",
+			"dark": "#FFFEF70F",
+			"group": "line",
+			"role": "Hover layer on any surface"
+		},
+		"overlay-pressed": {
+			"light": "#2611011A",
+			"dark": "#FFFEF71C",
+			"group": "line",
+			"role": "Pressed layer on any surface"
+		},
+		"shadow": {
+			"light": "#6E4A2A1A",
+			"dark": "#00000059",
+			"group": "line",
+			"role": "Shadow color for custom shadows"
+		},
+		"skeleton": {
+			"light": "#EBD9C4",
+			"dark": "#332B23",
+			"group": "line",
+			"role": "Loading placeholder"
+		},
+		"track": {
+			"light": "#E6D2BC",
+			"dark": "#30271E",
+			"group": "line",
+			"role": "Progress and slider track"
+		},
+		"nav-bg": {
+			"light": "#C3CBB9",
+			"dark": "#29332A",
+			"group": "nav",
+			"role": "Floating side navigation"
+		},
+		"nav-active": {
+			"light": "#F8E8D3",
+			"dark": "#404A41",
+			"group": "nav",
+			"role": "Active navigation pill"
+		},
+		"nav-text": {
+			"light": "#403B26",
+			"dark": "#FFFEF7",
+			"group": "nav",
+			"role": "Navigation label"
+		},
+		"nav-text-muted": {
+			"light": "#55503A",
+			"dark": "#B8C4B6",
+			"group": "nav",
+			"role": "Navigation group label and secondary icon"
+		},
+		"mark-peach": {
+			"light": "#FAD3B9",
+			"dark": "#7D4737",
+			"group": "expressive",
+			"role": "Highlighter stroke under a heading"
+		},
+		"mark-sage": {
+			"light": "#E4DEC8",
+			"dark": "#527366",
+			"group": "expressive",
+			"role": "Alternative highlighter stroke"
+		},
+		"pastel-sage": {
+			"light": "#E2DEC4",
+			"dark": "#31392C",
+			"group": "expressive",
+			"role": "Stat-card background"
+		},
+		"pastel-sage-icon": {
+			"light": "#7EAB9A",
+			"dark": "#5E8C7A",
+			"group": "expressive",
+			"role": "Stat-card icon chip"
+		},
+		"pastel-peach": {
+			"light": "#FBCBB4",
+			"dark": "#432F28",
+			"group": "expressive",
+			"role": "Stat-card background"
+		},
+		"pastel-peach-icon": {
+			"light": "#F48A65",
+			"dark": "#E5866B",
+			"group": "expressive",
+			"role": "Stat-card icon chip"
+		},
+		"pastel-butter": {
+			"light": "#FAE1B5",
+			"dark": "#443A26",
+			"group": "expressive",
+			"role": "Stat-card background"
+		},
+		"pastel-butter-icon": {
+			"light": "#FAC76A",
+			"dark": "#D9A74E",
+			"group": "expressive",
+			"role": "Stat-card icon chip"
+		},
+		"pastel-mist": {
+			"light": "#D2D7DA",
+			"dark": "#2B333D",
+			"group": "expressive",
+			"role": "Stat-card background"
+		},
+		"pastel-mist-icon": {
+			"light": "#A2B3C1",
+			"dark": "#6D8296",
+			"group": "expressive",
+			"role": "Stat-card icon chip"
+		},
+		"on-pastel": {
+			"light": "#261101",
+			"dark": "#18140E",
+			"group": "expressive",
+			"role": "Icon on a pastel icon chip"
+		},
+		"green-bg": {
+			"light": "#E2DEC4",
+			"dark": "#31392C",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"green-border": {
+			"light": "#B8C4A6",
+			"dark": "#5E8C7A",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"green-icon": {
+			"light": "#3C6E58",
+			"dark": "#8EC2AC",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"green-text": {
+			"light": "#234930",
+			"dark": "#C3E6CC",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"orange-bg": {
+			"light": "#FBCBB4",
+			"dark": "#432F28",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"orange-border": {
+			"light": "#EDA98B",
+			"dark": "#D97B56",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"orange-icon": {
+			"light": "#B5542B",
+			"dark": "#F2A57E",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"orange-text": {
+			"light": "#6B2B11",
+			"dark": "#FAD1BC",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"yellow-bg": {
+			"light": "#FAE1B5",
+			"dark": "#443A26",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"yellow-border": {
+			"light": "#E5C27D",
+			"dark": "#C99A44",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"yellow-icon": {
+			"light": "#8A5406",
+			"dark": "#F5C96B",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"yellow-text": {
+			"light": "#5E3904",
+			"dark": "#FCE09B",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"blue-bg": {
+			"light": "#D2D7DA",
+			"dark": "#2B333D",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"blue-border": {
+			"light": "#A2B3C1",
+			"dark": "#5C7388",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"blue-icon": {
+			"light": "#2F5B84",
+			"dark": "#9BC5EA",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"blue-text": {
+			"light": "#1F3F5C",
+			"dark": "#C5DEF5",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"teal-bg": {
+			"light": "#D7E6DF",
+			"dark": "#253834",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"teal-border": {
+			"light": "#94BDAE",
+			"dark": "#4F8B7C",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"teal-icon": {
+			"light": "#205E52",
+			"dark": "#7FCBB9",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"teal-text": {
+			"light": "#17453C",
+			"dark": "#BCE6DC",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"cyan-bg": {
+			"light": "#CDE3E6",
+			"dark": "#21363A",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"cyan-border": {
+			"light": "#86B6BD",
+			"dark": "#48818B",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"cyan-icon": {
+			"light": "#1F5B63",
+			"dark": "#8ED2DB",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"cyan-text": {
+			"light": "#154248",
+			"dark": "#BBEAF0",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"purple-bg": {
+			"light": "#E7DCF0",
+			"dark": "#382E44",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"purple-border": {
+			"light": "#C5AFDB",
+			"dark": "#8D73AD",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"purple-icon": {
+			"light": "#5E3D82",
+			"dark": "#CBB3E8",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"purple-text": {
+			"light": "#462A63",
+			"dark": "#E2D2F5",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"pink-bg": {
+			"light": "#F3D5DB",
+			"dark": "#422830",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"pink-border": {
+			"light": "#DDA3B0",
+			"dark": "#A85F71",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"pink-icon": {
+			"light": "#94304C",
+			"dark": "#EDA0B3",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"pink-text": {
+			"light": "#6B1E34",
+			"dark": "#FAD0DA",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"red-bg": {
+			"light": "#F9CFC8",
+			"dark": "#472826",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"red-border": {
+			"light": "#E59F95",
+			"dark": "#C25B53",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"red-icon": {
+			"light": "#B0322B",
+			"dark": "#F5938A",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"red-text": {
+			"light": "#7E211C",
+			"dark": "#F9BEB8",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"gray-bg": {
+			"light": "#EDE0CE",
+			"dark": "#2E2720",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"gray-border": {
+			"light": "#DFCBB5",
+			"dark": "#473E35",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"gray-icon": {
+			"light": "#5B4C3B",
+			"dark": "#C2B7B1",
+			"group": "category",
+			"role": "Category badge"
+		},
+		"gray-text": {
+			"light": "#3B2A1C",
+			"dark": "#E8DFD5",
+			"group": "category",
+			"role": "Category badge"
+		}
+	},
+	"font": {
+		"family-sans": "\"Plus Jakarta Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+		"family-mono": "ui-monospace, \"SF Mono\", Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace",
+		"weight-regular": "400",
+		"weight-medium": "500",
+		"weight-semibold": "600",
+		"weight-bold": "700"
+	},
+	"text": {
+		"display": {
+			"size": "2.1875rem",
+			"leading": "1.2",
+			"weight": "700"
+		},
+		"heading-1": {
+			"size": "1.5rem",
+			"leading": "1.3333",
+			"weight": "600"
+		},
+		"heading-2": {
+			"size": "1.25rem",
+			"leading": "1.4",
+			"weight": "600"
+		},
+		"heading-3": {
+			"size": "1.0625rem",
+			"leading": "1.4118",
+			"weight": "700"
+		},
+		"heading-4": {
+			"size": "0.875rem",
+			"leading": "1.4286",
+			"weight": "700"
+		},
+		"body": {
+			"size": "0.875rem",
+			"leading": "1.4286",
+			"weight": "400"
+		},
+		"label": {
+			"size": "0.875rem",
+			"leading": "1.4286",
+			"weight": "500"
+		},
+		"supporting": {
+			"size": "0.75rem",
+			"leading": "1.6667",
+			"weight": "400"
+		}
+	},
+	"space": {
+		"0": "0",
+		"1": "0.25rem",
+		"2": "0.5rem",
+		"3": "0.75rem",
+		"4": "1rem",
+		"5": "1.25rem",
+		"6": "1.5rem",
+		"8": "2rem",
+		"10": "2.5rem",
+		"12": "3rem"
+	},
+	"radius": {
+		"inner": "0.5rem",
+		"element": "0.75rem",
+		"nav-item": "0.875rem",
+		"container": "1.125rem",
+		"card-expressive": "1.25rem",
+		"nav": "1.375rem",
+		"page": "1.75rem",
+		"full": "9999px"
+	},
+	"shadow": {
+		"low": "0 2px 6px light-dark(rgba(110, 74, 42, 0.06), rgba(0, 0, 0, 0.28)), 0 8px 20px -6px light-dark(rgba(110, 74, 42, 0.08), rgba(0, 0, 0, 0.42)), inset 0 0 0 1px light-dark(transparent, rgba(255, 240, 220, 0.06))",
+		"med": "0 4px 10px light-dark(rgba(110, 74, 42, 0.08), rgba(0, 0, 0, 0.36)), 0 12px 28px -8px light-dark(rgba(110, 74, 42, 0.12), rgba(0, 0, 0, 0.52)), inset 0 0 0 1px light-dark(transparent, rgba(255, 240, 220, 0.09))",
+		"high": "0 6px 14px light-dark(rgba(110, 74, 42, 0.11), rgba(0, 0, 0, 0.48)), 0 18px 36px -10px light-dark(rgba(110, 74, 42, 0.16), rgba(0, 0, 0, 0.68)), inset 0 0 0 1px light-dark(transparent, rgba(255, 240, 220, 0.12))",
+		"toolbar": "0 -4px 12px -4px var(--cozy-shadow)",
+		"focus": "0 0 0 2px var(--cozy-bg-surface), 0 0 0 4px var(--cozy-focus-ring)"
+	},
+	"motion": {
+		"ease-out": "cubic-bezier(0.22, 1, 0.36, 1)",
+		"ease-standard": "cubic-bezier(0.4, 0, 0.2, 1)",
+		"duration-fast": "160ms",
+		"duration-page": "200ms",
+		"duration-medium": "260ms",
+		"duration-entrance": "340ms",
+		"duration-slow": "480ms",
+		"stagger-step": "28ms"
+	},
+	"spring": {
+		"default": {
+			"stiffness": 420,
+			"damping": 32,
+			"mass": 0.9
+		},
+		"layout": {
+			"stiffness": 400,
+			"damping": 34,
+			"mass": 0.9
+		},
+		"count": {
+			"stiffness": 120,
+			"damping": 24,
+			"mass": 0.8
+		}
+	}
+} as const;
+
+export type CozyColorToken = keyof typeof cozyTokens.color;
+
+/** Returns the CSS custom-property reference for a color token, for example `var(--cozy-accent)`. */
+export function cozyVar(token: CozyColorToken): string {
+	return `var(--cozy-${token})`;
+}

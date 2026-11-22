@@ -1,0 +1,234 @@
+/*
+ * Cozy named effects. Requires tokens/cozy.css.
+ * Every animation and transition is inside `prefers-reduced-motion: no-preference`.
+ * Without motion, each element shows its final state at once.
+ */
+
+/* ---------- Highlighter: a pastel stroke under a heading ---------- */
+
+.cozy-highlight {
+	position: relative;
+	display: inline-block;
+	z-index: 0;
+}
+
+.cozy-highlight::after {
+	content: '';
+	position: absolute;
+	left: -0.1em;
+	right: -0.14em;
+	bottom: 0.06em;
+	height: 0.36em;
+	border-radius: var(--cozy-radius-full);
+	background-color: var(--cozy-highlight-color, var(--cozy-mark-peach));
+	z-index: -1;
+}
+
+/* ---------- Title reveal: each character slides up from behind a mask ---------- */
+
+/* The vertical padding keeps stacked diacritics (for example Vietnamese) inside the mask. */
+.cozy-title-char-mask {
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: bottom;
+	padding-block: 0.14em;
+	margin-block: -0.14em;
+}
+
+.cozy-title-char {
+	display: inline-block;
+}
+
+/* ---------- Navigation indicator: one pill that moves between items ---------- */
+
+/*
+ * Script contract (createNavIndicator in js/cozy-motion.js does this):
+ * set --cozy-pill-top, --cozy-pill-bottom, --cozy-pill-left, --cozy-pill-right (offsets from the container edges)
+ * and --cozy-pill-opacity on the element.
+ * Add .cozy-nav-dir-down or .cozy-nav-dir-up before each move. Add .cozy-nav-instant for the first placement.
+ * While the pill shows, the container has .cozy-nav-indicator-on. Make the own background of the selected item transparent then,
+ * for example: .cozy-nav-indicator-on [aria-current='page'] { background: transparent; }
+ */
+.cozy-nav-indicator {
+	position: absolute;
+	top: var(--cozy-pill-top, 0px);
+	bottom: var(--cozy-pill-bottom, 0px);
+	left: var(--cozy-pill-left, 0px);
+	right: var(--cozy-pill-right, 0px);
+	opacity: var(--cozy-pill-opacity, 0);
+	z-index: 0;
+	border-radius: var(--cozy-radius-nav-item);
+	background-color: var(--cozy-nav-indicator-bg, var(--cozy-nav-active));
+	pointer-events: none;
+	box-shadow: light-dark(0 1px 3px rgba(64, 59, 38, 0.08), none);
+}
+
+.cozy-nav-indicator.cozy-nav-instant {
+	transition: none !important;
+}
+
+/* ---------- Interactive table row ---------- */
+
+.cozy-row-interactive {
+	cursor: pointer;
+}
+
+.cozy-row-interactive:hover {
+	background-color: var(--cozy-overlay-hover);
+}
+
+/* ---------- Stat card ---------- */
+
+.cozy-stat-card {
+	border-radius: var(--cozy-radius-card-expressive);
+	border: 1px solid light-dark(rgba(91, 76, 59, 0.08), rgba(255, 240, 220, 0.08));
+	box-shadow: var(--cozy-shadow-low);
+}
+
+.cozy-stat-card[data-tone='sage'] {
+	background-color: var(--cozy-pastel-sage);
+	--cozy-stat-icon: var(--cozy-pastel-sage-icon);
+}
+
+.cozy-stat-card[data-tone='peach'] {
+	background-color: var(--cozy-pastel-peach);
+	--cozy-stat-icon: var(--cozy-pastel-peach-icon);
+}
+
+.cozy-stat-card[data-tone='butter'] {
+	background-color: var(--cozy-pastel-butter);
+	--cozy-stat-icon: var(--cozy-pastel-butter-icon);
+}
+
+.cozy-stat-card[data-tone='mist'] {
+	background-color: var(--cozy-pastel-mist);
+	--cozy-stat-icon: var(--cozy-pastel-mist-icon);
+}
+
+.cozy-stat-icon {
+	display: inline-grid;
+	place-items: center;
+	border-radius: var(--cozy-radius-element);
+	background-color: var(--cozy-stat-icon);
+	color: var(--cozy-on-pastel);
+}
+
+/* ---------- Circular theme reveal (see js/cozy-motion.js) ---------- */
+
+html.cozy-theme-transition::view-transition-old(root),
+html.cozy-theme-transition::view-transition-new(root) {
+	animation: none;
+	mix-blend-mode: normal;
+}
+
+html.cozy-theme-transition::view-transition-old(root) {
+	z-index: 1;
+}
+
+html.cozy-theme-transition::view-transition-new(root) {
+	z-index: 9999;
+}
+
+/* ---------- Motion ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+	@keyframes cozy-title-char-in {
+		from {
+			transform: translateY(115%);
+			opacity: 0;
+		}
+		20% {
+			opacity: 1;
+		}
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+
+	@keyframes cozy-highlight-in {
+		from {
+			transform: scaleX(0);
+			opacity: 0;
+		}
+		to {
+			transform: scaleX(1);
+			opacity: 1;
+		}
+	}
+
+	@keyframes cozy-row-in {
+		from {
+			transform: translateY(10px);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+
+	/* `backwards` fill releases transform and opacity after the animation, so no extra stacking context stays on the element. */
+	.cozy-title-char {
+		animation: cozy-title-char-in 340ms var(--cozy-motion-ease-out) var(--cozy-char-delay, 0ms) backwards;
+	}
+
+	.cozy-highlight::after {
+		transform-origin: left center;
+		animation: cozy-highlight-in 380ms var(--cozy-motion-ease-out) 180ms backwards;
+	}
+
+	.cozy-list-row {
+		animation: cozy-row-in var(--cozy-motion-duration-medium) var(--cozy-motion-ease-out) var(--cozy-row-delay, 0ms) backwards;
+	}
+
+	/* Leading edge moves first (220ms). Trailing edge follows after 70ms (330ms). Total: 400ms. */
+	.cozy-nav-indicator.cozy-nav-dir-down {
+		transition:
+			bottom 220ms var(--cozy-motion-ease-out) 0ms,
+			top 330ms var(--cozy-motion-ease-out) 70ms,
+			left 220ms ease,
+			right 220ms ease,
+			opacity 150ms ease;
+	}
+
+	.cozy-nav-indicator.cozy-nav-dir-up {
+		transition:
+			top 220ms var(--cozy-motion-ease-out) 0ms,
+			bottom 330ms var(--cozy-motion-ease-out) 70ms,
+			left 220ms ease,
+			right 220ms ease,
+			opacity 150ms ease;
+	}
+
+	.cozy-row-interactive {
+		transition: background-color 150ms ease;
+	}
+
+	.cozy-lift {
+		transition:
+			transform 180ms var(--cozy-motion-ease-out),
+			box-shadow 180ms var(--cozy-motion-ease-out);
+	}
+
+	.cozy-lift:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--cozy-shadow-med);
+	}
+
+	.cozy-lift:active {
+		transform: scale(0.985);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) {
+		animation: none !important;
+	}
+
+	html {
+		scroll-behavior: auto;
+	}
+}

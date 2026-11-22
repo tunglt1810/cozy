@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="color-scheme" content="light dark" />
+		<title>Cozy preview</title>
+		<!-- Generated from scripts/preview.template.html. Do not edit preview/index.html by hand. -->
+		<script>
+			try {
+				var saved = localStorage.getItem('cozy-preview-theme');
+				if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved;
+			} catch (e) {}
+		</script>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" />
+		<link rel="stylesheet" href="../tokens/cozy.css" />
+		<link rel="stylesheet" href="../css/effects.css" />
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			body {
+				margin: 0;
+				background: var(--cozy-bg-body);
+				color: var(--cozy-text-primary);
+				font-family: var(--cozy-font-family-sans);
+				font-size: var(--cozy-text-body-size);
+				line-height: var(--cozy-text-body-leading);
+			}
+			main {
+				max-width: 1120px;
+				margin: 0 auto;
+				padding: var(--cozy-space-6) var(--cozy-space-4) var(--cozy-space-12);
+				display: grid;
+				gap: var(--cozy-space-10);
+			}
+			h1,
+			h2,
+			h3 {
+				margin: 0;
+			}
+			h1 {
+				font-size: var(--cozy-text-display-size);
+				line-height: var(--cozy-text-display-leading);
+				font-weight: var(--cozy-text-display-weight);
+			}
+			h2 {
+				font-size: var(--cozy-text-heading-1-size);
+				line-height: var(--cozy-text-heading-1-leading);
+				font-weight: var(--cozy-text-heading-1-weight);
+				margin-bottom: var(--cozy-space-4);
+			}
+			h3 {
+				font-size: var(--cozy-text-supporting-size);
+				font-weight: var(--cozy-font-weight-semibold);
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+				color: var(--cozy-text-secondary);
+				margin: var(--cozy-space-6) 0 var(--cozy-space-3);
+			}
+			p {
+				margin: 0;
+			}
+			code {
+				font-family: var(--cozy-font-family-mono);
+				font-size: 0.8125rem;
+			}
+			.muted {
+				color: var(--cozy-text-secondary);
+			}
+			.topbar {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: var(--cozy-space-3);
+			}
+			.brand {
+				display: flex;
+				align-items: center;
+				gap: var(--cozy-space-2);
+				font-weight: var(--cozy-font-weight-bold);
+			}
+			.brand-dot {
+				width: 1.25rem;
+				height: 1.25rem;
+				border-radius: var(--cozy-radius-full);
+				background: var(--cozy-accent);
+			}
+			.hero {
+				display: grid;
+				gap: var(--cozy-space-3);
+			}
+			.card {
+				background: var(--cozy-bg-surface);
+				border-radius: var(--cozy-radius-container);
+				box-shadow: var(--cozy-shadow-low);
+				padding: var(--cozy-space-4);
+			}
+			.grid-4 {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: var(--cozy-space-4);
+			}
+			.grid-2 {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: var(--cozy-space-6);
+				align-items: start;
+			}
+			.stat {
+				padding: var(--cozy-space-4);
+				display: grid;
+				gap: var(--cozy-space-3);
+			}
+			.stat .cozy-stat-icon {
+				width: 2.25rem;
+				height: 2.25rem;
+				font-weight: var(--cozy-font-weight-bold);
+			}
+			.stat strong {
+				font-size: var(--cozy-text-heading-1-size);
+				font-weight: var(--cozy-font-weight-bold);
+			}
+
+			/* Buttons */
+			.row {
+				display: flex;
+				flex-wrap: wrap;
+				gap: var(--cozy-space-2);
+				align-items: center;
+			}
+			.btn {
+				font: inherit;
+				font-weight: var(--cozy-font-weight-semibold);
+				border-radius: var(--cozy-radius-full);
+				padding: var(--cozy-space-2) var(--cozy-space-4);
+				border: 1px solid transparent;
+				cursor: pointer;
+				background: transparent;
+				color: var(--cozy-text-primary);
+			}
+			.btn:focus-visible,
+			.tab:focus-visible,
+			.seg button:focus-visible,
+			.chip-btn:focus-visible,
+			.nav a:focus-visible {
+				outline: none;
+				box-shadow: var(--cozy-shadow-focus);
+			}
+			.btn-primary {
+				background: var(--cozy-accent);
+				color: var(--cozy-on-accent);
+			}
+			.btn-secondary {
+				background: var(--cozy-bg-surface);
+				border-color: var(--cozy-border-emphasized);
+			}
+			.btn-destructive {
+				background: var(--cozy-error-muted);
+				color: var(--cozy-on-error-muted);
+			}
+			.btn-ghost:hover,
+			.btn-secondary:hover {
+				background-image: linear-gradient(var(--cozy-overlay-hover), var(--cozy-overlay-hover));
+			}
+
+			/* Status */
+			.banner {
+				border-radius: var(--cozy-radius-element);
+				padding: var(--cozy-space-3) var(--cozy-space-4);
+				display: flex;
+				gap: var(--cozy-space-2);
+				align-items: baseline;
+			}
+			.banner b {
+				font-weight: var(--cozy-font-weight-semibold);
+			}
+
+			/* Chips and segmented control */
+			.chip-btn {
+				font: inherit;
+				font-weight: var(--cozy-font-weight-medium);
+				border: 1px solid var(--cozy-border-emphasized);
+				background: transparent;
+				color: var(--cozy-text-primary);
+				border-radius: var(--cozy-radius-full);
+				padding: var(--cozy-space-1) var(--cozy-space-3);
+				cursor: pointer;
+			}
+			.chip-btn[aria-pressed='true'] {
+				background: var(--cozy-bg-inverted);
+				color: var(--cozy-text-on-inverted);
+				border-color: var(--cozy-bg-inverted);
+			}
+			.seg {
+				display: inline-flex;
+				background: var(--cozy-bg-muted);
+				border-radius: var(--cozy-radius-full);
+				padding: 3px;
+			}
+			.seg button {
+				font: inherit;
+				font-weight: var(--cozy-font-weight-medium);
+				border: 0;
+				background: transparent;
+				color: var(--cozy-text-secondary);
+				border-radius: var(--cozy-radius-full);
+				padding: var(--cozy-space-1) var(--cozy-space-3);
+				cursor: pointer;
+			}
+			.seg button[aria-checked='true'] {
+				background: var(--cozy-bg-surface);
+				color: var(--cozy-text-primary);
+				box-shadow: var(--cozy-shadow-low);
+			}
+
+			/* Navigation */
+			.nav {
+				background: var(--cozy-nav-bg);
+				color: var(--cozy-nav-text);
+				border-radius: var(--cozy-radius-nav);
+				padding: var(--cozy-space-3);
+			}
+			.nav-list {
+				position: relative;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				display: grid;
+				gap: var(--cozy-space-1);
+			}
+			.nav-group {
+				font-size: var(--cozy-text-supporting-size);
+				color: var(--cozy-nav-text-muted);
+				padding: var(--cozy-space-3) var(--cozy-space-3) var(--cozy-space-1);
+			}
+			.nav a {
+				position: relative;
+				z-index: 1;
+				display: block;
+				padding: var(--cozy-space-2) var(--cozy-space-3);
+				border-radius: var(--cozy-radius-nav-item);
+				color: inherit;
+				text-decoration: none;
+				font-weight: var(--cozy-font-weight-medium);
+			}
+			.nav:not(.cozy-nav-indicator-on) a[aria-current='page'] {
+				background: var(--cozy-nav-active);
+			}
+			.nav a[aria-current='page'] {
+				font-weight: var(--cozy-font-weight-semibold);
+			}
+
+			/* Tabs */
+			.tab-card {
+				padding: 0;
+				overflow: clip;
+			}
+			.tablist {
+				position: relative;
+				display: flex;
+				gap: var(--cozy-space-1);
+				padding: 0 var(--cozy-space-4);
+				border-bottom: 1px solid var(--cozy-border);
+				flex-shrink: 0;
+			}
+			.tab {
+				font: inherit;
+				font-size: 0.875rem;
+				background: transparent;
+				border: 0;
+				padding: 0.625rem var(--cozy-space-3);
+				color: var(--cozy-text-secondary);
+				cursor: pointer;
+				border-radius: var(--cozy-radius-inner) var(--cozy-radius-inner) 0 0;
+			}
+			.tab:hover,
+			.tab[aria-selected='true'] {
+				color: var(--cozy-text-primary);
+			}
+			.tab[aria-selected='true'] {
+				font-weight: var(--cozy-font-weight-medium);
+			}
+			.tab-underline {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				height: 2px;
+				border-radius: var(--cozy-radius-full);
+				background: var(--cozy-accent);
+				width: var(--w, 0);
+				transform: translateX(var(--x, 0));
+			}
+			@media (prefers-reduced-motion: no-preference) {
+				.tab-underline {
+					transition:
+						transform 320ms var(--cozy-motion-ease-out),
+						width 320ms var(--cozy-motion-ease-out);
+				}
+				@keyframes panel-in {
+					from {
+						opacity: 0;
+						transform: translateY(6px);
+					}
+				}
+				.tabpanel:not([hidden]) {
+					animation: panel-in var(--cozy-motion-duration-fast) var(--cozy-motion-ease-out);
+				}
+			}
+			.tabpanel {
+				padding: var(--cozy-space-2) var(--cozy-space-4) var(--cozy-space-4);
+			}
+			.list {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+			.list li {
+				display: flex;
+				justify-content: space-between;
+				gap: var(--cozy-space-3);
+				padding: var(--cozy-space-3) 0;
+				border-bottom: 1px solid var(--cozy-border);
+			}
+			.list li:last-child {
+				border-bottom: 0;
+			}
+			.tag {
+				border-radius: var(--cozy-radius-full);
+				padding: 0 var(--cozy-space-2);
+				font-size: var(--cozy-text-supporting-size);
+				font-weight: var(--cozy-font-weight-medium);
+				border: 1px solid;
+			}
+
+			/* Swatches */
+			.swatches {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+				gap: var(--cozy-space-4);
+			}
+			.swatch {
+				display: grid;
+				gap: 2px;
+				min-width: 0;
+			}
+			.swatch .chip {
+				height: 3.5rem;
+				border-radius: var(--cozy-radius-element);
+				border: 1px solid var(--cozy-border);
+				margin-bottom: var(--cozy-space-1);
+			}
+			.swatch code {
+				overflow-wrap: anywhere;
+			}
+			.swatch small {
+				color: var(--cozy-text-secondary);
+				font-size: var(--cozy-text-supporting-size);
+				line-height: 1.4;
+			}
+			.swatch .role {
+				color: var(--cozy-text-disabled);
+			}
+
+			/* Scales */
+			.type-row {
+				display: grid;
+				grid-template-columns: 7rem 1fr;
+				gap: var(--cozy-space-3);
+				align-items: baseline;
+				padding: var(--cozy-space-2) 0;
+				border-bottom: 1px solid var(--cozy-border);
+			}
+			.radius-box {
+				width: 100%;
+				aspect-ratio: 1.6;
+				background: var(--cozy-bg-surface);
+				border: 1px solid var(--cozy-border-emphasized);
+				display: grid;
+				place-items: center;
+				color: var(--cozy-text-secondary);
+				font-size: var(--cozy-text-supporting-size);
+			}
+			.grid-6 {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+				gap: var(--cozy-space-4);
+			}
+			@media (max-width: 560px) {
+				.type-row {
+					grid-template-columns: 1fr;
+					gap: 0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<header class="topbar">
+				<span class="brand"><span class="brand-dot" aria-hidden="true"></span>Cozy <span class="muted">{{VERSION}}</span></span>
+				<button class="btn btn-secondary" id="theme-toggle" type="button">Theme: system</button>
+			</header>
+
+			<section class="hero" aria-labelledby="hero-title">
+				<h1 id="hero-title"><span class="cozy-highlight" data-split>A warm design system</span></h1>
+				<p class="muted">Cream and espresso tones, measured contrast, and motion that stops when the user asks.</p>
+			</section>
+
+			<section aria-labelledby="expressive">
+				<h2 id="expressive">Expressive level</h2>
+				<div class="grid-4">
+					<article class="cozy-stat-card cozy-lift stat" data-tone="sage"><span class="cozy-stat-icon" aria-hidden="true">P</span><span class="muted">Projects</span><strong>128</strong></article>
+					<article class="cozy-stat-card cozy-lift stat" data-tone="peach"><span class="cozy-stat-icon" aria-hidden="true">T</span><span class="muted">Open tasks</span><strong>312</strong></article>
+					<article class="cozy-stat-card cozy-lift stat" data-tone="butter"><span class="cozy-stat-icon" aria-hidden="true">M</span><span class="muted">Members</span><strong>24</strong></article>
+					<article class="cozy-stat-card cozy-lift stat" data-tone="mist"><span class="cozy-stat-icon" aria-hidden="true">V</span><span class="muted">Visits this week</span><strong>9,870</strong></article>
+				</div>
+			</section>
+
+			<section aria-labelledby="operational">
+				<h2 id="operational">Navigation and tabs</h2>
+				<div class="grid-2">
+					<nav class="nav" aria-label="Demo navigation">
+						<ul class="nav-list" id="nav-list">
+							<li><a href="#" aria-current="page">Overview</a></li>
+							<li><a href="#">People</a></li>
+							<li class="nav-group">Content</li>
+							<li><a href="#">Articles</a></li>
+							<li><a href="#">Collections</a></li>
+							<li><a href="#">Settings</a></li>
+						</ul>
+						<span class="cozy-nav-indicator" id="nav-indicator" aria-hidden="true"></span>
+					</nav>
+
+					<div class="card tab-card">
+						<div class="tablist" role="tablist" aria-label="Demo record">
+							<button class="tab" role="tab" type="button" id="tab-info" aria-controls="panel-info" aria-selected="true" tabindex="0">Details</button>
+							<button class="tab" role="tab" type="button" id="tab-items" aria-controls="panel-items" aria-selected="false" tabindex="-1">Items</button>
+							<button class="tab" role="tab" type="button" id="tab-history" aria-controls="panel-history" aria-selected="false" tabindex="-1">History</button>
+							<span class="tab-underline" aria-hidden="true"></span>
+						</div>
+						<div class="tabpanel" role="tabpanel" id="panel-info" aria-labelledby="tab-info">
+							<ul class="list">
+								<li><span class="muted">Status</span><span class="tag" style="background: var(--cozy-green-bg); border-color: var(--cozy-green-border); color: var(--cozy-green-text)">Published</span></li>
+								<li><span class="muted">Owner</span><span>Content team</span></li>
+								<li><span class="muted">Updated</span><span>2 hours ago</span></li>
+							</ul>
+						</div>
+						<div class="tabpanel" role="tabpanel" id="panel-items" aria-labelledby="tab-items" hidden>
+							<ul class="list" id="item-list"></ul>
+						</div>
+						<div class="tabpanel" role="tabpanel" id="panel-history" aria-labelledby="tab-history" hidden>
+							<p class="muted" style="padding: var(--cozy-space-3) 0">No changes in the last 30 days.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section aria-labelledby="controls">
+				<h2 id="controls">Controls and status</h2>
+				<div style="display: grid; gap: var(--cozy-space-4)">
+					<div class="row">
+						<button class="btn btn-primary" type="button">Save</button>
+						<button class="btn btn-secondary" type="button">Reset</button>
+						<button class="btn btn-ghost" type="button">Edit</button>
+						<button class="btn btn-destructive" type="button">Delete</button>
+					</div>
+					<div class="row">
+						<div class="seg" role="radiogroup" aria-label="View">
+							<button type="button" role="radio" aria-checked="true">List</button>
+							<button type="button" role="radio" aria-checked="false">Grid</button>
+						</div>
+						<button class="chip-btn" type="button" aria-pressed="true">All 42</button>
+						<button class="chip-btn" type="button" aria-pressed="false">Draft 7</button>
+						<button class="chip-btn" type="button" aria-pressed="false">Archived 3</button>
+					</div>
+					<div class="grid-2" style="gap: var(--cozy-space-3)">
+						<div class="banner" style="background: var(--cozy-success-muted); color: var(--cozy-on-success-muted)"><b>Saved.</b> The changes are live.</div>
+						<div class="banner" style="background: var(--cozy-warning-muted); color: var(--cozy-on-warning-muted)"><b>Warning.</b> Two fields are empty.</div>
+						<div class="banner" style="background: var(--cozy-error-muted); color: var(--cozy-on-error-muted)"><b>Error.</b> The file is too large.</div>
+						<div class="banner" style="background: var(--cozy-info-muted); color: var(--cozy-on-info-muted)"><b>Info.</b> Sync runs every hour.</div>
+					</div>
+					<p>
+						Status text on a surface: <span style="color: var(--cozy-text-success)">success</span> ·
+						<span style="color: var(--cozy-text-warning)">warning</span> · <span style="color: var(--cozy-text-error)">error</span> ·
+						<span style="color: var(--cozy-text-info)">info</span>
+					</p>
+				</div>
+			</section>
+
+			<section aria-labelledby="palette">
+				<h2 id="palette">Color tokens</h2>
+				<p class="muted">Each chip shows the current mode. The labels show light · dark.</p>
+				<!-- SWATCHES -->
+			</section>
+
+			<section aria-labelledby="type">
+				<h2 id="type">Type, radius, shadow</h2>
+				<div class="card">
+					<div class="type-row"><code>display</code><span style="font-size: var(--cozy-text-display-size); font-weight: 700; line-height: 1.2">Warm and calm</span></div>
+					<div class="type-row"><code>heading-1</code><span style="font-size: var(--cozy-text-heading-1-size); font-weight: 600">Page title</span></div>
+					<div class="type-row"><code>heading-2</code><span style="font-size: var(--cozy-text-heading-2-size); font-weight: 600">Section title</span></div>
+					<div class="type-row"><code>heading-3</code><span style="font-size: var(--cozy-text-heading-3-size); font-weight: 700">Card title</span></div>
+					<div class="type-row"><code>body</code><span>Body text at 14px. Tiếng Việt có dấu hiển thị đầy đủ.</span></div>
+					<div class="type-row"><code>supporting</code><span class="muted" style="font-size: var(--cozy-text-supporting-size)">Supporting text at 12px</span></div>
+				</div>
+				<h3>Radius</h3>
+				<div class="grid-6">
+					<div class="radius-box" style="border-radius: var(--cozy-radius-inner)">inner 8</div>
+					<div class="radius-box" style="border-radius: var(--cozy-radius-element)">element 12</div>
+					<div class="radius-box" style="border-radius: var(--cozy-radius-container)">container 18</div>
+					<div class="radius-box" style="border-radius: var(--cozy-radius-card-expressive)">expressive 20</div>
+					<div class="radius-box" style="border-radius: var(--cozy-radius-page)">page 28</div>
+					<div class="radius-box" style="border-radius: var(--cozy-radius-full)">full</div>
+				</div>
+				<h3>Shadow</h3>
+				<div class="grid-6">
+					<div class="radius-box" style="border: 0; border-radius: var(--cozy-radius-container); box-shadow: var(--cozy-shadow-low)">low</div>
+					<div class="radius-box" style="border: 0; border-radius: var(--cozy-radius-container); box-shadow: var(--cozy-shadow-med)">med</div>
+					<div class="radius-box" style="border: 0; border-radius: var(--cozy-radius-container); box-shadow: var(--cozy-shadow-high)">high</div>
+				</div>
+			</section>
+		</main>
+
+		<script type="module">
+			import { splitTitle, revealTheme, rowDelayStyle, createNavIndicator } from '../js/cozy-motion.js';
+
+			for (const el of document.querySelectorAll('[data-split]')) splitTitle(el);
+
+			// Theme toggle: system → light → dark → system.
+			const root = document.documentElement;
+			const toggle = document.getElementById('theme-toggle');
+			const order = ['system', 'light', 'dark'];
+			const media = matchMedia('(prefers-color-scheme: dark)');
+			const resolve = (m) => (m === 'system' ? (media.matches ? 'dark' : 'light') : m);
+			let mode = root.dataset.theme ?? 'system';
+			toggle.textContent = `Theme: ${mode}`;
+			toggle.addEventListener('click', () => {
+				const next = order[(order.indexOf(mode) + 1) % order.length];
+				const apply = () => {
+					if (next === 'system') delete root.dataset.theme;
+					else root.dataset.theme = next;
+					mode = next;
+					toggle.textContent = `Theme: ${mode}`;
+					try {
+						localStorage.setItem('cozy-preview-theme', next);
+					} catch {}
+				};
+				if (resolve(next) === resolve(mode)) return apply();
+				const r = toggle.getBoundingClientRect();
+				revealTheme(apply, { x: r.left + r.width / 2, y: r.top + r.height / 2 });
+			});
+
+			// Navigation indicator.
+			const list = document.getElementById('nav-list');
+			const navBox = list.parentElement;
+			navBox.style.position = 'relative';
+			const pill = createNavIndicator(navBox, document.getElementById('nav-indicator'));
+			const active = () => list.querySelector('a[aria-current="page"]');
+			list.addEventListener('click', (e) => {
+				const link = e.target.closest('a');
+				if (!link) return;
+				e.preventDefault();
+				active()?.removeAttribute('aria-current');
+				link.setAttribute('aria-current', 'page');
+				pill.sync(link);
+			});
+			new ResizeObserver(() => pill.sync(active(), { instant: true })).observe(navBox);
+
+			// Tabs with roving tabindex and a moving underline.
+			const tabs = [...document.querySelectorAll('[role="tab"]')];
+			const underline = document.querySelector('.tab-underline');
+			const moveUnderline = (tab) => {
+				underline.style.setProperty('--x', `${tab.offsetLeft}px`);
+				underline.style.setProperty('--w', `${tab.offsetWidth}px`);
+			};
+			const items = document.getElementById('item-list');
+			const select = (tab) => {
+				for (const t of tabs) {
+					const on = t === tab;
+					t.setAttribute('aria-selected', String(on));
+					t.tabIndex = on ? 0 : -1;
+					document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+				}
+				moveUnderline(tab);
+				if (tab.id === 'tab-items') {
+					items.replaceChildren(
+						...['Welcome guide', 'Daily notes', 'Reading list', 'Weekly review', 'Archive'].map((name, i) => {
+							const li = document.createElement('li');
+							li.className = 'cozy-list-row cozy-row-interactive';
+							li.style.setProperty('--cozy-row-delay', rowDelayStyle(i)['--cozy-row-delay']);
+							li.innerHTML = `<span>${name}</span><span class="muted">${(i + 1) * 3} pages</span>`;
+							return li;
+						}),
+					);
+				}
+			};
+			for (const t of tabs) {
+				t.addEventListener('click', () => select(t));
+				t.addEventListener('keydown', (e) => {
+					const i = tabs.indexOf(t);
+					const target = { ArrowRight: tabs[(i + 1) % tabs.length], ArrowLeft: tabs[(i - 1 + tabs.length) % tabs.length], Home: tabs[0], End: tabs.at(-1) }[e.key];
+					if (!target) return;
+					e.preventDefault();
+					target.focus();
+					select(target);
+				});
+			}
+			document.fonts.ready.then(() => moveUnderline(tabs.find((t) => t.getAttribute('aria-selected') === 'true')));
+
+			// Segmented control and chips.
+			for (const group of document.querySelectorAll('.seg')) {
+				group.addEventListener('click', (e) => {
+					const b = e.target.closest('button');
+					if (!b) return;
+					for (const x of group.querySelectorAll('button')) x.setAttribute('aria-checked', String(x === b));
+				});
+			}
+			for (const chip of document.querySelectorAll('.chip-btn')) {
+				chip.addEventListener('click', () => {
+					for (const c of document.querySelectorAll('.chip-btn')) c.setAttribute('aria-pressed', String(c === chip));
+				});
+			}
+		</script>
+	</body>
+</html>

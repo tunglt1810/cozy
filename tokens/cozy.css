@@ -1,0 +1,179 @@
+/* Cozy design tokens 0.1.0. Generated from tokens/cozy.tokens.json. Do not edit by hand. */
+
+:root {
+	color-scheme: light dark;
+}
+
+:root[data-theme='light'] {
+	color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+	color-scheme: dark;
+}
+
+:root {
+	--cozy-bg-body: light-dark(#FAEBDA, #18140E);
+	--cozy-bg-surface: light-dark(#FBF1E1, #231D16);
+	--cozy-bg-muted: light-dark(#F3DFC8, #30261D);
+	--cozy-bg-inverted: light-dark(#3B2A1C, #FFFEF7);
+	--cozy-text-on-inverted: light-dark(#FBF1E1, #231D16);
+	--cozy-text-primary: light-dark(#261101, #FFFEF7);
+	--cozy-text-secondary: light-dark(#5B4C3B, #C2B7B1);
+	--cozy-text-disabled: light-dark(#968574, #70655C);
+	--cozy-text-accent: light-dark(#A84A24, #F2A57E);
+	--cozy-focus-ring: light-dark(#A84A24, #F2A57E);
+	--cozy-accent: light-dark(#EF8F63, #EE8F64);
+	--cozy-on-accent: light-dark(#261101, #18140E);
+	--cozy-accent-muted: light-dark(#EF8F6333, #EE8F6438);
+	--cozy-success: light-dark(#2D7A4D, #6FBF8E);
+	--cozy-on-success: light-dark(#FFFEF7, #18140E);
+	--cozy-success-muted: light-dark(#E2DEC4, #31392C);
+	--cozy-on-success-muted: light-dark(#234930, #C3E6CC);
+	--cozy-text-success: light-dark(#276B43, #82CF9E);
+	--cozy-warning: light-dark(#D99220, #F5C156);
+	--cozy-on-warning: light-dark(#261101, #18140E);
+	--cozy-warning-muted: light-dark(#FAE1B5, #443A26);
+	--cozy-on-warning-muted: light-dark(#6B4408, #FCE09B);
+	--cozy-text-warning: light-dark(#8A5406, #F5C96B);
+	--cozy-error: light-dark(#C8433B, #F27B70);
+	--cozy-on-error: light-dark(#FFFEF7, #18140E);
+	--cozy-error-muted: light-dark(#F9CFC8, #472826);
+	--cozy-on-error-muted: light-dark(#7E211C, #F9BEB8);
+	--cozy-text-error: light-dark(#B0322B, #F5938A);
+	--cozy-info: light-dark(#3B6E9C, #8BB8E0);
+	--cozy-on-info: light-dark(#FFFEF7, #18140E);
+	--cozy-info-muted: light-dark(#D2D7DA, #2B333D);
+	--cozy-on-info-muted: light-dark(#234463, #C5DEF5);
+	--cozy-text-info: light-dark(#2F5B84, #9BC5EA);
+	--cozy-border: light-dark(#5B4C3B22, #3E3831);
+	--cozy-border-emphasized: light-dark(#DFCBB5, #52493F);
+	--cozy-overlay: light-dark(#26110166, #0D0A07B3);
+	--cozy-overlay-hover: light-dark(#2611010D, #FFFEF70F);
+	--cozy-overlay-pressed: light-dark(#2611011A, #FFFEF71C);
+	--cozy-shadow: light-dark(#6E4A2A1A, #00000059);
+	--cozy-skeleton: light-dark(#EBD9C4, #332B23);
+	--cozy-track: light-dark(#E6D2BC, #30271E);
+	--cozy-nav-bg: light-dark(#C3CBB9, #29332A);
+	--cozy-nav-active: light-dark(#F8E8D3, #404A41);
+	--cozy-nav-text: light-dark(#403B26, #FFFEF7);
+	--cozy-nav-text-muted: light-dark(#55503A, #B8C4B6);
+	--cozy-mark-peach: light-dark(#FAD3B9, #7D4737);
+	--cozy-mark-sage: light-dark(#E4DEC8, #527366);
+	--cozy-pastel-sage: light-dark(#E2DEC4, #31392C);
+	--cozy-pastel-sage-icon: light-dark(#7EAB9A, #5E8C7A);
+	--cozy-pastel-peach: light-dark(#FBCBB4, #432F28);
+	--cozy-pastel-peach-icon: light-dark(#F48A65, #E5866B);
+	--cozy-pastel-butter: light-dark(#FAE1B5, #443A26);
+	--cozy-pastel-butter-icon: light-dark(#FAC76A, #D9A74E);
+	--cozy-pastel-mist: light-dark(#D2D7DA, #2B333D);
+	--cozy-pastel-mist-icon: light-dark(#A2B3C1, #6D8296);
+	--cozy-on-pastel: light-dark(#261101, #18140E);
+	--cozy-green-bg: light-dark(#E2DEC4, #31392C);
+	--cozy-green-border: light-dark(#B8C4A6, #5E8C7A);
+	--cozy-green-icon: light-dark(#3C6E58, #8EC2AC);
+	--cozy-green-text: light-dark(#234930, #C3E6CC);
+	--cozy-orange-bg: light-dark(#FBCBB4, #432F28);
+	--cozy-orange-border: light-dark(#EDA98B, #D97B56);
+	--cozy-orange-icon: light-dark(#B5542B, #F2A57E);
+	--cozy-orange-text: light-dark(#6B2B11, #FAD1BC);
+	--cozy-yellow-bg: light-dark(#FAE1B5, #443A26);
+	--cozy-yellow-border: light-dark(#E5C27D, #C99A44);
+	--cozy-yellow-icon: light-dark(#8A5406, #F5C96B);
+	--cozy-yellow-text: light-dark(#5E3904, #FCE09B);
+	--cozy-blue-bg: light-dark(#D2D7DA, #2B333D);
+	--cozy-blue-border: light-dark(#A2B3C1, #5C7388);
+	--cozy-blue-icon: light-dark(#2F5B84, #9BC5EA);
+	--cozy-blue-text: light-dark(#1F3F5C, #C5DEF5);
+	--cozy-teal-bg: light-dark(#D7E6DF, #253834);
+	--cozy-teal-border: light-dark(#94BDAE, #4F8B7C);
+	--cozy-teal-icon: light-dark(#205E52, #7FCBB9);
+	--cozy-teal-text: light-dark(#17453C, #BCE6DC);
+	--cozy-cyan-bg: light-dark(#CDE3E6, #21363A);
+	--cozy-cyan-border: light-dark(#86B6BD, #48818B);
+	--cozy-cyan-icon: light-dark(#1F5B63, #8ED2DB);
+	--cozy-cyan-text: light-dark(#154248, #BBEAF0);
+	--cozy-purple-bg: light-dark(#E7DCF0, #382E44);
+	--cozy-purple-border: light-dark(#C5AFDB, #8D73AD);
+	--cozy-purple-icon: light-dark(#5E3D82, #CBB3E8);
+	--cozy-purple-text: light-dark(#462A63, #E2D2F5);
+	--cozy-pink-bg: light-dark(#F3D5DB, #422830);
+	--cozy-pink-border: light-dark(#DDA3B0, #A85F71);
+	--cozy-pink-icon: light-dark(#94304C, #EDA0B3);
+	--cozy-pink-text: light-dark(#6B1E34, #FAD0DA);
+	--cozy-red-bg: light-dark(#F9CFC8, #472826);
+	--cozy-red-border: light-dark(#E59F95, #C25B53);
+	--cozy-red-icon: light-dark(#B0322B, #F5938A);
+	--cozy-red-text: light-dark(#7E211C, #F9BEB8);
+	--cozy-gray-bg: light-dark(#EDE0CE, #2E2720);
+	--cozy-gray-border: light-dark(#DFCBB5, #473E35);
+	--cozy-gray-icon: light-dark(#5B4C3B, #C2B7B1);
+	--cozy-gray-text: light-dark(#3B2A1C, #E8DFD5);
+
+	--cozy-font-family-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	--cozy-font-family-mono: ui-monospace, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	--cozy-font-weight-regular: 400;
+	--cozy-font-weight-medium: 500;
+	--cozy-font-weight-semibold: 600;
+	--cozy-font-weight-bold: 700;
+
+	--cozy-text-display-size: 2.1875rem;
+	--cozy-text-display-leading: 1.2;
+	--cozy-text-display-weight: 700;
+	--cozy-text-heading-1-size: 1.5rem;
+	--cozy-text-heading-1-leading: 1.3333;
+	--cozy-text-heading-1-weight: 600;
+	--cozy-text-heading-2-size: 1.25rem;
+	--cozy-text-heading-2-leading: 1.4;
+	--cozy-text-heading-2-weight: 600;
+	--cozy-text-heading-3-size: 1.0625rem;
+	--cozy-text-heading-3-leading: 1.4118;
+	--cozy-text-heading-3-weight: 700;
+	--cozy-text-heading-4-size: 0.875rem;
+	--cozy-text-heading-4-leading: 1.4286;
+	--cozy-text-heading-4-weight: 700;
+	--cozy-text-body-size: 0.875rem;
+	--cozy-text-body-leading: 1.4286;
+	--cozy-text-body-weight: 400;
+	--cozy-text-label-size: 0.875rem;
+	--cozy-text-label-leading: 1.4286;
+	--cozy-text-label-weight: 500;
+	--cozy-text-supporting-size: 0.75rem;
+	--cozy-text-supporting-leading: 1.6667;
+	--cozy-text-supporting-weight: 400;
+
+	--cozy-space-0: 0;
+	--cozy-space-1: 0.25rem;
+	--cozy-space-2: 0.5rem;
+	--cozy-space-3: 0.75rem;
+	--cozy-space-4: 1rem;
+	--cozy-space-5: 1.25rem;
+	--cozy-space-6: 1.5rem;
+	--cozy-space-8: 2rem;
+	--cozy-space-10: 2.5rem;
+	--cozy-space-12: 3rem;
+
+	--cozy-radius-inner: 0.5rem;
+	--cozy-radius-element: 0.75rem;
+	--cozy-radius-nav-item: 0.875rem;
+	--cozy-radius-container: 1.125rem;
+	--cozy-radius-card-expressive: 1.25rem;
+	--cozy-radius-nav: 1.375rem;
+	--cozy-radius-page: 1.75rem;
+	--cozy-radius-full: 9999px;
+
+	--cozy-shadow-low: 0 2px 6px light-dark(rgba(110, 74, 42, 0.06), rgba(0, 0, 0, 0.28)), 0 8px 20px -6px light-dark(rgba(110, 74, 42, 0.08), rgba(0, 0, 0, 0.42)), inset 0 0 0 1px light-dark(transparent, rgba(255, 240, 220, 0.06));
+	--cozy-shadow-med: 0 4px 10px light-dark(rgba(110, 74, 42, 0.08), rgba(0, 0, 0, 0.36)), 0 12px 28px -8px light-dark(rgba(110, 74, 42, 0.12), rgba(0, 0, 0, 0.52)), inset 0 0 0 1px light-dark(transparent, rgba(255, 240, 220, 0.09));
+	--cozy-shadow-high: 0 6px 14px light-dark(rgba(110, 74, 42, 0.11), rgba(0, 0, 0, 0.48)), 0 18px 36px -10px light-dark(rgba(110, 74, 42, 0.16), rgba(0, 0, 0, 0.68)), inset 0 0 0 1px light-dark(transparent, rgba(255, 240, 220, 0.12));
+	--cozy-shadow-toolbar: 0 -4px 12px -4px var(--cozy-shadow);
+	--cozy-shadow-focus: 0 0 0 2px var(--cozy-bg-surface), 0 0 0 4px var(--cozy-focus-ring);
+
+	--cozy-motion-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+	--cozy-motion-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+	--cozy-motion-duration-fast: 160ms;
+	--cozy-motion-duration-page: 200ms;
+	--cozy-motion-duration-medium: 260ms;
+	--cozy-motion-duration-entrance: 340ms;
+	--cozy-motion-duration-slow: 480ms;
+	--cozy-motion-stagger-step: 28ms;
+}
