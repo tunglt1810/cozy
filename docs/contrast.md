@@ -25,22 +25,26 @@ The script uses the WCAG 2.x relative-luminance formula. It blends a translucent
 | `text-success` | `bg-surface` | text | 4.5:1 | 5.74 AA | 9.03 AAA |
 | `on-success` | `success` | text | 4.5:1 | 5.19 AA | 8.31 AAA |
 | `on-success-muted` | `success-muted` | text | 4.5:1 | 7.49 AAA | 8.85 AAA |
-| `success` | `bg-surface` | non-text | none | 4.69 AA | 7.56 AAA |
+| `success` | `bg-body` | non-text | 3:1 | 4.49 AA large / non-text | 8.31 AAA |
+| `success` | `bg-surface` | non-text | 3:1 | 4.69 AA | 7.56 AAA |
 | `text-warning` | `bg-body` | text | 4.5:1 | 5.36 AA | 11.74 AAA |
 | `text-warning` | `bg-surface` | text | 4.5:1 | 5.60 AA | 10.68 AAA |
-| `on-warning` | `warning` | text | 4.5:1 | 6.95 AA | 11.04 AAA |
+| `on-warning` | `warning` | text | 4.5:1 | 5.01 AA | 11.04 AAA |
 | `on-warning-muted` | `warning-muted` | text | 4.5:1 | 6.72 AA | 8.66 AAA |
-| `warning` | `bg-surface` | non-text | none | 2.32 fail | 10.05 AAA |
+| `warning` | `bg-body` | non-text | 3:1 | 3.08 AA large / non-text | 11.04 AAA |
+| `warning` | `bg-surface` | non-text | 3:1 | 3.22 AA large / non-text | 10.05 AAA |
 | `text-error` | `bg-body` | text | 4.5:1 | 5.38 AA | 8.23 AAA |
 | `text-error` | `bg-surface` | text | 4.5:1 | 5.62 AA | 7.49 AAA |
 | `on-error` | `error` | text | 4.5:1 | 4.81 AA | 6.85 AA |
 | `on-error-muted` | `error-muted` | text | 4.5:1 | 6.97 AA | 8.18 AAA |
-| `error` | `bg-surface` | non-text | none | 4.34 AA large / non-text | 6.23 AA |
+| `error` | `bg-body` | non-text | 3:1 | 4.16 AA large / non-text | 6.85 AA |
+| `error` | `bg-surface` | non-text | 3:1 | 4.34 AA large / non-text | 6.23 AA |
 | `text-info` | `bg-body` | text | 4.5:1 | 6.09 AA | 10.10 AAA |
 | `text-info` | `bg-surface` | text | 4.5:1 | 6.36 AA | 9.19 AAA |
 | `on-info` | `info` | text | 4.5:1 | 5.33 AA | 8.76 AAA |
 | `on-info-muted` | `info-muted` | text | 4.5:1 | 6.96 AA | 9.21 AAA |
-| `info` | `bg-surface` | non-text | none | 4.82 AA | 7.97 AAA |
+| `info` | `bg-body` | non-text | 3:1 | 4.61 AA | 8.76 AAA |
+| `info` | `bg-surface` | non-text | 3:1 | 4.82 AA | 7.97 AAA |
 | `nav-text` | `nav-bg` | text | 4.5:1 | 6.71 AA | 12.97 AAA |
 | `nav-text` | `nav-active` | text | 4.5:1 | 9.34 AAA | 9.14 AAA |
 | `nav-text-muted` | `nav-bg` | text | 4.5:1 | 4.84 AA | 7.25 AAA |

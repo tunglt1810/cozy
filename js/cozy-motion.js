@@ -12,7 +12,13 @@ export const COZY_LAYOUT_SPRING = { type: 'spring', stiffness: 400, damping: 34,
 /** Slow, soft spring for a number that counts up to its value. */
 export const COZY_COUNT_SPRING = { type: 'spring', stiffness: 120, damping: 24, mass: 0.8 };
 
-const reducedMotion = () => typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+/**
+ * True when the user prefers reduced motion, or the page sets `<html data-motion="reduce">`.
+ * @returns {boolean}
+ */
+export const reducedMotion = () =>
+	(typeof document !== 'undefined' && document.documentElement.dataset.motion === 'reduce') ||
+	(typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches);
 
 /**
  * Plays the page-enter animation on the element that wraps the page content: fade in and rise 8px in 200ms.
@@ -176,8 +182,7 @@ export function splitTitle(el) {
  * @param {{ x: number, y: number }} [origin] viewport point, for example the center of the toggle button
  */
 export function revealTheme(apply, origin) {
-	const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-	if (typeof document.startViewTransition !== 'function' || reduce) {
+	if (typeof document.startViewTransition !== 'function' || reducedMotion()) {
 		apply();
 		return;
 	}

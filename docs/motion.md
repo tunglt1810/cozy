@@ -32,6 +32,7 @@ Every effect MUST stop when the user sets `prefers-reduced-motion: reduce`. The 
 - **Motion libraries:** set the global option. In Motion: `<MotionConfig reducedMotion="user">`.
 - **A number that counts up:** show the final value at once. Do not count.
 - **View transitions and smooth scroll:** `effects.css` turns them off under `reduce`.
+- **A setting in your app:** set `<html data-motion="reduce">`. `effects.css` stops every animation and transition on the page, and the helpers in `cozy-motion.js` act as under `reduce`. Use this when your app has its own "Reduce motion" setting.
 
 ## Motion map
 
@@ -53,6 +54,9 @@ Every effect MUST stop when the user sets `prefers-reduced-motion: reduce`. The 
 | Segmented control | [Segment thumb](#segment-thumb) | Thumb slides to the selected segment, 260ms | `.cozy-seg-thumb` |
 | Tabs | [Tab underline and panel](#tabs) | Underline moves with a spring. Panel fades in, rises 6px, 160ms | `COZY_SPRING` |
 | Cards that open something | [Card lift](#card-lift) | Rise 2px, larger shadow, 180ms. Press: scale 0.985 | `.cozy-lift` |
+| Dialog | [Dialog](patterns.md#dialog) | Fade in, grow from 98%, 200ms. Scrim fades at the same time | `.cozy-dialog` |
+| Toast | [Toast](patterns.md#toast) | Rise 12px, fade in, 260ms. Leave: fade out, 160ms | `.cozy-toast`, `.cozy-toast-leave` |
+| Loading block | [Skeleton](patterns.md#loading-skeleton) | Light band moves across in 1.4s, repeats | `.cozy-skeleton` |
 | Theme toggle | [Circular theme reveal](#circular-theme-reveal) | New theme grows as a circle, 480ms | `revealTheme(apply, origin)` |
 
 The expressive level uses every effect. The operational level uses only page enter, navigation indicator, row stagger, row hover, drag and drop, inline reveal, press, segment thumb, tabs and theme reveal.

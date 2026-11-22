@@ -51,7 +51,7 @@ for (const s of ['success', 'warning', 'error', 'info']) {
 	add(`text-${s}`, ['bg-body', 'bg-surface'], 4.5, 'text');
 	add(`on-${s}`, s, 4.5, 'text');
 	add(`on-${s}-muted`, `${s}-muted`, 4.5, 'text');
-	add(s, 'bg-surface', null, 'non-text');
+	add(s, ['bg-body', 'bg-surface'], 3, 'non-text');
 }
 add(['nav-text', 'nav-text-muted'], ['nav-bg', 'nav-active'], 4.5, 'text');
 for (const p of ['sage', 'peach', 'butter', 'mist']) {
@@ -186,14 +186,15 @@ ${panel.body.replace('HEIGHT', panel.height)}
 
 // ---------- preview page ----------
 
+const onBody = (name, mode) => ratio(tokens.color[name][mode], tokens.color['bg-body'][mode]).toFixed(2);
 const swatchHtml = groups
 	.map((g) => {
 		const items = Object.entries(tokens.color)
 			.filter(([, v]) => v.group === g)
-			.map(
-				([name, v]) =>
-					`\t\t\t\t<li class="swatch"><span class="chip" style="background: var(${P}${name})"></span><code>${name}</code><small>${v.light} · ${v.dark}</small><small class="role">${v.role}</small></li>`,
-			)
+			.map(([name, v]) => {
+				const contrast = name === 'bg-body' ? '' : `<small class="ratio">On bg-body: ${onBody(name, 'light')} · ${onBody(name, 'dark')}</small>`;
+				return `\t\t\t\t<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(${P}${name})" aria-label="Copy var(${P}${name})"><span class="chip" style="background: var(${P}${name})"></span><code>${name}</code></button><small>${v.light} · ${v.dark}</small>${contrast}<small class="role">${v.role}</small></li>`;
+			})
 			.join('\n');
 		return `\t\t\t<h3>${g}</h3>\n\t\t\t<ul class="swatches">\n${items}\n\t\t\t</ul>`;
 	})
@@ -207,11 +208,84 @@ const preview = readFileSync(join(root, 'scripts/preview.template.html'), 'utf8'
 	.replace('../css/effects.css', `../css/effects.css?v=${hash(readFileSync(join(root, 'css/effects.css'), 'utf8'))}`)
 	.replace("'../js/cozy-motion.js'", `'../js/cozy-motion.js?v=${hash(readFileSync(join(root, 'js/cozy-motion.js'), 'utf8'))}'`);
 
+// ---------- Tailwind CSS v4 theme ----------
+
+// bg-* and text-* lose their prefix (bg-surface, text-primary) unless the short name is already a token (accent, success …).
+const colorNames = Object.keys(tokens.color);
+const twName = (name) => {
+	const m = /^(bg|text)-(.+)$/.exec(name);
+	return m && !colorNames.includes(m[2]) ? m[2] : name;
+};
+const easeName = (k) => k.replace(/^ease-/, 'cozy-');
+const tailwind = `/* Cozy theme for Tailwind CSS v4. Generated from tokens/cozy.tokens.json. Do not edit by hand.
+ * Import it after tailwindcss and tokens/cozy.css. Utilities read the Cozy variables, so light and dark mode work.
+ */
+
+@theme inline {
+${colorNames.map((n) => `\t--color-${twName(n)}: var(${P}${n});`).join('\n')}
+
+\t--font-sans: var(${P}font-family-sans);
+\t--font-mono: var(${P}font-family-mono);
+
+${Object.keys(tokens.text)
+	.map((k) => `\t--text-cozy-${k}: var(${P}text-${k}-size);\n\t--text-cozy-${k}--line-height: var(${P}text-${k}-leading);\n\t--text-cozy-${k}--font-weight: var(${P}text-${k}-weight);`)
+	.join('\n')}
+
+${Object.keys(tokens.radius).map((k) => `\t--radius-${k}: var(${P}radius-${k});`).join('\n')}
+
+${['low', 'med', 'high', 'toolbar', 'focus'].map((k) => `\t--shadow-${k}: var(${P}shadow-${k});`).join('\n')}
+
+${Object.keys(tokens.motion)
+	.filter((k) => k.startsWith('ease-'))
+	.map((k) => `\t--ease-${easeName(k)}: var(${P}motion-${k});`)
+	.join('\n')}
+}
+`;
+
+// ---------- W3C design tokens (DTCG), one file per mode ----------
+
+const dtcgFor = (mode) => {
+	const color = Object.fromEntries(
+		Object.entries(tokens.color).map(([k, v]) => [k, { $type: 'color', $value: v[mode], $description: v.role }]),
+	);
+	const dims = (obj) => Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, { $type: 'dimension', $value: v }]));
+	const motion = Object.fromEntries(
+		Object.entries(tokens.motion).map(([k, v]) =>
+			v.startsWith('cubic-bezier')
+				? [k, { $type: 'cubicBezier', $value: v.slice(13, -1).split(',').map(Number) }]
+				: [k, { $type: 'duration', $value: v }],
+		),
+	);
+	return `${JSON.stringify(
+		{
+			$description: `Cozy ${tokens.version}, ${mode} mode. Generated from tokens/cozy.tokens.json. Do not edit by hand.`,
+			color,
+			font: {
+				'family-sans': { $type: 'fontFamily', $value: tokens.font['family-sans'] },
+				'family-mono': { $type: 'fontFamily', $value: tokens.font['family-mono'] },
+				...Object.fromEntries(
+					Object.entries(tokens.font)
+						.filter(([k]) => k.startsWith('weight-'))
+						.map(([k, v]) => [k, { $type: 'fontWeight', $value: Number(v) }]),
+				),
+			},
+			space: dims(tokens.space),
+			radius: dims(tokens.radius),
+			motion,
+		},
+		null,
+		'\t',
+	)}\n`;
+};
+
 // ---------- write or check ----------
 
 const outputs = {
 	'tokens/cozy.css': css,
 	'tokens/cozy.ts': ts,
+	'tokens/dtcg/cozy.light.json': dtcgFor('light'),
+	'tokens/dtcg/cozy.dark.json': dtcgFor('dark'),
+	'css/tailwind.css': tailwind,
 	'docs/contrast.md': contrastMd,
 	'assets/palette-light.svg': svgFor('light'),
 	'assets/palette-dark.svg': svgFor('dark'),

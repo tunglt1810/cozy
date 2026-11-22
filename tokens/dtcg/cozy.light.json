@@ -1,0 +1,631 @@
+{
+	"$description": "Cozy 0.2.0, light mode. Generated from tokens/cozy.tokens.json. Do not edit by hand.",
+	"color": {
+		"bg-body": {
+			"$type": "color",
+			"$value": "#FAEBDA",
+			"$description": "Page canvas"
+		},
+		"bg-surface": {
+			"$type": "color",
+			"$value": "#FBF1E1",
+			"$description": "Cards, tables, panels, popovers"
+		},
+		"bg-muted": {
+			"$type": "color",
+			"$value": "#F3DFC8",
+			"$description": "Segmented-control track, quiet emphasis"
+		},
+		"bg-inverted": {
+			"$type": "color",
+			"$value": "#3B2A1C",
+			"$description": "Active filter chip, inverted badge"
+		},
+		"text-on-inverted": {
+			"$type": "color",
+			"$value": "#FBF1E1",
+			"$description": "Text on bg-inverted"
+		},
+		"text-primary": {
+			"$type": "color",
+			"$value": "#261101",
+			"$description": "Body text, headings, primary icons"
+		},
+		"text-secondary": {
+			"$type": "color",
+			"$value": "#5B4C3B",
+			"$description": "Supporting text, secondary icons"
+		},
+		"text-disabled": {
+			"$type": "color",
+			"$value": "#968574",
+			"$description": "Disabled text and icons"
+		},
+		"text-accent": {
+			"$type": "color",
+			"$value": "#A84A24",
+			"$description": "Links and accent text on body or surface"
+		},
+		"focus-ring": {
+			"$type": "color",
+			"$value": "#A84A24",
+			"$description": "Keyboard focus outline"
+		},
+		"accent": {
+			"$type": "color",
+			"$value": "#EF8F63",
+			"$description": "Primary action fill, active tab underline"
+		},
+		"on-accent": {
+			"$type": "color",
+			"$value": "#261101",
+			"$description": "Text and icons on accent"
+		},
+		"accent-muted": {
+			"$type": "color",
+			"$value": "#EF8F6333",
+			"$description": "Selected-row tint, soft accent fill"
+		},
+		"success": {
+			"$type": "color",
+			"$value": "#2D7A4D",
+			"$description": "Success fill, border, icon"
+		},
+		"on-success": {
+			"$type": "color",
+			"$value": "#FFFEF7",
+			"$description": "Text on success"
+		},
+		"success-muted": {
+			"$type": "color",
+			"$value": "#E2DEC4",
+			"$description": "Success banner background"
+		},
+		"on-success-muted": {
+			"$type": "color",
+			"$value": "#234930",
+			"$description": "Text on success-muted"
+		},
+		"text-success": {
+			"$type": "color",
+			"$value": "#276B43",
+			"$description": "Success text on body or surface"
+		},
+		"warning": {
+			"$type": "color",
+			"$value": "#B87A12",
+			"$description": "Warning fill, border, icon"
+		},
+		"on-warning": {
+			"$type": "color",
+			"$value": "#261101",
+			"$description": "Text on warning"
+		},
+		"warning-muted": {
+			"$type": "color",
+			"$value": "#FAE1B5",
+			"$description": "Warning banner background"
+		},
+		"on-warning-muted": {
+			"$type": "color",
+			"$value": "#6B4408",
+			"$description": "Text on warning-muted"
+		},
+		"text-warning": {
+			"$type": "color",
+			"$value": "#8A5406",
+			"$description": "Warning text on body or surface"
+		},
+		"error": {
+			"$type": "color",
+			"$value": "#C8433B",
+			"$description": "Error fill, border, icon"
+		},
+		"on-error": {
+			"$type": "color",
+			"$value": "#FFFEF7",
+			"$description": "Text on error"
+		},
+		"error-muted": {
+			"$type": "color",
+			"$value": "#F9CFC8",
+			"$description": "Error banner and destructive button background"
+		},
+		"on-error-muted": {
+			"$type": "color",
+			"$value": "#7E211C",
+			"$description": "Text on error-muted"
+		},
+		"text-error": {
+			"$type": "color",
+			"$value": "#B0322B",
+			"$description": "Error text on body or surface"
+		},
+		"info": {
+			"$type": "color",
+			"$value": "#3B6E9C",
+			"$description": "Info fill, border, icon"
+		},
+		"on-info": {
+			"$type": "color",
+			"$value": "#FFFEF7",
+			"$description": "Text on info"
+		},
+		"info-muted": {
+			"$type": "color",
+			"$value": "#D2D7DA",
+			"$description": "Info banner background"
+		},
+		"on-info-muted": {
+			"$type": "color",
+			"$value": "#234463",
+			"$description": "Text on info-muted"
+		},
+		"text-info": {
+			"$type": "color",
+			"$value": "#2F5B84",
+			"$description": "Info text on body or surface"
+		},
+		"border": {
+			"$type": "color",
+			"$value": "#5B4C3B22",
+			"$description": "Default divider and outline"
+		},
+		"border-emphasized": {
+			"$type": "color",
+			"$value": "#DFCBB5",
+			"$description": "Input outline, emphasized divider"
+		},
+		"overlay": {
+			"$type": "color",
+			"$value": "#26110166",
+			"$description": "Modal scrim"
+		},
+		"overlay-hover": {
+			"$type": "color",
+			"$value": "#2611010D",
+			"$description": "Hover layer on any surface"
+		},
+		"overlay-pressed": {
+			"$type": "color",
+			"$value": "#2611011A",
+			"$description": "Pressed layer on any surface"
+		},
+		"shadow": {
+			"$type": "color",
+			"$value": "#6E4A2A1A",
+			"$description": "Shadow color for custom shadows"
+		},
+		"skeleton": {
+			"$type": "color",
+			"$value": "#EBD9C4",
+			"$description": "Loading placeholder"
+		},
+		"track": {
+			"$type": "color",
+			"$value": "#E6D2BC",
+			"$description": "Progress and slider track"
+		},
+		"nav-bg": {
+			"$type": "color",
+			"$value": "#C3CBB9",
+			"$description": "Floating side navigation"
+		},
+		"nav-active": {
+			"$type": "color",
+			"$value": "#F8E8D3",
+			"$description": "Active navigation pill"
+		},
+		"nav-text": {
+			"$type": "color",
+			"$value": "#403B26",
+			"$description": "Navigation label"
+		},
+		"nav-text-muted": {
+			"$type": "color",
+			"$value": "#55503A",
+			"$description": "Navigation group label and secondary icon"
+		},
+		"mark-peach": {
+			"$type": "color",
+			"$value": "#FAD3B9",
+			"$description": "Highlighter stroke under a heading"
+		},
+		"mark-sage": {
+			"$type": "color",
+			"$value": "#E4DEC8",
+			"$description": "Alternative highlighter stroke"
+		},
+		"pastel-sage": {
+			"$type": "color",
+			"$value": "#E2DEC4",
+			"$description": "Stat-card background"
+		},
+		"pastel-sage-icon": {
+			"$type": "color",
+			"$value": "#7EAB9A",
+			"$description": "Stat-card icon chip"
+		},
+		"pastel-peach": {
+			"$type": "color",
+			"$value": "#FBCBB4",
+			"$description": "Stat-card background"
+		},
+		"pastel-peach-icon": {
+			"$type": "color",
+			"$value": "#F48A65",
+			"$description": "Stat-card icon chip"
+		},
+		"pastel-butter": {
+			"$type": "color",
+			"$value": "#FAE1B5",
+			"$description": "Stat-card background"
+		},
+		"pastel-butter-icon": {
+			"$type": "color",
+			"$value": "#FAC76A",
+			"$description": "Stat-card icon chip"
+		},
+		"pastel-mist": {
+			"$type": "color",
+			"$value": "#D2D7DA",
+			"$description": "Stat-card background"
+		},
+		"pastel-mist-icon": {
+			"$type": "color",
+			"$value": "#A2B3C1",
+			"$description": "Stat-card icon chip"
+		},
+		"on-pastel": {
+			"$type": "color",
+			"$value": "#261101",
+			"$description": "Icon on a pastel icon chip"
+		},
+		"green-bg": {
+			"$type": "color",
+			"$value": "#E2DEC4",
+			"$description": "Category badge"
+		},
+		"green-border": {
+			"$type": "color",
+			"$value": "#B8C4A6",
+			"$description": "Category badge"
+		},
+		"green-icon": {
+			"$type": "color",
+			"$value": "#3C6E58",
+			"$description": "Category badge"
+		},
+		"green-text": {
+			"$type": "color",
+			"$value": "#234930",
+			"$description": "Category badge"
+		},
+		"orange-bg": {
+			"$type": "color",
+			"$value": "#FBCBB4",
+			"$description": "Category badge"
+		},
+		"orange-border": {
+			"$type": "color",
+			"$value": "#EDA98B",
+			"$description": "Category badge"
+		},
+		"orange-icon": {
+			"$type": "color",
+			"$value": "#B5542B",
+			"$description": "Category badge"
+		},
+		"orange-text": {
+			"$type": "color",
+			"$value": "#6B2B11",
+			"$description": "Category badge"
+		},
+		"yellow-bg": {
+			"$type": "color",
+			"$value": "#FAE1B5",
+			"$description": "Category badge"
+		},
+		"yellow-border": {
+			"$type": "color",
+			"$value": "#E5C27D",
+			"$description": "Category badge"
+		},
+		"yellow-icon": {
+			"$type": "color",
+			"$value": "#8A5406",
+			"$description": "Category badge"
+		},
+		"yellow-text": {
+			"$type": "color",
+			"$value": "#5E3904",
+			"$description": "Category badge"
+		},
+		"blue-bg": {
+			"$type": "color",
+			"$value": "#D2D7DA",
+			"$description": "Category badge"
+		},
+		"blue-border": {
+			"$type": "color",
+			"$value": "#A2B3C1",
+			"$description": "Category badge"
+		},
+		"blue-icon": {
+			"$type": "color",
+			"$value": "#2F5B84",
+			"$description": "Category badge"
+		},
+		"blue-text": {
+			"$type": "color",
+			"$value": "#1F3F5C",
+			"$description": "Category badge"
+		},
+		"teal-bg": {
+			"$type": "color",
+			"$value": "#D7E6DF",
+			"$description": "Category badge"
+		},
+		"teal-border": {
+			"$type": "color",
+			"$value": "#94BDAE",
+			"$description": "Category badge"
+		},
+		"teal-icon": {
+			"$type": "color",
+			"$value": "#205E52",
+			"$description": "Category badge"
+		},
+		"teal-text": {
+			"$type": "color",
+			"$value": "#17453C",
+			"$description": "Category badge"
+		},
+		"cyan-bg": {
+			"$type": "color",
+			"$value": "#CDE3E6",
+			"$description": "Category badge"
+		},
+		"cyan-border": {
+			"$type": "color",
+			"$value": "#86B6BD",
+			"$description": "Category badge"
+		},
+		"cyan-icon": {
+			"$type": "color",
+			"$value": "#1F5B63",
+			"$description": "Category badge"
+		},
+		"cyan-text": {
+			"$type": "color",
+			"$value": "#154248",
+			"$description": "Category badge"
+		},
+		"purple-bg": {
+			"$type": "color",
+			"$value": "#E7DCF0",
+			"$description": "Category badge"
+		},
+		"purple-border": {
+			"$type": "color",
+			"$value": "#C5AFDB",
+			"$description": "Category badge"
+		},
+		"purple-icon": {
+			"$type": "color",
+			"$value": "#5E3D82",
+			"$description": "Category badge"
+		},
+		"purple-text": {
+			"$type": "color",
+			"$value": "#462A63",
+			"$description": "Category badge"
+		},
+		"pink-bg": {
+			"$type": "color",
+			"$value": "#F3D5DB",
+			"$description": "Category badge"
+		},
+		"pink-border": {
+			"$type": "color",
+			"$value": "#DDA3B0",
+			"$description": "Category badge"
+		},
+		"pink-icon": {
+			"$type": "color",
+			"$value": "#94304C",
+			"$description": "Category badge"
+		},
+		"pink-text": {
+			"$type": "color",
+			"$value": "#6B1E34",
+			"$description": "Category badge"
+		},
+		"red-bg": {
+			"$type": "color",
+			"$value": "#F9CFC8",
+			"$description": "Category badge"
+		},
+		"red-border": {
+			"$type": "color",
+			"$value": "#E59F95",
+			"$description": "Category badge"
+		},
+		"red-icon": {
+			"$type": "color",
+			"$value": "#B0322B",
+			"$description": "Category badge"
+		},
+		"red-text": {
+			"$type": "color",
+			"$value": "#7E211C",
+			"$description": "Category badge"
+		},
+		"gray-bg": {
+			"$type": "color",
+			"$value": "#EDE0CE",
+			"$description": "Category badge"
+		},
+		"gray-border": {
+			"$type": "color",
+			"$value": "#DFCBB5",
+			"$description": "Category badge"
+		},
+		"gray-icon": {
+			"$type": "color",
+			"$value": "#5B4C3B",
+			"$description": "Category badge"
+		},
+		"gray-text": {
+			"$type": "color",
+			"$value": "#3B2A1C",
+			"$description": "Category badge"
+		}
+	},
+	"font": {
+		"family-sans": {
+			"$type": "fontFamily",
+			"$value": "\"Plus Jakarta Sans\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif"
+		},
+		"family-mono": {
+			"$type": "fontFamily",
+			"$value": "ui-monospace, \"SF Mono\", Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace"
+		},
+		"weight-regular": {
+			"$type": "fontWeight",
+			"$value": 400
+		},
+		"weight-medium": {
+			"$type": "fontWeight",
+			"$value": 500
+		},
+		"weight-semibold": {
+			"$type": "fontWeight",
+			"$value": 600
+		},
+		"weight-bold": {
+			"$type": "fontWeight",
+			"$value": 700
+		}
+	},
+	"space": {
+		"0": {
+			"$type": "dimension",
+			"$value": "0"
+		},
+		"1": {
+			"$type": "dimension",
+			"$value": "0.25rem"
+		},
+		"2": {
+			"$type": "dimension",
+			"$value": "0.5rem"
+		},
+		"3": {
+			"$type": "dimension",
+			"$value": "0.75rem"
+		},
+		"4": {
+			"$type": "dimension",
+			"$value": "1rem"
+		},
+		"5": {
+			"$type": "dimension",
+			"$value": "1.25rem"
+		},
+		"6": {
+			"$type": "dimension",
+			"$value": "1.5rem"
+		},
+		"8": {
+			"$type": "dimension",
+			"$value": "2rem"
+		},
+		"10": {
+			"$type": "dimension",
+			"$value": "2.5rem"
+		},
+		"12": {
+			"$type": "dimension",
+			"$value": "3rem"
+		}
+	},
+	"radius": {
+		"inner": {
+			"$type": "dimension",
+			"$value": "0.5rem"
+		},
+		"element": {
+			"$type": "dimension",
+			"$value": "0.75rem"
+		},
+		"nav-item": {
+			"$type": "dimension",
+			"$value": "0.875rem"
+		},
+		"container": {
+			"$type": "dimension",
+			"$value": "1.125rem"
+		},
+		"card-expressive": {
+			"$type": "dimension",
+			"$value": "1.25rem"
+		},
+		"nav": {
+			"$type": "dimension",
+			"$value": "1.375rem"
+		},
+		"page": {
+			"$type": "dimension",
+			"$value": "1.75rem"
+		},
+		"full": {
+			"$type": "dimension",
+			"$value": "9999px"
+		}
+	},
+	"motion": {
+		"ease-out": {
+			"$type": "cubicBezier",
+			"$value": [
+				0.22,
+				1,
+				0.36,
+				1
+			]
+		},
+		"ease-standard": {
+			"$type": "cubicBezier",
+			"$value": [
+				0.4,
+				0,
+				0.2,
+				1
+			]
+		},
+		"duration-fast": {
+			"$type": "duration",
+			"$value": "160ms"
+		},
+		"duration-page": {
+			"$type": "duration",
+			"$value": "200ms"
+		},
+		"duration-medium": {
+			"$type": "duration",
+			"$value": "260ms"
+		},
+		"duration-entrance": {
+			"$type": "duration",
+			"$value": "340ms"
+		},
+		"duration-slow": {
+			"$type": "duration",
+			"$value": "480ms"
+		},
+		"stagger-step": {
+			"$type": "duration",
+			"$value": "28ms"
+		}
+	}
+}

@@ -1,6 +1,6 @@
 {
 	"name": "cozy",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"color": {
 		"bg-body": { "light": "#FAEBDA", "dark": "#18140E", "group": "surface", "role": "Page canvas" },
 		"bg-surface": { "light": "#FBF1E1", "dark": "#231D16", "group": "surface", "role": "Cards, tables, panels, popovers" },
@@ -24,7 +24,7 @@
 		"on-success-muted": { "light": "#234930", "dark": "#C3E6CC", "group": "status", "role": "Text on success-muted" },
 		"text-success": { "light": "#276B43", "dark": "#82CF9E", "group": "status", "role": "Success text on body or surface" },
 
-		"warning": { "light": "#D99220", "dark": "#F5C156", "group": "status", "role": "Warning fill, border, icon" },
+		"warning": { "light": "#B87A12", "dark": "#F5C156", "group": "status", "role": "Warning fill, border, icon" },
 		"on-warning": { "light": "#261101", "dark": "#18140E", "group": "status", "role": "Text on warning" },
 		"warning-muted": { "light": "#FAE1B5", "dark": "#443A26", "group": "status", "role": "Warning banner background" },
 		"on-warning-muted": { "light": "#6B4408", "dark": "#FCE09B", "group": "status", "role": "Text on warning-muted" },

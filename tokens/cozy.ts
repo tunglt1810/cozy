@@ -1,8 +1,8 @@
-// Cozy design tokens 0.1.0. Generated from tokens/cozy.tokens.json. Do not edit by hand.
+// Cozy design tokens 0.2.0. Generated from tokens/cozy.tokens.json. Do not edit by hand.
 
 export const cozyTokens = {
 	"name": "cozy",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"color": {
 		"bg-body": {
 			"light": "#FAEBDA",
@@ -113,7 +113,7 @@ export const cozyTokens = {
 			"role": "Success text on body or surface"
 		},
 		"warning": {
-			"light": "#D99220",
+			"light": "#B87A12",
 			"dark": "#F5C156",
 			"group": "status",
 			"role": "Warning fill, border, icon"

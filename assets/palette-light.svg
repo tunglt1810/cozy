@@ -59,9 +59,9 @@
 <rect x="368" y="384" width="76" height="40" rx="10" fill="#276B43" stroke="#5B4C3B22"/>
 <text x="368" y="438" fill="#261101" font-size="9.5">text-success</text>
 <text x="368" y="450" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#276B43</text>
-<rect x="454" y="384" width="76" height="40" rx="10" fill="#D99220" stroke="#5B4C3B22"/>
+<rect x="454" y="384" width="76" height="40" rx="10" fill="#B87A12" stroke="#5B4C3B22"/>
 <text x="454" y="438" fill="#261101" font-size="9.5">warning</text>
-<text x="454" y="450" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#D99220</text>
+<text x="454" y="450" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#B87A12</text>
 <rect x="540" y="384" width="76" height="40" rx="10" fill="#261101" stroke="#5B4C3B22"/>
 <text x="540" y="438" fill="#261101" font-size="9.5">on-warning</text>
 <text x="540" y="450" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#261101</text>

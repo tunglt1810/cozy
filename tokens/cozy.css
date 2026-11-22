@@ -1,4 +1,4 @@
-/* Cozy design tokens 0.1.0. Generated from tokens/cozy.tokens.json. Do not edit by hand. */
+/* Cozy design tokens 0.2.0. Generated from tokens/cozy.tokens.json. Do not edit by hand. */
 
 :root {
 	color-scheme: light dark;
@@ -31,7 +31,7 @@
 	--cozy-success-muted: light-dark(#E2DEC4, #31392C);
 	--cozy-on-success-muted: light-dark(#234930, #C3E6CC);
 	--cozy-text-success: light-dark(#276B43, #82CF9E);
-	--cozy-warning: light-dark(#D99220, #F5C156);
+	--cozy-warning: light-dark(#B87A12, #F5C156);
 	--cozy-on-warning: light-dark(#261101, #18140E);
 	--cozy-warning-muted: light-dark(#FAE1B5, #443A26);
 	--cozy-on-warning-muted: light-dark(#6B4408, #FCE09B);

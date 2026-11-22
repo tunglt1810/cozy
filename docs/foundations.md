@@ -52,9 +52,9 @@ Each status has five tokens. Use the correct one for each job.
 
 **Status text rule:**
 
-- Do not use `<status>` as a text color. In light mode, `success`, `error` and `warning` are below 4.5:1 on `bg-body`. `warning` is 2.2:1.
+- Do not use `<status>` as a text color. In light mode, `success`, `error` and `warning` are below 4.5:1 on `bg-body`. `warning` is 3.08:1.
 - Text with a status meaning MUST use `text-<status>`. These tokens reach AA (5.36:1 or more) in light mode and AAA in dark mode.
-- `warning` is below 3:1 on light surfaces. A warning icon MUST NOT be the only signal. Put a text label next to it.
+- Every `<status>` color reaches 3:1 on `bg-body` and `bg-surface`, so a status icon or border is visible. A status icon SHOULD still have a text label, because color alone does not tell the meaning.
 
 ### Lines and layers
 

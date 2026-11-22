@@ -2,6 +2,22 @@
 
 This project uses [Semantic Versioning](https://semver.org/). Before 1.0.0, a minor version can change or remove tokens.
 
+## 0.2.0 – 2026-11-23
+
+### Changed
+
+- Light `warning` is now `#B87A12` (was `#D99220`). The old value was below 3:1 on `bg-body`. All four status colors now reach 3:1 on `bg-body` and `bg-surface`.
+
+### Added
+
+- `css/tailwind.css`: theme variables for Tailwind CSS v4.
+- `tokens/dtcg/`: the tokens in the W3C Design Tokens format, one file for each mode.
+- Effects: skeleton shimmer, dialog enter, toast enter and leave.
+- `<html data-motion="reduce">` turns off all Cozy motion. `reducedMotion()` in `js/cozy-motion.js` reads it.
+- Patterns: form fields, dialog, toast, empty state, loading skeleton.
+- Preview page: click a token to copy its variable, contrast on each swatch, a motion switch, form and overlay demos, a social preview image.
+- CI runs `bun run check` on each push and pull request.
+
 ## 0.1.0 – 2026-11-22
 
 First public release.

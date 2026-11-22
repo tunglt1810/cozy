@@ -96,6 +96,23 @@
 	pointer-events: none;
 }
 
+/* ---------- Skeleton ---------- */
+
+.cozy-skeleton {
+	border-radius: var(--cozy-radius-inner);
+	background-color: var(--cozy-skeleton);
+	background-image: linear-gradient(90deg, transparent, var(--cozy-overlay-hover), transparent);
+	background-size: 200% 100%;
+	background-repeat: no-repeat;
+	background-position: 150% 0;
+}
+
+/* ---------- Dialog and toast ---------- */
+
+dialog.cozy-dialog::backdrop {
+	background: var(--cozy-overlay);
+}
+
 /* ---------- Stat card ---------- */
 
 .cozy-stat-card {
@@ -238,6 +255,75 @@ html.cozy-theme-transition::view-transition-new(root) {
 		transform: scale(0.97);
 	}
 
+	@keyframes cozy-shimmer {
+		to {
+			background-position: -50% 0;
+		}
+	}
+
+	.cozy-skeleton {
+		animation: cozy-shimmer 1.4s linear infinite;
+	}
+
+	/* Dialog: fade in and grow from 98% in 200ms. @starting-style gives the first frame. */
+	dialog.cozy-dialog {
+		transition:
+			opacity var(--cozy-motion-duration-page) var(--cozy-motion-ease-out),
+			transform var(--cozy-motion-duration-page) var(--cozy-motion-ease-out),
+			overlay var(--cozy-motion-duration-page) allow-discrete,
+			display var(--cozy-motion-duration-page) allow-discrete;
+		opacity: 0;
+		transform: scale(0.98);
+	}
+
+	dialog.cozy-dialog[open] {
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	@starting-style {
+		dialog.cozy-dialog[open] {
+			opacity: 0;
+			transform: scale(0.98);
+		}
+	}
+
+	dialog.cozy-dialog::backdrop {
+		transition:
+			background-color var(--cozy-motion-duration-page) ease,
+			overlay var(--cozy-motion-duration-page) allow-discrete,
+			display var(--cozy-motion-duration-page) allow-discrete;
+	}
+
+	@starting-style {
+		dialog.cozy-dialog[open]::backdrop {
+			background-color: transparent;
+		}
+	}
+
+	/* Toast: rise 12px and fade in. Add .cozy-toast-leave to fade out in 160ms. */
+	@keyframes cozy-toast-in {
+		from {
+			opacity: 0;
+			transform: translateY(12px);
+		}
+	}
+
+	@keyframes cozy-toast-out {
+		to {
+			opacity: 0;
+			transform: translateY(4px);
+		}
+	}
+
+	.cozy-toast {
+		animation: cozy-toast-in var(--cozy-motion-duration-medium) var(--cozy-motion-ease-out);
+	}
+
+	.cozy-toast.cozy-toast-leave {
+		animation: cozy-toast-out var(--cozy-motion-duration-fast) ease forwards;
+	}
+
 	.cozy-seg-thumb {
 		transition:
 			transform var(--cozy-motion-duration-medium) var(--cozy-motion-ease-out),
@@ -270,4 +356,14 @@ html.cozy-theme-transition::view-transition-new(root) {
 	html {
 		scroll-behavior: auto;
 	}
+}
+
+/* A page can force reduced motion for its own users, for example from a settings switch: <html data-motion="reduce">. */
+:root[data-motion='reduce'] *,
+:root[data-motion='reduce'] *::before,
+:root[data-motion='reduce'] *::after,
+:root[data-motion='reduce'] ::backdrop {
+	animation: none !important;
+	transition: none !important;
+	scroll-behavior: auto !important;
 }
