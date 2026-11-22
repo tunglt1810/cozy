@@ -2,6 +2,8 @@
 
 A warm design system for web apps: cream and espresso tones, measured contrast, and calm motion. Light and dark mode come from one set of tokens.
 
+**Live preview:** <https://tunglt1810.github.io/cozy/>
+
 Cozy was extracted from an internal admin app. It contains tokens, CSS effects, small motion helpers, and written rules. It does not contain components, so you can use it with any component library.
 
 <picture>
