@@ -199,7 +199,7 @@ const swatchHtml = groups
 	.join('\n');
 const preview = readFileSync(join(root, 'scripts/preview.template.html'), 'utf8')
 	.replace('<!-- SWATCHES -->', swatchHtml.trimStart())
-	.replace('{{VERSION}}', tokens.version);
+	.replaceAll('{{VERSION}}', tokens.version);
 
 // ---------- write or check ----------
 

@@ -91,3 +91,7 @@ The script runs on [Bun](https://bun.sh). It has no dependencies.
 ## License
 
 [MIT](LICENSE). Plus Jakarta Sans uses the SIL Open Font License 1.1.
+
+## Support
+
+If Cozy helps you, you can [buy me a coffee](https://buymeacoffee.com/bbeeezzzzz).
