@@ -1,10 +1,10 @@
 # Cozy
 
-A warm design system for web apps: cream and espresso tones, measured contrast, and calm motion. Light and dark mode come from one set of tokens.
+I wanted my admin app to feel warm instead of clinical. So I pulled its colors and motion out into this design system. Light and dark mode come from one set of tokens.
 
 **Live preview:** <https://tunglt1810.github.io/cozy/>
 
-Cozy was extracted from an internal admin app. It contains tokens, CSS effects, small motion helpers, and written rules. It does not contain components, so you can use it with any component library.
+There are no components here. You get tokens, CSS effects, a bit of motion JavaScript and the rules I follow. Bring whatever component library you like.
 
 <picture>
 	<source media="(prefers-color-scheme: dark)" srcset="assets/palette-dark.svg" />
@@ -28,39 +28,35 @@ Cozy was extracted from an internal admin app. It contains tokens, CSS effects, 
 
 ## Quick start
 
-1. Load the font and the two style sheets.
+Load the font and the two style sheets:
 
-   ```html
-   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" />
-   <link rel="stylesheet" href="cozy/tokens/cozy.css" />
-   <link rel="stylesheet" href="cozy/css/effects.css" />
-   ```
+```html
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" />
+<link rel="stylesheet" href="cozy/tokens/cozy.css" />
+<link rel="stylesheet" href="cozy/css/effects.css" />
+```
 
-2. Use the tokens.
+Then use the tokens:
 
-   ```css
-   body {
-   	background: var(--cozy-bg-body);
-   	color: var(--cozy-text-primary);
-   	font-family: var(--cozy-font-family-sans);
-   }
+```css
+body {
+	background: var(--cozy-bg-body);
+	color: var(--cozy-text-primary);
+	font-family: var(--cozy-font-family-sans);
+}
 
-   .button-primary {
-   	background: var(--cozy-accent);
-   	color: var(--cozy-on-accent);
-   	border-radius: var(--cozy-radius-full);
-   }
-   ```
+.button-primary {
+	background: var(--cozy-accent);
+	color: var(--cozy-on-accent);
+	border-radius: var(--cozy-radius-full);
+}
+```
 
-3. Optional: force a mode. Without this attribute, the page follows the operating system.
+The page follows the OS theme. Add `<html data-theme="dark">` to force a mode.
 
-   ```html
-   <html data-theme="dark">
-   ```
+Install from Git with `bun add github:tunglt1810/cozy`.
 
-To install from Git, run `bun add github:tunglt1810/cozy`.
-
-## Use with Tailwind CSS v4
+## Tailwind CSS v4
 
 ```css
 @import 'tailwindcss';
@@ -68,23 +64,23 @@ To install from Git, run `bun add github:tunglt1810/cozy`.
 @import 'cozy/tailwind.css';
 ```
 
-The utilities use the token name without its `bg-` or `text-` prefix: `bg-surface`, `text-primary`, `border-border-subtle`, `rounded-container`, `shadow-med`, `ease-cozy-out`. When the short name is already a token, the utility keeps the full name, for example `text-text-accent` and `text-text-success`. Type styles are `text-cozy-heading-1`, `text-cozy-body` and so on.
+Utilities drop the `bg-` or `text-` prefix from the token name: `bg-surface`, `text-primary`, `rounded-container`. If the short name clashes with another token, the full name stays, for example `text-text-accent`. Type styles look like `text-cozy-heading-1`.
 
 ## Design tools
 
-`tokens/dtcg/cozy.light.json` and `tokens/dtcg/cozy.dark.json` use the [W3C Design Tokens](https://www.designtokens.org/) format (`$type`, `$value`). Tokens Studio, Style Dictionary and Figma plugins that read this format can import them.
+`tokens/dtcg/cozy.light.json` and `tokens/dtcg/cozy.dark.json` use the [W3C Design Tokens](https://www.designtokens.org/) format. Tokens Studio, Style Dictionary and Figma plugins can import them.
 
-## Documentation
+## Docs
 
-1. [Principles](docs/principles.md): warm palette, measured contrast, two density levels, optional motion.
-2. [Foundations](docs/foundations.md): color, typography, spacing, radius, shadow.
-3. [Motion](docs/motion.md): curves, springs, named effects, reduced-motion rules.
-4. [Patterns](docs/patterns.md): tabs and their look-alikes, button hierarchy, sticky form toolbar, form fields, dialog, toast, empty state, loading skeleton.
-5. [Contrast report](docs/contrast.md): every documented color pair, measured.
+- [Principles](docs/principles.md)
+- [Foundations](docs/foundations.md): color, type, spacing, radius, shadow
+- [Motion](docs/motion.md)
+- [Patterns](docs/patterns.md): tabs, buttons, forms, dialog, toast, empty state, skeleton
+- [Contrast report](docs/contrast.md): every color pair, measured
 
-## Preview
+## Run the preview locally
 
-The preview page loads ES modules, so it needs an HTTP server. A `file://` URL does not work.
+It loads ES modules, so `file://` won't work. Serve it:
 
 ```bash
 bunx serve -l 8000
@@ -95,21 +91,21 @@ Then open <http://localhost:8000/preview/>.
 ## Change the tokens
 
 1. Edit `tokens/cozy.tokens.json`.
-2. Run `bun run build`. The script writes `tokens/cozy.css`, `tokens/cozy.ts`, the DTCG files, `css/tailwind.css`, `docs/contrast.md`, the palette images and the preview page.
-3. Run `bun run check`. It fails when a generated file is out of date or a color pair is below its contrast minimum.
+2. Run `bun run build`. It regenerates the CSS, TS, DTCG and Tailwind files, plus the contrast report, the palette images and the preview page.
+3. Run `bun run check`. It fails if a generated file is stale or a color pair drops below its contrast minimum.
 
-After you edit `css/effects.css` or `js/cozy-motion.js`, run `bun run build` too. The preview page links each file with a content hash, so browsers do not use an old cached copy.
+Run `bun run build` after you touch `css/effects.css` or `js/cozy-motion.js` too. The preview links each file with a content hash, so browsers don't serve an old copy.
 
-The script runs on [Bun](https://bun.sh). It has no dependencies.
+The script runs on [Bun](https://bun.sh) with no dependencies.
 
 ## Browser support
 
-`light-dark()` needs Chrome 123, Edge 123, Firefox 120 or Safari 17.5. The circular theme reveal needs the View Transitions API. Other browsers change the theme without the animation.
+`light-dark()` needs Chrome 123, Edge 123, Firefox 120 or Safari 17.5. The circular theme reveal needs the View Transitions API. Without it, the theme still changes, just without the animation.
 
 ## License
 
 [MIT](LICENSE). Plus Jakarta Sans uses the SIL Open Font License 1.1.
 
-## Support
+If Cozy is useful to you, [buy me a coffee](https://buymeacoffee.com/bbeeezzzzz).
 
-If Cozy helps you, you can [buy me a coffee](https://buymeacoffee.com/bbeeezzzzz).
+[@tunglt1810](https://github.com/tunglt1810)
