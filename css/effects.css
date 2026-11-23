@@ -98,13 +98,13 @@
 
 /* ---------- Skeleton ---------- */
 
+/* A pseudo-element animated with transform runs on the compositor instead of repainting background-position on each frame. isolation keeps rounded-corner clipping in WebKit. */
 .cozy-skeleton {
+	position: relative;
+	overflow: hidden;
+	isolation: isolate;
 	border-radius: var(--cozy-radius-inner);
 	background-color: var(--cozy-skeleton);
-	background-image: linear-gradient(90deg, transparent, var(--cozy-overlay-hover), transparent);
-	background-size: 200% 100%;
-	background-repeat: no-repeat;
-	background-position: 150% 0;
 }
 
 /* ---------- Dialog and toast ---------- */
@@ -256,12 +256,21 @@ html.cozy-theme-transition::view-transition-new(root) {
 	}
 
 	@keyframes cozy-shimmer {
+		from {
+			transform: translateX(-100%);
+		}
 		to {
-			background-position: -50% 0;
+			transform: translateX(100%);
 		}
 	}
 
-	.cozy-skeleton {
+	.cozy-skeleton::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		background-image: linear-gradient(90deg, transparent, var(--cozy-overlay-hover), transparent);
+		transform: translateX(-100%);
 		animation: cozy-shimmer 1.4s linear infinite;
 	}
 
