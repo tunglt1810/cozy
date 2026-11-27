@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="color-scheme" content="light dark" />
 		<title>Cozy</title>
 		<meta property="og:title" content="Cozy design system" />
 		<meta property="og:description" content="A warm design system. Light and dark mode come from one set of tokens." />
@@ -11,24 +12,18 @@
 		<meta http-equiv="refresh" content="0; url=preview/" />
 		<link rel="canonical" href="preview/" />
 		<style>
+			:root {
+				color-scheme: light dark;
+			}
 			body {
 				margin: 0;
 				padding: 2rem 1rem;
 				font-family: -apple-system, 'Segoe UI', sans-serif;
-				background: #faebda;
-				color: #261101;
-			}
-			@media (prefers-color-scheme: dark) {
-				body {
-					background: #18140e;
-					color: #fffef7;
-				}
-				a {
-					color: #f2a57e;
-				}
+				background: light-dark(#faebda, #18140e);
+				color: light-dark(#261101, #fffef7);
 			}
 			a {
-				color: #a84a24;
+				color: light-dark(#a84a24, #f2a57e);
 			}
 		</style>
 	</head>
