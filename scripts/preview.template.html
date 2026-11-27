@@ -149,6 +149,7 @@
 			}
 			.btn:focus-visible,
 			.tab:focus-visible,
+			.tabpanel:focus-visible,
 			.seg button:focus-visible,
 			.chip-btn:focus-visible,
 			.nav a:focus-visible {
@@ -296,16 +297,11 @@
 			.tab[aria-selected='true'] {
 				color: var(--cozy-text-primary);
 			}
-			.tab[aria-selected='true'] {
-				font-weight: var(--cozy-font-weight-medium);
-			}
 			.tab-underline {
 				position: absolute;
 				bottom: 0;
 				left: 0;
-				height: 2px;
-				border-radius: var(--cozy-radius-full);
-				background: var(--cozy-accent);
+				border-bottom: 2px solid var(--cozy-accent);
 				width: var(--w, 0);
 				transform: translateX(var(--x, 0));
 			}
@@ -586,6 +582,13 @@
 				color: var(--cozy-text-primary);
 				box-shadow: var(--cozy-shadow-high);
 			}
+			.cozy-dialog:modal,
+			.cozy-dialog::backdrop {
+				overscroll-behavior: contain;
+			}
+			.cozy-dialog::backdrop {
+				overflow: hidden;
+			}
 			.cozy-dialog h2 {
 				font-size: var(--cozy-text-heading-2-size);
 				margin-bottom: var(--cozy-space-2);
@@ -749,17 +752,17 @@
 							<button class="tab" role="tab" type="button" id="tab-history" aria-controls="panel-history" aria-selected="false" tabindex="-1">History</button>
 							<span class="tab-underline" aria-hidden="true"></span>
 						</div>
-						<div class="tabpanel" role="tabpanel" id="panel-info" aria-labelledby="tab-info">
+						<div class="tabpanel" role="tabpanel" id="panel-info" aria-labelledby="tab-info" tabindex="0">
 							<ul class="list">
 								<li><span class="muted">Status</span><span class="tag" style="background: var(--cozy-green-bg); border-color: var(--cozy-green-border); color: var(--cozy-green-text)">Published</span></li>
 								<li><span class="muted">Owner</span><span>Content team</span></li>
 								<li><span class="muted">Updated</span><span>2 hours ago</span></li>
 							</ul>
 						</div>
-						<div class="tabpanel" role="tabpanel" id="panel-items" aria-labelledby="tab-items" hidden>
+						<div class="tabpanel" role="tabpanel" id="panel-items" aria-labelledby="tab-items" tabindex="0" hidden>
 							<ul class="list" id="item-list"></ul>
 						</div>
-						<div class="tabpanel" role="tabpanel" id="panel-history" aria-labelledby="tab-history" hidden>
+						<div class="tabpanel" role="tabpanel" id="panel-history" aria-labelledby="tab-history" tabindex="0" hidden>
 							<p class="muted" style="padding: var(--cozy-space-3) 0">No changes in the last 30 days.</p>
 						</div>
 					</div>
@@ -876,11 +879,11 @@
 					<h2 id="dlg-title">Delete 3 drafts?</h2>
 					<p class="muted">You cannot undo this. The drafts are not in the trash after you delete them.</p>
 					<form method="dialog" class="dialog-actions">
-						<button class="btn btn-secondary cozy-press" value="cancel">Cancel</button>
+						<button class="btn btn-secondary cozy-press" value="cancel" autofocus>Cancel</button>
 						<button class="btn btn-destructive cozy-press" value="delete">Delete</button>
 					</form>
 				</dialog>
-				<div class="toasts" id="toasts"></div>
+				<div class="toasts" id="toasts" role="region" aria-label="Notifications"></div>
 			</section>
 
 			<section aria-labelledby="palette">
@@ -932,17 +935,27 @@
 			const order = ['system', 'light', 'dark'];
 			const media = matchMedia('(prefers-color-scheme: dark)');
 			const resolve = (m) => (m === 'system' ? (media.matches ? 'dark' : 'light') : m);
+			const themeKey = 'cozy-preview-theme';
 			let mode = root.dataset.theme ?? 'system';
-			toggle.textContent = `Theme: ${mode}`;
+			const showMode = () => (toggle.textContent = mode === 'system' ? `Theme: system (${resolve(mode)})` : `Theme: ${mode}`);
+			const setMode = (next) => {
+				if (next === 'system') delete root.dataset.theme;
+				else root.dataset.theme = next;
+				mode = next;
+				showMode();
+			};
+			showMode();
+			media.addEventListener('change', showMode);
+			addEventListener('storage', (e) => {
+				if (e.key === themeKey || e.key === null) setMode(e.newValue === 'light' || e.newValue === 'dark' ? e.newValue : 'system');
+			});
 			toggle.addEventListener('click', () => {
 				const next = order[(order.indexOf(mode) + 1) % order.length];
 				const apply = () => {
-					if (next === 'system') delete root.dataset.theme;
-					else root.dataset.theme = next;
-					mode = next;
-					toggle.textContent = `Theme: ${mode}`;
+					setMode(next);
 					try {
-						localStorage.setItem('cozy-preview-theme', next);
+						if (next === 'system') localStorage.removeItem(themeKey);
+						else localStorage.setItem(themeKey, next);
 					} catch {}
 				};
 				if (resolve(next) === resolve(mode)) return apply();
@@ -1058,10 +1071,10 @@
 			const toast = (text, color) => {
 				const el = document.createElement('div');
 				el.className = 'cozy-toast';
-				el.setAttribute('role', 'status');
 				el.innerHTML = `<span class="toast-dot" style="background: ${color}"></span><span></span>`;
 				el.lastElementChild.textContent = text;
 				toasts.append(el);
+				document.ariaNotify?.(text);
 				while (toasts.children.length > 3) toasts.firstElementChild.remove();
 				let timer;
 				const leave = () => {
