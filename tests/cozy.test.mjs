@@ -52,7 +52,7 @@ function makeEl(tag = 'div', rect = { top: 0, bottom: 0, left: 0, right: 0, widt
 		offsetHeight: rect.height,
 		_text: '',
 		get textContent() {
-			return this._text;
+			return this.children.length > 0 ? this.children.map((c) => c.textContent).join('') : this._text;
 		},
 		set textContent(v) {
 			this._text = String(v);
@@ -60,6 +60,12 @@ function makeEl(tag = 'div', rect = { top: 0, bottom: 0, left: 0, right: 0, widt
 		},
 		setAttribute: (k, v) => attrs.set(k, String(v)),
 		getAttribute: (k) => attrs.get(k) ?? null,
+		querySelector: (selector) => {
+			if (selector === ':scope > .cozy-sr-only') {
+				return children.find((c) => c.className === 'cozy-sr-only') ?? null;
+			}
+			return null;
+		},
 		append: (...nodes) => children.push(...nodes),
 		getBoundingClientRect: () => ({ ...rect }),
 	};
@@ -101,7 +107,7 @@ describe('cozy-motion pure helpers', () => {
 });
 
 describe('cozy-motion DOM helpers', () => {
-	test('splitTitle adds .cozy-sr-only text instead of aria-label on generic elements', () => {
+	test('splitTitle adds .cozy-sr-only text and is idempotent across repeated calls', () => {
 		const prevDoc = globalThis.document;
 		globalThis.document = {
 			documentElement: { dataset: {} },
@@ -110,6 +116,7 @@ describe('cozy-motion DOM helpers', () => {
 		try {
 			const span = makeEl('span');
 			span.textContent = 'Warm UI';
+			splitTitle(span);
 			splitTitle(span);
 
 			expect(span.getAttribute('aria-label')).toBeNull();
@@ -182,7 +189,7 @@ describe('cozy-motion DOM helpers', () => {
 		}
 	});
 
-	test('revealTheme keeps cozy-theme-transition active when an earlier transition finishes after a newer one starts', async () => {
+	test('revealTheme handles rapid overlapping transitions and rejected finished promises', async () => {
 		const prevDoc = globalThis.document;
 		const prevWin = globalThis.window;
 		const prevMatch = globalThis.matchMedia;
@@ -197,10 +204,12 @@ describe('cozy-motion DOM helpers', () => {
 			startViewTransition: (cb) => {
 				cb();
 				let resolveFinished;
-				const finished = new Promise((r) => {
-					resolveFinished = r;
+				let rejectFinished;
+				const finished = new Promise((res, rej) => {
+					resolveFinished = res;
+					rejectFinished = rej;
 				});
-				pending.push(resolveFinished);
+				pending.push({ resolve: resolveFinished, reject: rejectFinished });
 				return { ready: Promise.resolve(), finished };
 			},
 		};
@@ -209,12 +218,14 @@ describe('cozy-motion DOM helpers', () => {
 			revealTheme(() => {});
 			expect(rootEl.classList.contains('cozy-theme-transition')).toBe(true);
 
-			pending[0]();
+			pending[0].reject(new Error('aborted'));
+			await Promise.resolve();
 			await Promise.resolve();
 			await Promise.resolve();
 			expect(rootEl.classList.contains('cozy-theme-transition')).toBe(true);
 
-			pending[1]();
+			pending[1].resolve();
+			await Promise.resolve();
 			await Promise.resolve();
 			await Promise.resolve();
 			expect(rootEl.classList.contains('cozy-theme-transition')).toBe(false);

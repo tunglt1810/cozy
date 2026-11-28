@@ -877,7 +877,7 @@
 						<button class="btn btn-destructive cozy-press" value="delete">Delete</button>
 					</form>
 				</dialog>
-				<div class="toasts" id="toasts" role="region" aria-label="Notifications" aria-live="polite"></div>
+				<div class="toasts" id="toasts" role="region" aria-label="Notifications"></div>
 			</section>
 
 			<section aria-labelledby="palette">
@@ -1044,7 +1044,7 @@
 		</main>
 
 		<script type="module">
-			import { splitTitle, revealTheme, rowDelayStyle, createNavIndicator } from '../js/cozy-motion.js?v=1e40eb8d';
+			import { splitTitle, revealTheme, rowDelayStyle, createNavIndicator } from '../js/cozy-motion.js?v=9689e692';
 
 			for (const el of document.querySelectorAll('[data-split]')) splitTitle(el);
 
@@ -1199,14 +1199,23 @@
 			// Reduce-motion switch for this page.
 			const motionToggle = document.getElementById('motion-toggle');
 			const motionMedia = matchMedia('(prefers-reduced-motion: reduce)');
-			const setMotion = (reduce) => {
-				if (reduce) root.dataset.motion = 'reduce';
+			let pageReduceMotion = root.dataset.motion === 'reduce';
+			const syncMotionToggle = () => {
+				const osReduced = motionMedia.matches;
+				const reduce = osReduced || pageReduceMotion;
+				if (pageReduceMotion) root.dataset.motion = 'reduce';
 				else delete root.dataset.motion;
+				motionToggle.disabled = osReduced;
 				motionToggle.setAttribute('aria-pressed', String(reduce));
-				motionToggle.textContent = reduce ? 'Motion: reduced' : 'Motion: on';
+				motionToggle.textContent = osReduced ? 'Motion: reduced (OS)' : reduce ? 'Motion: reduced' : 'Motion: on';
 			};
-			setMotion(root.dataset.motion === 'reduce' || motionMedia.matches);
-			motionToggle.addEventListener('click', () => setMotion(root.dataset.motion !== 'reduce'));
+			syncMotionToggle();
+			motionMedia.addEventListener('change', syncMotionToggle);
+			motionToggle.addEventListener('click', () => {
+				if (motionMedia.matches) return;
+				pageReduceMotion = !pageReduceMotion;
+				syncMotionToggle();
+			});
 
 			// Dialog.
 			const dialog = document.getElementById('demo-dialog');

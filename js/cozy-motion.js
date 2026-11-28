@@ -167,7 +167,8 @@ export function titleStepMs(charCount) {
  * @param {HTMLElement} el
  */
 export function splitTitle(el) {
-	const text = el.textContent ?? '';
+	const existingSr = typeof el.querySelector === 'function' ? el.querySelector(':scope > .cozy-sr-only') : null;
+	const text = existingSr?.textContent ?? el.textContent ?? '';
 	const tokens = text.split(/(\s+)/).filter((t) => t.length > 0);
 	const total = tokens.reduce((n, t) => (/^\s+$/.test(t) ? n : n + splitGraphemes(t).length), 0);
 	const step = titleStepMs(total);
@@ -241,8 +242,10 @@ export function revealTheme(apply, origin) {
 			);
 		})
 		.catch(() => undefined);
-	transition.finished.finally(() => {
-		if (id === activeThemeReveal) root.classList.remove('cozy-theme-transition');
-	});
+	transition.finished
+		.catch(() => undefined)
+		.finally(() => {
+			if (id === activeThemeReveal) root.classList.remove('cozy-theme-transition');
+		});
 	return transition;
 }
