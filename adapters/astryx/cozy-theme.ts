@@ -58,7 +58,7 @@ const colors = Object.fromEntries(Object.entries(colorMap).map(([astryx, cozy]) 
 
 const splitFontStack = (stack: string): { family: string; fallbacks: string } => {
 	const comma = stack.indexOf(',');
-	const family = (comma === -1 ? stack : stack.slice(0, comma)).trim().replace(/^"|"$/g, '');
+	const family = (comma === -1 ? stack : stack.slice(0, comma)).trim().replace(/^["']|["']$/g, '');
 	const fallbacks = comma === -1 ? '' : stack.slice(comma + 1).trim();
 	return { family, fallbacks };
 };
