@@ -17,33 +17,39 @@
 		"accent": { "light": "#EF8F63", "dark": "#EE8F64", "group": "accent", "role": "Primary action fill, active tab underline" },
 		"on-accent": { "light": "#261101", "dark": "#18140E", "group": "accent", "role": "Text and icons on accent" },
 		"accent-muted": { "light": "#EF8F6333", "dark": "#EE8F6438", "group": "accent", "role": "Selected-row tint, soft accent fill" },
+		"accent-on-inverted": { "light": "#EE8F64", "dark": "#A84A24", "group": "accent", "role": "Accent icon on bg-inverted" },
 
 		"success": { "light": "#2D7A4D", "dark": "#6FBF8E", "group": "status", "role": "Success fill, border, icon" },
 		"on-success": { "light": "#FFFEF7", "dark": "#18140E", "group": "status", "role": "Text on success" },
 		"success-muted": { "light": "#E2DEC4", "dark": "#31392C", "group": "status", "role": "Success banner background" },
 		"on-success-muted": { "light": "#234930", "dark": "#C3E6CC", "group": "status", "role": "Text on success-muted" },
 		"text-success": { "light": "#276B43", "dark": "#82CF9E", "group": "status", "role": "Success text on body or surface" },
+		"success-on-inverted": { "light": "#6FBF8E", "dark": "#2D7A4D", "group": "status", "role": "Success icon on bg-inverted" },
 
 		"warning": { "light": "#B87A12", "dark": "#F5C156", "group": "status", "role": "Warning fill, border, icon" },
 		"on-warning": { "light": "#261101", "dark": "#18140E", "group": "status", "role": "Text on warning" },
 		"warning-muted": { "light": "#FAE1B5", "dark": "#443A26", "group": "status", "role": "Warning banner background" },
 		"on-warning-muted": { "light": "#6B4408", "dark": "#FCE09B", "group": "status", "role": "Text on warning-muted" },
 		"text-warning": { "light": "#8A5406", "dark": "#F5C96B", "group": "status", "role": "Warning text on body or surface" },
+		"warning-on-inverted": { "light": "#F5C156", "dark": "#B87A12", "group": "status", "role": "Warning icon on bg-inverted" },
 
 		"error": { "light": "#C8433B", "dark": "#F27B70", "group": "status", "role": "Error fill, border, icon" },
 		"on-error": { "light": "#FFFEF7", "dark": "#18140E", "group": "status", "role": "Text on error" },
 		"error-muted": { "light": "#F9CFC8", "dark": "#472826", "group": "status", "role": "Error banner and destructive button background" },
 		"on-error-muted": { "light": "#7E211C", "dark": "#F9BEB8", "group": "status", "role": "Text on error-muted" },
 		"text-error": { "light": "#B0322B", "dark": "#F5938A", "group": "status", "role": "Error text on body or surface" },
+		"error-on-inverted": { "light": "#F27B70", "dark": "#C8433B", "group": "status", "role": "Error icon on bg-inverted" },
 
 		"info": { "light": "#3B6E9C", "dark": "#8BB8E0", "group": "status", "role": "Info fill, border, icon" },
 		"on-info": { "light": "#FFFEF7", "dark": "#18140E", "group": "status", "role": "Text on info" },
 		"info-muted": { "light": "#D2D7DA", "dark": "#2B333D", "group": "status", "role": "Info banner background" },
 		"on-info-muted": { "light": "#234463", "dark": "#C5DEF5", "group": "status", "role": "Text on info-muted" },
 		"text-info": { "light": "#2F5B84", "dark": "#9BC5EA", "group": "status", "role": "Info text on body or surface" },
+		"info-on-inverted": { "light": "#8BB8E0", "dark": "#3B6E9C", "group": "status", "role": "Info icon on bg-inverted" },
 
 		"border": { "light": "#5B4C3B22", "dark": "#3E3831", "group": "line", "role": "Default divider and outline" },
 		"border-emphasized": { "light": "#DFCBB5", "dark": "#52493F", "group": "line", "role": "Input outline, emphasized divider" },
+		"card-border": { "light": "#5B4C3B14", "dark": "#FFF0DC14", "group": "line", "role": "Subtle outline on elevated pastel cards" },
 		"overlay": { "light": "#26110166", "dark": "#0D0A07B3", "group": "line", "role": "Modal scrim" },
 		"overlay-hover": { "light": "#2611010D", "dark": "#FFFEF70F", "group": "line", "role": "Hover layer on any surface" },
 		"overlay-pressed": { "light": "#2611011A", "dark": "#FFFEF71C", "group": "line", "role": "Pressed layer on any surface" },
@@ -154,7 +160,7 @@
 		"med": "0 4px 10px light-dark(rgba(110, 74, 42, 0.08), rgba(0, 0, 0, 0.36)), 0 12px 28px -8px light-dark(rgba(110, 74, 42, 0.12), rgba(0, 0, 0, 0.52)), inset 0 0 0 1px light-dark(transparent, rgba(255, 240, 220, 0.09))",
 		"high": "0 6px 14px light-dark(rgba(110, 74, 42, 0.11), rgba(0, 0, 0, 0.48)), 0 18px 36px -10px light-dark(rgba(110, 74, 42, 0.16), rgba(0, 0, 0, 0.68)), inset 0 0 0 1px light-dark(transparent, rgba(255, 240, 220, 0.12))",
 		"toolbar": "0 -4px 12px -4px var(--cozy-shadow)",
-		"focus": "0 0 0 2px var(--cozy-bg-surface), 0 0 0 4px var(--cozy-focus-ring)"
+		"focus": "0 0 0 2px var(--cozy-focus-offset-bg, var(--cozy-bg-surface)), 0 0 0 4px var(--cozy-focus-ring)"
 	},
 	"motion": {
 		"ease-out": "cubic-bezier(0.22, 1, 0.36, 1)",

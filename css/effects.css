@@ -107,17 +107,31 @@
 	background-color: var(--cozy-skeleton);
 }
 
+/* ---------- Screen-reader-only text (used by splitTitle in js/cozy-motion.js) ---------- */
+
+.cozy-sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	border: 0;
+}
+
 /* ---------- Dialog and toast ---------- */
 
-dialog.cozy-dialog::backdrop {
-	background: var(--cozy-overlay);
+dialog.cozy-dialog[open]::backdrop {
+	background-color: var(--cozy-overlay);
 }
 
 /* ---------- Stat card ---------- */
 
 .cozy-stat-card {
 	border-radius: var(--cozy-radius-card-expressive);
-	border: 1px solid light-dark(rgba(91, 76, 59, 0.08), rgba(255, 240, 220, 0.08));
+	border: 1px solid var(--cozy-card-border);
 	box-shadow: var(--cozy-shadow-low);
 }
 
@@ -237,6 +251,15 @@ html.cozy-theme-transition::view-transition-new(root) {
 			opacity 150ms ease;
 	}
 
+	.cozy-nav-indicator.cozy-nav-dir-horizontal {
+		transition:
+			left var(--cozy-motion-duration-medium) var(--cozy-motion-ease-out),
+			right var(--cozy-motion-duration-medium) var(--cozy-motion-ease-out),
+			top var(--cozy-motion-duration-fast) ease,
+			bottom var(--cozy-motion-duration-fast) ease,
+			opacity 150ms ease;
+	}
+
 	.cozy-row-interactive {
 		transition: background-color 150ms ease;
 	}
@@ -251,7 +274,7 @@ html.cozy-theme-transition::view-transition-new(root) {
 			box-shadow var(--cozy-motion-duration-fast) ease;
 	}
 
-	.cozy-press:active {
+	.cozy-press:active:not(:disabled, [aria-disabled='true']) {
 		transform: scale(0.97);
 	}
 
@@ -298,10 +321,15 @@ html.cozy-theme-transition::view-transition-new(root) {
 	}
 
 	dialog.cozy-dialog::backdrop {
+		background-color: transparent;
 		transition:
 			background-color var(--cozy-motion-duration-page) ease,
 			overlay var(--cozy-motion-duration-page) allow-discrete,
 			display var(--cozy-motion-duration-page) allow-discrete;
+	}
+
+	dialog.cozy-dialog[open]::backdrop {
+		background-color: var(--cozy-overlay);
 	}
 
 	@starting-style {
@@ -371,7 +399,10 @@ html.cozy-theme-transition::view-transition-new(root) {
 :root[data-motion='reduce'] *,
 :root[data-motion='reduce'] *::before,
 :root[data-motion='reduce'] *::after,
-:root[data-motion='reduce'] ::backdrop {
+:root[data-motion='reduce'] ::backdrop,
+:root[data-motion='reduce']::view-transition-group(*),
+:root[data-motion='reduce']::view-transition-old(*),
+:root[data-motion='reduce']::view-transition-new(*) {
 	animation: none !important;
 	transition: none !important;
 	scroll-behavior: auto !important;

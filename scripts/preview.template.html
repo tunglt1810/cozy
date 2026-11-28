@@ -376,7 +376,7 @@
 				line-height: 1.4;
 			}
 			.swatch .role {
-				color: var(--cozy-text-disabled);
+				color: var(--cozy-text-secondary);
 			}
 
 			/* Scales */
@@ -1012,12 +1012,17 @@
 					select(target);
 				});
 			}
-			document.fonts.ready.then(() => moveUnderline(tabs.find((t) => t.getAttribute('aria-selected') === 'true')));
+			const tablist = document.querySelector('[role="tablist"]');
+			const syncActiveTab = () => moveUnderline(tabs.find((t) => t.getAttribute('aria-selected') === 'true'));
+			document.fonts.ready.then(syncActiveTab);
+			new ResizeObserver(syncActiveTab).observe(tablist);
 
 			// Segmented control and chips.
 			for (const group of document.querySelectorAll('.seg')) {
 				const thumb = group.querySelector('.cozy-seg-thumb');
+				const radios = [...group.querySelectorAll('[role="radio"]')];
 				const moveThumb = (b, instant = false) => {
+					if (!b) return;
 					if (instant) thumb.style.transition = 'none';
 					thumb.style.setProperty('--cozy-seg-x', `${b.offsetLeft}px`);
 					thumb.style.setProperty('--cozy-seg-w', `${b.offsetWidth}px`);
@@ -1026,13 +1031,39 @@
 						thumb.style.transition = '';
 					}
 				};
-				group.addEventListener('click', (e) => {
-					const b = e.target.closest('button');
-					if (!b) return;
-					for (const x of group.querySelectorAll('button')) x.setAttribute('aria-checked', String(x === b));
+				const selectRadio = (b) => {
+					for (const x of radios) {
+						const on = x === b;
+						x.setAttribute('aria-checked', String(on));
+						x.tabIndex = on ? 0 : -1;
+					}
 					moveThumb(b);
+				};
+				for (const r of radios) {
+					r.tabIndex = r.getAttribute('aria-checked') === 'true' ? 0 : -1;
+					r.addEventListener('keydown', (e) => {
+						const i = radios.indexOf(r);
+						const target = {
+							ArrowRight: radios[(i + 1) % radios.length],
+							ArrowDown: radios[(i + 1) % radios.length],
+							ArrowLeft: radios[(i - 1 + radios.length) % radios.length],
+							ArrowUp: radios[(i - 1 + radios.length) % radios.length],
+							Home: radios[0],
+							End: radios.at(-1),
+						}[e.key];
+						if (!target) return;
+						e.preventDefault();
+						target.focus();
+						selectRadio(target);
+					});
+				}
+				group.addEventListener('click', (e) => {
+					const b = e.target.closest('[role="radio"]');
+					if (b) selectRadio(b);
 				});
-				document.fonts.ready.then(() => moveThumb(group.querySelector('[aria-checked="true"]'), true));
+				const syncSeg = () => moveThumb(group.querySelector('[aria-checked="true"]'), true);
+				document.fonts.ready.then(syncSeg);
+				new ResizeObserver(syncSeg).observe(group);
 			}
 			for (const chip of document.querySelectorAll('.chip-btn')) {
 				chip.addEventListener('click', () => {
@@ -1042,13 +1073,24 @@
 
 			// Reduce-motion switch for this page.
 			const motionToggle = document.getElementById('motion-toggle');
-			const setMotion = (reduce) => {
-				if (reduce) root.dataset.motion = 'reduce';
+			const motionMedia = matchMedia('(prefers-reduced-motion: reduce)');
+			let pageReduceMotion = root.dataset.motion === 'reduce';
+			const syncMotionToggle = () => {
+				const osReduced = motionMedia.matches;
+				const reduce = osReduced || pageReduceMotion;
+				if (pageReduceMotion) root.dataset.motion = 'reduce';
 				else delete root.dataset.motion;
+				motionToggle.disabled = osReduced;
 				motionToggle.setAttribute('aria-pressed', String(reduce));
-				motionToggle.textContent = reduce ? 'Motion: reduced' : 'Motion: on';
+				motionToggle.textContent = osReduced ? 'Motion: reduced (OS)' : reduce ? 'Motion: reduced' : 'Motion: on';
 			};
-			motionToggle.addEventListener('click', () => setMotion(root.dataset.motion !== 'reduce'));
+			syncMotionToggle();
+			motionMedia.addEventListener('change', syncMotionToggle);
+			motionToggle.addEventListener('click', () => {
+				if (motionMedia.matches) return;
+				pageReduceMotion = !pageReduceMotion;
+				syncMotionToggle();
+			});
 
 			// Dialog.
 			const dialog = document.getElementById('demo-dialog');
@@ -1057,18 +1099,18 @@
 			// Toasts.
 			const toasts = document.getElementById('toasts');
 			const toastKinds = [
-				['Saved. The changes are live.', 'var(--cozy-success)'],
-				['Sync runs every hour.', 'var(--cozy-info)'],
-				['Two fields are empty.', 'var(--cozy-warning)'],
+				['Saved. The changes are live.', 'var(--cozy-success-on-inverted)', 'status'],
+				['Sync runs every hour.', 'var(--cozy-info-on-inverted)', 'status'],
+				['Two fields are empty.', 'var(--cozy-warning-on-inverted)', 'status'],
 			];
 			let toastIndex = 0;
-			const toast = (text, color) => {
+			const toast = (text, color, role = 'status') => {
 				const el = document.createElement('div');
 				el.className = 'cozy-toast';
+				el.setAttribute('role', role);
 				el.innerHTML = `<span class="toast-dot" style="background: ${color}"></span><span></span>`;
 				el.lastElementChild.textContent = text;
 				toasts.append(el);
-				document.ariaNotify?.(text);
 				while (toasts.children.length > 3) toasts.firstElementChild.remove();
 				let timer;
 				const leave = () => {
@@ -1083,8 +1125,8 @@
 				start();
 			};
 			document.getElementById('show-toast').addEventListener('click', () => {
-				const [text, color] = toastKinds[toastIndex++ % toastKinds.length];
-				toast(text, color);
+				const [text, color, role] = toastKinds[toastIndex++ % toastKinds.length];
+				toast(text, color, role);
 			});
 
 			// Copy a token.
@@ -1105,8 +1147,8 @@
 						area.remove();
 						b.focus();
 					}
-					if (ok) toast(`Copied ${b.dataset.copy}`, 'var(--cozy-accent)');
-					else toast('The browser blocked the clipboard.', 'var(--cozy-error)');
+					if (ok) toast(`Copied ${b.dataset.copy}`, 'var(--cozy-accent-on-inverted)', 'status');
+					else toast('The browser blocked the clipboard.', 'var(--cozy-error-on-inverted)', 'alert');
 				});
 			}
 		</script>

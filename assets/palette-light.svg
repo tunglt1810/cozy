@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="726" height="1020" viewBox="0 0 726 1020" font-family="'Plus Jakarta Sans', -apple-system, 'Segoe UI', sans-serif">
-<rect x="0" y="0" width="726" height="1020" fill="#FAEBDA"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="726" height="1496" viewBox="0 0 726 1496" font-family="'Plus Jakarta Sans', -apple-system, 'Segoe UI', sans-serif">
+<rect x="0" y="0" width="726" height="1496" fill="#FAEBDA"/>
 <text x="24" y="32" fill="#261101" font-size="16" font-weight="700">Cozy · light</text>
 <text x="24" y="56" fill="#5B4C3B" font-size="11" font-weight="600" letter-spacing="0.06em">SURFACE</text>
 <rect x="24" y="66" width="76" height="40" rx="10" fill="#FAEBDA" stroke="#5B4C3B22"/>
@@ -43,6 +43,9 @@
 <rect x="282" y="278" width="76" height="40" rx="10" fill="#EF8F6333" stroke="#5B4C3B22"/>
 <text x="282" y="332" fill="#261101" font-size="9.5">accent-muted</text>
 <text x="282" y="344" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#EF8F6333</text>
+<rect x="368" y="278" width="76" height="40" rx="10" fill="#EE8F64" stroke="#5B4C3B22"/>
+<text x="368" y="332" fill="#261101" font-size="9.5">accent-on-inverted</text>
+<text x="368" y="344" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#EE8F64</text>
 <text x="24" y="374" fill="#5B4C3B" font-size="11" font-weight="600" letter-spacing="0.06em">STATUS</text>
 <rect x="24" y="384" width="76" height="40" rx="10" fill="#2D7A4D" stroke="#5B4C3B22"/>
 <text x="24" y="438" fill="#261101" font-size="9.5">success</text>
@@ -59,51 +62,63 @@
 <rect x="368" y="384" width="76" height="40" rx="10" fill="#276B43" stroke="#5B4C3B22"/>
 <text x="368" y="438" fill="#261101" font-size="9.5">text-success</text>
 <text x="368" y="450" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#276B43</text>
-<rect x="454" y="384" width="76" height="40" rx="10" fill="#B87A12" stroke="#5B4C3B22"/>
-<text x="454" y="438" fill="#261101" font-size="9.5">warning</text>
-<text x="454" y="450" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#B87A12</text>
-<rect x="540" y="384" width="76" height="40" rx="10" fill="#261101" stroke="#5B4C3B22"/>
-<text x="540" y="438" fill="#261101" font-size="9.5">on-warning</text>
-<text x="540" y="450" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#261101</text>
-<rect x="626" y="384" width="76" height="40" rx="10" fill="#FAE1B5" stroke="#5B4C3B22"/>
-<text x="626" y="438" fill="#261101" font-size="9.5">warning-muted</text>
-<text x="626" y="450" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#FAE1B5</text>
-<rect x="24" y="458" width="76" height="40" rx="10" fill="#6B4408" stroke="#5B4C3B22"/>
-<text x="24" y="512" fill="#261101" font-size="9.5">on-warning-muted</text>
-<text x="24" y="524" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#6B4408</text>
-<rect x="110" y="458" width="76" height="40" rx="10" fill="#8A5406" stroke="#5B4C3B22"/>
-<text x="110" y="512" fill="#261101" font-size="9.5">text-warning</text>
-<text x="110" y="524" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#8A5406</text>
-<rect x="196" y="458" width="76" height="40" rx="10" fill="#C8433B" stroke="#5B4C3B22"/>
-<text x="196" y="512" fill="#261101" font-size="9.5">error</text>
-<text x="196" y="524" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#C8433B</text>
-<rect x="282" y="458" width="76" height="40" rx="10" fill="#FFFEF7" stroke="#5B4C3B22"/>
-<text x="282" y="512" fill="#261101" font-size="9.5">on-error</text>
-<text x="282" y="524" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#FFFEF7</text>
-<rect x="368" y="458" width="76" height="40" rx="10" fill="#F9CFC8" stroke="#5B4C3B22"/>
-<text x="368" y="512" fill="#261101" font-size="9.5">error-muted</text>
-<text x="368" y="524" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#F9CFC8</text>
-<rect x="454" y="458" width="76" height="40" rx="10" fill="#7E211C" stroke="#5B4C3B22"/>
-<text x="454" y="512" fill="#261101" font-size="9.5">on-error-muted</text>
-<text x="454" y="524" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#7E211C</text>
-<rect x="540" y="458" width="76" height="40" rx="10" fill="#B0322B" stroke="#5B4C3B22"/>
-<text x="540" y="512" fill="#261101" font-size="9.5">text-error</text>
-<text x="540" y="524" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#B0322B</text>
-<rect x="626" y="458" width="76" height="40" rx="10" fill="#3B6E9C" stroke="#5B4C3B22"/>
-<text x="626" y="512" fill="#261101" font-size="9.5">info</text>
-<text x="626" y="524" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#3B6E9C</text>
-<rect x="24" y="532" width="76" height="40" rx="10" fill="#FFFEF7" stroke="#5B4C3B22"/>
-<text x="24" y="586" fill="#261101" font-size="9.5">on-info</text>
-<text x="24" y="598" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#FFFEF7</text>
-<rect x="110" y="532" width="76" height="40" rx="10" fill="#D2D7DA" stroke="#5B4C3B22"/>
-<text x="110" y="586" fill="#261101" font-size="9.5">info-muted</text>
-<text x="110" y="598" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#D2D7DA</text>
-<rect x="196" y="532" width="76" height="40" rx="10" fill="#234463" stroke="#5B4C3B22"/>
-<text x="196" y="586" fill="#261101" font-size="9.5">on-info-muted</text>
-<text x="196" y="598" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#234463</text>
-<rect x="282" y="532" width="76" height="40" rx="10" fill="#2F5B84" stroke="#5B4C3B22"/>
-<text x="282" y="586" fill="#261101" font-size="9.5">text-info</text>
-<text x="282" y="598" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#2F5B84</text>
+<rect x="454" y="384" width="76" height="40" rx="10" fill="#6FBF8E" stroke="#5B4C3B22"/>
+<text x="454" y="438" fill="#261101" font-size="9.5">success-on-inverted</text>
+<text x="454" y="450" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#6FBF8E</text>
+<rect x="540" y="384" width="76" height="40" rx="10" fill="#B87A12" stroke="#5B4C3B22"/>
+<text x="540" y="438" fill="#261101" font-size="9.5">warning</text>
+<text x="540" y="450" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#B87A12</text>
+<rect x="626" y="384" width="76" height="40" rx="10" fill="#261101" stroke="#5B4C3B22"/>
+<text x="626" y="438" fill="#261101" font-size="9.5">on-warning</text>
+<text x="626" y="450" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#261101</text>
+<rect x="24" y="458" width="76" height="40" rx="10" fill="#FAE1B5" stroke="#5B4C3B22"/>
+<text x="24" y="512" fill="#261101" font-size="9.5">warning-muted</text>
+<text x="24" y="524" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#FAE1B5</text>
+<rect x="110" y="458" width="76" height="40" rx="10" fill="#6B4408" stroke="#5B4C3B22"/>
+<text x="110" y="512" fill="#261101" font-size="9.5">on-warning-muted</text>
+<text x="110" y="524" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#6B4408</text>
+<rect x="196" y="458" width="76" height="40" rx="10" fill="#8A5406" stroke="#5B4C3B22"/>
+<text x="196" y="512" fill="#261101" font-size="9.5">text-warning</text>
+<text x="196" y="524" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#8A5406</text>
+<rect x="282" y="458" width="76" height="40" rx="10" fill="#F5C156" stroke="#5B4C3B22"/>
+<text x="282" y="512" fill="#261101" font-size="9.5">warning-on-inverted</text>
+<text x="282" y="524" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#F5C156</text>
+<rect x="368" y="458" width="76" height="40" rx="10" fill="#C8433B" stroke="#5B4C3B22"/>
+<text x="368" y="512" fill="#261101" font-size="9.5">error</text>
+<text x="368" y="524" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#C8433B</text>
+<rect x="454" y="458" width="76" height="40" rx="10" fill="#FFFEF7" stroke="#5B4C3B22"/>
+<text x="454" y="512" fill="#261101" font-size="9.5">on-error</text>
+<text x="454" y="524" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#FFFEF7</text>
+<rect x="540" y="458" width="76" height="40" rx="10" fill="#F9CFC8" stroke="#5B4C3B22"/>
+<text x="540" y="512" fill="#261101" font-size="9.5">error-muted</text>
+<text x="540" y="524" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#F9CFC8</text>
+<rect x="626" y="458" width="76" height="40" rx="10" fill="#7E211C" stroke="#5B4C3B22"/>
+<text x="626" y="512" fill="#261101" font-size="9.5">on-error-muted</text>
+<text x="626" y="524" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#7E211C</text>
+<rect x="24" y="532" width="76" height="40" rx="10" fill="#B0322B" stroke="#5B4C3B22"/>
+<text x="24" y="586" fill="#261101" font-size="9.5">text-error</text>
+<text x="24" y="598" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#B0322B</text>
+<rect x="110" y="532" width="76" height="40" rx="10" fill="#F27B70" stroke="#5B4C3B22"/>
+<text x="110" y="586" fill="#261101" font-size="9.5">error-on-inverted</text>
+<text x="110" y="598" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#F27B70</text>
+<rect x="196" y="532" width="76" height="40" rx="10" fill="#3B6E9C" stroke="#5B4C3B22"/>
+<text x="196" y="586" fill="#261101" font-size="9.5">info</text>
+<text x="196" y="598" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#3B6E9C</text>
+<rect x="282" y="532" width="76" height="40" rx="10" fill="#FFFEF7" stroke="#5B4C3B22"/>
+<text x="282" y="586" fill="#261101" font-size="9.5">on-info</text>
+<text x="282" y="598" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#FFFEF7</text>
+<rect x="368" y="532" width="76" height="40" rx="10" fill="#D2D7DA" stroke="#5B4C3B22"/>
+<text x="368" y="586" fill="#261101" font-size="9.5">info-muted</text>
+<text x="368" y="598" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#D2D7DA</text>
+<rect x="454" y="532" width="76" height="40" rx="10" fill="#234463" stroke="#5B4C3B22"/>
+<text x="454" y="586" fill="#261101" font-size="9.5">on-info-muted</text>
+<text x="454" y="598" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#234463</text>
+<rect x="540" y="532" width="76" height="40" rx="10" fill="#2F5B84" stroke="#5B4C3B22"/>
+<text x="540" y="586" fill="#261101" font-size="9.5">text-info</text>
+<text x="540" y="598" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#2F5B84</text>
+<rect x="626" y="532" width="76" height="40" rx="10" fill="#8BB8E0" stroke="#5B4C3B22"/>
+<text x="626" y="586" fill="#261101" font-size="9.5">info-on-inverted</text>
+<text x="626" y="598" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#8BB8E0</text>
 <text x="24" y="628" fill="#5B4C3B" font-size="11" font-weight="600" letter-spacing="0.06em">LINE</text>
 <rect x="24" y="638" width="76" height="40" rx="10" fill="#5B4C3B22" stroke="#5B4C3B22"/>
 <text x="24" y="692" fill="#261101" font-size="9.5">border</text>
@@ -111,69 +126,193 @@
 <rect x="110" y="638" width="76" height="40" rx="10" fill="#DFCBB5" stroke="#5B4C3B22"/>
 <text x="110" y="692" fill="#261101" font-size="9.5">border-emphasized</text>
 <text x="110" y="704" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#DFCBB5</text>
-<rect x="196" y="638" width="76" height="40" rx="10" fill="#26110166" stroke="#5B4C3B22"/>
-<text x="196" y="692" fill="#261101" font-size="9.5">overlay</text>
-<text x="196" y="704" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#26110166</text>
-<rect x="282" y="638" width="76" height="40" rx="10" fill="#2611010D" stroke="#5B4C3B22"/>
-<text x="282" y="692" fill="#261101" font-size="9.5">overlay-hover</text>
-<text x="282" y="704" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#2611010D</text>
-<rect x="368" y="638" width="76" height="40" rx="10" fill="#2611011A" stroke="#5B4C3B22"/>
-<text x="368" y="692" fill="#261101" font-size="9.5">overlay-pressed</text>
-<text x="368" y="704" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#2611011A</text>
-<rect x="454" y="638" width="76" height="40" rx="10" fill="#6E4A2A1A" stroke="#5B4C3B22"/>
-<text x="454" y="692" fill="#261101" font-size="9.5">shadow</text>
-<text x="454" y="704" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#6E4A2A1A</text>
-<rect x="540" y="638" width="76" height="40" rx="10" fill="#EBD9C4" stroke="#5B4C3B22"/>
-<text x="540" y="692" fill="#261101" font-size="9.5">skeleton</text>
-<text x="540" y="704" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#EBD9C4</text>
-<rect x="626" y="638" width="76" height="40" rx="10" fill="#E6D2BC" stroke="#5B4C3B22"/>
-<text x="626" y="692" fill="#261101" font-size="9.5">track</text>
-<text x="626" y="704" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#E6D2BC</text>
-<text x="24" y="734" fill="#5B4C3B" font-size="11" font-weight="600" letter-spacing="0.06em">NAV</text>
-<rect x="24" y="744" width="76" height="40" rx="10" fill="#C3CBB9" stroke="#5B4C3B22"/>
-<text x="24" y="798" fill="#261101" font-size="9.5">nav-bg</text>
-<text x="24" y="810" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#C3CBB9</text>
-<rect x="110" y="744" width="76" height="40" rx="10" fill="#F8E8D3" stroke="#5B4C3B22"/>
-<text x="110" y="798" fill="#261101" font-size="9.5">nav-active</text>
-<text x="110" y="810" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#F8E8D3</text>
-<rect x="196" y="744" width="76" height="40" rx="10" fill="#403B26" stroke="#5B4C3B22"/>
-<text x="196" y="798" fill="#261101" font-size="9.5">nav-text</text>
-<text x="196" y="810" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#403B26</text>
-<rect x="282" y="744" width="76" height="40" rx="10" fill="#55503A" stroke="#5B4C3B22"/>
-<text x="282" y="798" fill="#261101" font-size="9.5">nav-text-muted</text>
-<text x="282" y="810" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#55503A</text>
-<text x="24" y="840" fill="#5B4C3B" font-size="11" font-weight="600" letter-spacing="0.06em">EXPRESSIVE</text>
-<rect x="24" y="850" width="76" height="40" rx="10" fill="#FAD3B9" stroke="#5B4C3B22"/>
-<text x="24" y="904" fill="#261101" font-size="9.5">mark-peach</text>
-<text x="24" y="916" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#FAD3B9</text>
-<rect x="110" y="850" width="76" height="40" rx="10" fill="#E4DEC8" stroke="#5B4C3B22"/>
-<text x="110" y="904" fill="#261101" font-size="9.5">mark-sage</text>
-<text x="110" y="916" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#E4DEC8</text>
-<rect x="196" y="850" width="76" height="40" rx="10" fill="#E2DEC4" stroke="#5B4C3B22"/>
-<text x="196" y="904" fill="#261101" font-size="9.5">pastel-sage</text>
-<text x="196" y="916" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#E2DEC4</text>
-<rect x="282" y="850" width="76" height="40" rx="10" fill="#7EAB9A" stroke="#5B4C3B22"/>
-<text x="282" y="904" fill="#261101" font-size="9.5">pastel-sage-icon</text>
-<text x="282" y="916" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#7EAB9A</text>
-<rect x="368" y="850" width="76" height="40" rx="10" fill="#FBCBB4" stroke="#5B4C3B22"/>
-<text x="368" y="904" fill="#261101" font-size="9.5">pastel-peach</text>
-<text x="368" y="916" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#FBCBB4</text>
-<rect x="454" y="850" width="76" height="40" rx="10" fill="#F48A65" stroke="#5B4C3B22"/>
-<text x="454" y="904" fill="#261101" font-size="9.5">pastel-peach-icon</text>
-<text x="454" y="916" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#F48A65</text>
-<rect x="540" y="850" width="76" height="40" rx="10" fill="#FAE1B5" stroke="#5B4C3B22"/>
-<text x="540" y="904" fill="#261101" font-size="9.5">pastel-butter</text>
-<text x="540" y="916" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#FAE1B5</text>
-<rect x="626" y="850" width="76" height="40" rx="10" fill="#FAC76A" stroke="#5B4C3B22"/>
-<text x="626" y="904" fill="#261101" font-size="9.5">pastel-butter-icon</text>
-<text x="626" y="916" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#FAC76A</text>
-<rect x="24" y="924" width="76" height="40" rx="10" fill="#D2D7DA" stroke="#5B4C3B22"/>
-<text x="24" y="978" fill="#261101" font-size="9.5">pastel-mist</text>
-<text x="24" y="990" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#D2D7DA</text>
-<rect x="110" y="924" width="76" height="40" rx="10" fill="#A2B3C1" stroke="#5B4C3B22"/>
-<text x="110" y="978" fill="#261101" font-size="9.5">pastel-mist-icon</text>
-<text x="110" y="990" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#A2B3C1</text>
-<rect x="196" y="924" width="76" height="40" rx="10" fill="#261101" stroke="#5B4C3B22"/>
-<text x="196" y="978" fill="#261101" font-size="9.5">on-pastel</text>
-<text x="196" y="990" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#261101</text>
+<rect x="196" y="638" width="76" height="40" rx="10" fill="#5B4C3B14" stroke="#5B4C3B22"/>
+<text x="196" y="692" fill="#261101" font-size="9.5">card-border</text>
+<text x="196" y="704" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#5B4C3B14</text>
+<rect x="282" y="638" width="76" height="40" rx="10" fill="#26110166" stroke="#5B4C3B22"/>
+<text x="282" y="692" fill="#261101" font-size="9.5">overlay</text>
+<text x="282" y="704" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#26110166</text>
+<rect x="368" y="638" width="76" height="40" rx="10" fill="#2611010D" stroke="#5B4C3B22"/>
+<text x="368" y="692" fill="#261101" font-size="9.5">overlay-hover</text>
+<text x="368" y="704" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#2611010D</text>
+<rect x="454" y="638" width="76" height="40" rx="10" fill="#2611011A" stroke="#5B4C3B22"/>
+<text x="454" y="692" fill="#261101" font-size="9.5">overlay-pressed</text>
+<text x="454" y="704" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#2611011A</text>
+<rect x="540" y="638" width="76" height="40" rx="10" fill="#6E4A2A1A" stroke="#5B4C3B22"/>
+<text x="540" y="692" fill="#261101" font-size="9.5">shadow</text>
+<text x="540" y="704" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#6E4A2A1A</text>
+<rect x="626" y="638" width="76" height="40" rx="10" fill="#EBD9C4" stroke="#5B4C3B22"/>
+<text x="626" y="692" fill="#261101" font-size="9.5">skeleton</text>
+<text x="626" y="704" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#EBD9C4</text>
+<rect x="24" y="712" width="76" height="40" rx="10" fill="#E6D2BC" stroke="#5B4C3B22"/>
+<text x="24" y="766" fill="#261101" font-size="9.5">track</text>
+<text x="24" y="778" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#E6D2BC</text>
+<text x="24" y="808" fill="#5B4C3B" font-size="11" font-weight="600" letter-spacing="0.06em">NAV</text>
+<rect x="24" y="818" width="76" height="40" rx="10" fill="#C3CBB9" stroke="#5B4C3B22"/>
+<text x="24" y="872" fill="#261101" font-size="9.5">nav-bg</text>
+<text x="24" y="884" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#C3CBB9</text>
+<rect x="110" y="818" width="76" height="40" rx="10" fill="#F8E8D3" stroke="#5B4C3B22"/>
+<text x="110" y="872" fill="#261101" font-size="9.5">nav-active</text>
+<text x="110" y="884" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#F8E8D3</text>
+<rect x="196" y="818" width="76" height="40" rx="10" fill="#403B26" stroke="#5B4C3B22"/>
+<text x="196" y="872" fill="#261101" font-size="9.5">nav-text</text>
+<text x="196" y="884" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#403B26</text>
+<rect x="282" y="818" width="76" height="40" rx="10" fill="#55503A" stroke="#5B4C3B22"/>
+<text x="282" y="872" fill="#261101" font-size="9.5">nav-text-muted</text>
+<text x="282" y="884" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#55503A</text>
+<text x="24" y="914" fill="#5B4C3B" font-size="11" font-weight="600" letter-spacing="0.06em">EXPRESSIVE</text>
+<rect x="24" y="924" width="76" height="40" rx="10" fill="#FAD3B9" stroke="#5B4C3B22"/>
+<text x="24" y="978" fill="#261101" font-size="9.5">mark-peach</text>
+<text x="24" y="990" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#FAD3B9</text>
+<rect x="110" y="924" width="76" height="40" rx="10" fill="#E4DEC8" stroke="#5B4C3B22"/>
+<text x="110" y="978" fill="#261101" font-size="9.5">mark-sage</text>
+<text x="110" y="990" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#E4DEC8</text>
+<rect x="196" y="924" width="76" height="40" rx="10" fill="#E2DEC4" stroke="#5B4C3B22"/>
+<text x="196" y="978" fill="#261101" font-size="9.5">pastel-sage</text>
+<text x="196" y="990" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#E2DEC4</text>
+<rect x="282" y="924" width="76" height="40" rx="10" fill="#7EAB9A" stroke="#5B4C3B22"/>
+<text x="282" y="978" fill="#261101" font-size="9.5">pastel-sage-icon</text>
+<text x="282" y="990" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#7EAB9A</text>
+<rect x="368" y="924" width="76" height="40" rx="10" fill="#FBCBB4" stroke="#5B4C3B22"/>
+<text x="368" y="978" fill="#261101" font-size="9.5">pastel-peach</text>
+<text x="368" y="990" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#FBCBB4</text>
+<rect x="454" y="924" width="76" height="40" rx="10" fill="#F48A65" stroke="#5B4C3B22"/>
+<text x="454" y="978" fill="#261101" font-size="9.5">pastel-peach-icon</text>
+<text x="454" y="990" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#F48A65</text>
+<rect x="540" y="924" width="76" height="40" rx="10" fill="#FAE1B5" stroke="#5B4C3B22"/>
+<text x="540" y="978" fill="#261101" font-size="9.5">pastel-butter</text>
+<text x="540" y="990" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#FAE1B5</text>
+<rect x="626" y="924" width="76" height="40" rx="10" fill="#FAC76A" stroke="#5B4C3B22"/>
+<text x="626" y="978" fill="#261101" font-size="9.5">pastel-butter-icon</text>
+<text x="626" y="990" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#FAC76A</text>
+<rect x="24" y="998" width="76" height="40" rx="10" fill="#D2D7DA" stroke="#5B4C3B22"/>
+<text x="24" y="1052" fill="#261101" font-size="9.5">pastel-mist</text>
+<text x="24" y="1064" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#D2D7DA</text>
+<rect x="110" y="998" width="76" height="40" rx="10" fill="#A2B3C1" stroke="#5B4C3B22"/>
+<text x="110" y="1052" fill="#261101" font-size="9.5">pastel-mist-icon</text>
+<text x="110" y="1064" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#A2B3C1</text>
+<rect x="196" y="998" width="76" height="40" rx="10" fill="#261101" stroke="#5B4C3B22"/>
+<text x="196" y="1052" fill="#261101" font-size="9.5">on-pastel</text>
+<text x="196" y="1064" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#261101</text>
+<text x="24" y="1094" fill="#5B4C3B" font-size="11" font-weight="600" letter-spacing="0.06em">CATEGORY</text>
+<rect x="24" y="1104" width="76" height="40" rx="10" fill="#E2DEC4" stroke="#5B4C3B22"/>
+<text x="24" y="1158" fill="#261101" font-size="9.5">green-bg</text>
+<text x="24" y="1170" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#E2DEC4</text>
+<rect x="110" y="1104" width="76" height="40" rx="10" fill="#B8C4A6" stroke="#5B4C3B22"/>
+<text x="110" y="1158" fill="#261101" font-size="9.5">green-border</text>
+<text x="110" y="1170" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#B8C4A6</text>
+<rect x="196" y="1104" width="76" height="40" rx="10" fill="#3C6E58" stroke="#5B4C3B22"/>
+<text x="196" y="1158" fill="#261101" font-size="9.5">green-icon</text>
+<text x="196" y="1170" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#3C6E58</text>
+<rect x="282" y="1104" width="76" height="40" rx="10" fill="#234930" stroke="#5B4C3B22"/>
+<text x="282" y="1158" fill="#261101" font-size="9.5">green-text</text>
+<text x="282" y="1170" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#234930</text>
+<rect x="368" y="1104" width="76" height="40" rx="10" fill="#FBCBB4" stroke="#5B4C3B22"/>
+<text x="368" y="1158" fill="#261101" font-size="9.5">orange-bg</text>
+<text x="368" y="1170" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#FBCBB4</text>
+<rect x="454" y="1104" width="76" height="40" rx="10" fill="#EDA98B" stroke="#5B4C3B22"/>
+<text x="454" y="1158" fill="#261101" font-size="9.5">orange-border</text>
+<text x="454" y="1170" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#EDA98B</text>
+<rect x="540" y="1104" width="76" height="40" rx="10" fill="#B5542B" stroke="#5B4C3B22"/>
+<text x="540" y="1158" fill="#261101" font-size="9.5">orange-icon</text>
+<text x="540" y="1170" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#B5542B</text>
+<rect x="626" y="1104" width="76" height="40" rx="10" fill="#6B2B11" stroke="#5B4C3B22"/>
+<text x="626" y="1158" fill="#261101" font-size="9.5">orange-text</text>
+<text x="626" y="1170" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#6B2B11</text>
+<rect x="24" y="1178" width="76" height="40" rx="10" fill="#FAE1B5" stroke="#5B4C3B22"/>
+<text x="24" y="1232" fill="#261101" font-size="9.5">yellow-bg</text>
+<text x="24" y="1244" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#FAE1B5</text>
+<rect x="110" y="1178" width="76" height="40" rx="10" fill="#E5C27D" stroke="#5B4C3B22"/>
+<text x="110" y="1232" fill="#261101" font-size="9.5">yellow-border</text>
+<text x="110" y="1244" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#E5C27D</text>
+<rect x="196" y="1178" width="76" height="40" rx="10" fill="#8A5406" stroke="#5B4C3B22"/>
+<text x="196" y="1232" fill="#261101" font-size="9.5">yellow-icon</text>
+<text x="196" y="1244" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#8A5406</text>
+<rect x="282" y="1178" width="76" height="40" rx="10" fill="#5E3904" stroke="#5B4C3B22"/>
+<text x="282" y="1232" fill="#261101" font-size="9.5">yellow-text</text>
+<text x="282" y="1244" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#5E3904</text>
+<rect x="368" y="1178" width="76" height="40" rx="10" fill="#D2D7DA" stroke="#5B4C3B22"/>
+<text x="368" y="1232" fill="#261101" font-size="9.5">blue-bg</text>
+<text x="368" y="1244" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#D2D7DA</text>
+<rect x="454" y="1178" width="76" height="40" rx="10" fill="#A2B3C1" stroke="#5B4C3B22"/>
+<text x="454" y="1232" fill="#261101" font-size="9.5">blue-border</text>
+<text x="454" y="1244" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#A2B3C1</text>
+<rect x="540" y="1178" width="76" height="40" rx="10" fill="#2F5B84" stroke="#5B4C3B22"/>
+<text x="540" y="1232" fill="#261101" font-size="9.5">blue-icon</text>
+<text x="540" y="1244" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#2F5B84</text>
+<rect x="626" y="1178" width="76" height="40" rx="10" fill="#1F3F5C" stroke="#5B4C3B22"/>
+<text x="626" y="1232" fill="#261101" font-size="9.5">blue-text</text>
+<text x="626" y="1244" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#1F3F5C</text>
+<rect x="24" y="1252" width="76" height="40" rx="10" fill="#D7E6DF" stroke="#5B4C3B22"/>
+<text x="24" y="1306" fill="#261101" font-size="9.5">teal-bg</text>
+<text x="24" y="1318" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#D7E6DF</text>
+<rect x="110" y="1252" width="76" height="40" rx="10" fill="#94BDAE" stroke="#5B4C3B22"/>
+<text x="110" y="1306" fill="#261101" font-size="9.5">teal-border</text>
+<text x="110" y="1318" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#94BDAE</text>
+<rect x="196" y="1252" width="76" height="40" rx="10" fill="#205E52" stroke="#5B4C3B22"/>
+<text x="196" y="1306" fill="#261101" font-size="9.5">teal-icon</text>
+<text x="196" y="1318" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#205E52</text>
+<rect x="282" y="1252" width="76" height="40" rx="10" fill="#17453C" stroke="#5B4C3B22"/>
+<text x="282" y="1306" fill="#261101" font-size="9.5">teal-text</text>
+<text x="282" y="1318" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#17453C</text>
+<rect x="368" y="1252" width="76" height="40" rx="10" fill="#CDE3E6" stroke="#5B4C3B22"/>
+<text x="368" y="1306" fill="#261101" font-size="9.5">cyan-bg</text>
+<text x="368" y="1318" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#CDE3E6</text>
+<rect x="454" y="1252" width="76" height="40" rx="10" fill="#86B6BD" stroke="#5B4C3B22"/>
+<text x="454" y="1306" fill="#261101" font-size="9.5">cyan-border</text>
+<text x="454" y="1318" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#86B6BD</text>
+<rect x="540" y="1252" width="76" height="40" rx="10" fill="#1F5B63" stroke="#5B4C3B22"/>
+<text x="540" y="1306" fill="#261101" font-size="9.5">cyan-icon</text>
+<text x="540" y="1318" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#1F5B63</text>
+<rect x="626" y="1252" width="76" height="40" rx="10" fill="#154248" stroke="#5B4C3B22"/>
+<text x="626" y="1306" fill="#261101" font-size="9.5">cyan-text</text>
+<text x="626" y="1318" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#154248</text>
+<rect x="24" y="1326" width="76" height="40" rx="10" fill="#E7DCF0" stroke="#5B4C3B22"/>
+<text x="24" y="1380" fill="#261101" font-size="9.5">purple-bg</text>
+<text x="24" y="1392" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#E7DCF0</text>
+<rect x="110" y="1326" width="76" height="40" rx="10" fill="#C5AFDB" stroke="#5B4C3B22"/>
+<text x="110" y="1380" fill="#261101" font-size="9.5">purple-border</text>
+<text x="110" y="1392" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#C5AFDB</text>
+<rect x="196" y="1326" width="76" height="40" rx="10" fill="#5E3D82" stroke="#5B4C3B22"/>
+<text x="196" y="1380" fill="#261101" font-size="9.5">purple-icon</text>
+<text x="196" y="1392" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#5E3D82</text>
+<rect x="282" y="1326" width="76" height="40" rx="10" fill="#462A63" stroke="#5B4C3B22"/>
+<text x="282" y="1380" fill="#261101" font-size="9.5">purple-text</text>
+<text x="282" y="1392" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#462A63</text>
+<rect x="368" y="1326" width="76" height="40" rx="10" fill="#F3D5DB" stroke="#5B4C3B22"/>
+<text x="368" y="1380" fill="#261101" font-size="9.5">pink-bg</text>
+<text x="368" y="1392" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#F3D5DB</text>
+<rect x="454" y="1326" width="76" height="40" rx="10" fill="#DDA3B0" stroke="#5B4C3B22"/>
+<text x="454" y="1380" fill="#261101" font-size="9.5">pink-border</text>
+<text x="454" y="1392" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#DDA3B0</text>
+<rect x="540" y="1326" width="76" height="40" rx="10" fill="#94304C" stroke="#5B4C3B22"/>
+<text x="540" y="1380" fill="#261101" font-size="9.5">pink-icon</text>
+<text x="540" y="1392" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#94304C</text>
+<rect x="626" y="1326" width="76" height="40" rx="10" fill="#6B1E34" stroke="#5B4C3B22"/>
+<text x="626" y="1380" fill="#261101" font-size="9.5">pink-text</text>
+<text x="626" y="1392" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#6B1E34</text>
+<rect x="24" y="1400" width="76" height="40" rx="10" fill="#F9CFC8" stroke="#5B4C3B22"/>
+<text x="24" y="1454" fill="#261101" font-size="9.5">red-bg</text>
+<text x="24" y="1466" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#F9CFC8</text>
+<rect x="110" y="1400" width="76" height="40" rx="10" fill="#E59F95" stroke="#5B4C3B22"/>
+<text x="110" y="1454" fill="#261101" font-size="9.5">red-border</text>
+<text x="110" y="1466" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#E59F95</text>
+<rect x="196" y="1400" width="76" height="40" rx="10" fill="#B0322B" stroke="#5B4C3B22"/>
+<text x="196" y="1454" fill="#261101" font-size="9.5">red-icon</text>
+<text x="196" y="1466" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#B0322B</text>
+<rect x="282" y="1400" width="76" height="40" rx="10" fill="#7E211C" stroke="#5B4C3B22"/>
+<text x="282" y="1454" fill="#261101" font-size="9.5">red-text</text>
+<text x="282" y="1466" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#7E211C</text>
+<rect x="368" y="1400" width="76" height="40" rx="10" fill="#EDE0CE" stroke="#5B4C3B22"/>
+<text x="368" y="1454" fill="#261101" font-size="9.5">gray-bg</text>
+<text x="368" y="1466" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#EDE0CE</text>
+<rect x="454" y="1400" width="76" height="40" rx="10" fill="#DFCBB5" stroke="#5B4C3B22"/>
+<text x="454" y="1454" fill="#261101" font-size="9.5">gray-border</text>
+<text x="454" y="1466" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#DFCBB5</text>
+<rect x="540" y="1400" width="76" height="40" rx="10" fill="#5B4C3B" stroke="#5B4C3B22"/>
+<text x="540" y="1454" fill="#261101" font-size="9.5">gray-icon</text>
+<text x="540" y="1466" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#5B4C3B</text>
+<rect x="626" y="1400" width="76" height="40" rx="10" fill="#3B2A1C" stroke="#5B4C3B22"/>
+<text x="626" y="1454" fill="#261101" font-size="9.5">gray-text</text>
+<text x="626" y="1466" fill="#5B4C3B" font-size="9" font-family="ui-monospace, monospace">#3B2A1C</text>
 </svg>
