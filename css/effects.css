@@ -206,7 +206,7 @@ html.cozy-theme-transition::view-transition-new(root) {
 
 	/* `backwards` fill releases transform and opacity after the animation, so no extra stacking context stays on the element. */
 	.cozy-title-char {
-		animation: cozy-title-char-in 340ms var(--cozy-motion-ease-out) var(--cozy-char-delay, 0ms) backwards;
+		animation: cozy-title-char-in var(--cozy-motion-duration-entrance) var(--cozy-motion-ease-out) var(--cozy-char-delay, 0ms) backwards;
 	}
 
 	.cozy-highlight::after {

@@ -56,18 +56,24 @@ for (const c of ['green', 'orange', 'yellow', 'blue', 'teal', 'cyan', 'purple', 
 
 const colors = Object.fromEntries(Object.entries(colorMap).map(([astryx, cozy]) => [astryx, pair(cozy)]));
 
+const splitFontStack = (stack: string): { family: string; fallbacks: string } => {
+	const comma = stack.indexOf(',');
+	const family = (comma === -1 ? stack : stack.slice(0, comma)).trim().replace(/^"|"$/g, '');
+	const fallbacks = comma === -1 ? '' : stack.slice(comma + 1).trim();
+	return { family, fallbacks };
+};
+
+const sansFont = splitFontStack(cozyTokens.font['family-sans']);
+const monoFont = splitFontStack(cozyTokens.font['family-mono']);
+
 export const cozyTheme = defineTheme({
 	name: 'cozy',
 	extends: neutralTheme,
 	typography: {
 		scale: { base: 14, ratio: 1.2 },
-		body: { family: 'Plus Jakarta Sans', fallbacks: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' },
-		heading: {
-			family: 'Plus Jakarta Sans',
-			fallbacks: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-			weights: { 3: 'bold', 4: 'bold' },
-		},
-		code: { family: 'ui-monospace', fallbacks: '"SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace' },
+		body: sansFont,
+		heading: { ...sansFont, weights: { 3: 'bold', 4: 'bold' } },
+		code: monoFont,
 	},
 	motion: { fast: 160, medium: 360, slow: 800, ratio: 0.75 },
 	tokens: {

@@ -152,7 +152,9 @@ const SW = 76;
 const GAP = 10;
 const COLS = 8;
 const ROW_H = 74;
-const svgPanel = (mode, x0, theme) => {
+const panelW = 24 * 2 + COLS * (SW + GAP) - GAP;
+const svgFor = (mode) => {
+	const theme = tokens.color;
 	const bg = theme['bg-body'][mode];
 	const fg = theme['text-primary'][mode];
 	const muted = theme['text-secondary'][mode];
@@ -160,10 +162,10 @@ const svgPanel = (mode, x0, theme) => {
 	const parts = [];
 	for (const g of groups) {
 		const entries = Object.entries(theme).filter(([, v]) => v.group === g);
-		parts.push(`<text x="${x0 + 24}" y="${y}" fill="${muted}" font-size="11" font-weight="600" letter-spacing="0.06em">${g.toUpperCase()}</text>`);
+		parts.push(`<text x="24" y="${y}" fill="${muted}" font-size="11" font-weight="600" letter-spacing="0.06em">${g.toUpperCase()}</text>`);
 		y += 10;
 		entries.forEach(([name, v], i) => {
-			const cx = x0 + 24 + (i % COLS) * (SW + GAP);
+			const cx = 24 + (i % COLS) * (SW + GAP);
 			const cy = y + Math.floor(i / COLS) * ROW_H;
 			parts.push(
 				`<rect x="${cx}" y="${cy}" width="${SW}" height="40" rx="10" fill="${v[mode]}" stroke="${theme.border[mode]}"/>`,
@@ -173,13 +175,10 @@ const svgPanel = (mode, x0, theme) => {
 		});
 		y += Math.ceil(entries.length / COLS) * ROW_H + 22;
 	}
-	return { height: y, body: `<rect x="${x0}" y="0" width="${24 * 2 + COLS * (SW + GAP) - GAP}" height="HEIGHT" fill="${bg}"/>\n<text x="${x0 + 24}" y="32" fill="${fg}" font-size="16" font-weight="700">Cozy · ${mode}</text>\n${parts.join('\n')}` };
-};
-const panelW = 24 * 2 + COLS * (SW + GAP) - GAP;
-const svgFor = (mode) => {
-	const panel = svgPanel(mode, 0, tokens.color);
-	return `<svg xmlns="http://www.w3.org/2000/svg" width="${panelW}" height="${panel.height}" viewBox="0 0 ${panelW} ${panel.height}" font-family="'Plus Jakarta Sans', -apple-system, 'Segoe UI', sans-serif">
-${panel.body.replace('HEIGHT', panel.height)}
+	return `<svg xmlns="http://www.w3.org/2000/svg" width="${panelW}" height="${y}" viewBox="0 0 ${panelW} ${y}" font-family="'Plus Jakarta Sans', -apple-system, 'Segoe UI', sans-serif">
+<rect x="0" y="0" width="${panelW}" height="${y}" fill="${bg}"/>
+<text x="24" y="32" fill="${fg}" font-size="16" font-weight="700">Cozy · ${mode}</text>
+${parts.join('\n')}
 </svg>
 `;
 };
@@ -233,7 +232,7 @@ ${Object.keys(tokens.text)
 
 ${Object.keys(tokens.radius).map((k) => `\t--radius-${k}: var(${P}radius-${k});`).join('\n')}
 
-${['low', 'med', 'high', 'toolbar', 'focus'].map((k) => `\t--shadow-${k}: var(${P}shadow-${k});`).join('\n')}
+${Object.keys(tokens.shadow).map((k) => `\t--shadow-${k}: var(${P}shadow-${k});`).join('\n')}
 
 ${Object.keys(tokens.motion)
 	.filter((k) => k.startsWith('ease-'))
