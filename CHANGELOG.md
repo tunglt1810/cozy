@@ -2,6 +2,12 @@
 
 This project uses [Semantic Versioning](https://semver.org/). Before 1.0.0, a minor version can change or remove tokens.
 
+## Unreleased
+
+### Changed
+
+- The preview page moved from `/cozy/preview/` to `/cozy/`. The old URL redirects to the new one.
+
 ## 0.2.0 – 2026-11-23
 
 ### Changed

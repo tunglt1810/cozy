@@ -31,7 +31,7 @@
 		<link rel="stylesheet" href="css/effects.css" />
 		<style>
 			:root {
-				--cozy-spring-css: linear(0, 0.0903, 0.276, 0.4749, 0.648, 0.7819, 0.8769, 0.9392, 0.9769, 0.9975, 1.0072, 1.0104, 1.0101, 1.0084, 1.0063, 1.0044, 1);
+				--cozy-spring-css: {{COZY_SPRING_LINEAR}};
 				--scrollbar-thumb: var(--cozy-text-disabled);
 				--scrollbar-track: var(--cozy-bg-body);
 				accent-color: var(--cozy-accent);
@@ -64,7 +64,6 @@
 				color: var(--cozy-text-primary);
 				font-family: var(--cozy-font-family-sans);
 				font-size: var(--cozy-text-body-size);
-				font-size-adjust: from-font;
 				line-height: var(--cozy-text-body-leading);
 			}
 			.scroll-progress {
@@ -393,8 +392,7 @@
 			}
 			@media (prefers-reduced-motion: no-preference) {
 				.tablist::after {
-					transition: inset 360ms var(--cozy-motion-ease-out);
-					transition-timing-function: var(--cozy-spring-css);
+					transition: inset 360ms var(--cozy-spring-css);
 				}
 				@keyframes panel-in {
 					from {
@@ -710,8 +708,7 @@
 					transition: background-color var(--cozy-motion-duration-fast) ease;
 				}
 				.switch::after {
-					transition: transform 280ms var(--cozy-motion-ease-out);
-					transition-timing-function: var(--cozy-spring-css);
+					transition: transform 280ms var(--cozy-spring-css);
 				}
 			}
 			.check input:focus-visible,
@@ -756,6 +753,7 @@
 				padding: 0;
 				border: 0;
 				background: transparent;
+				color: inherit;
 				overflow: visible;
 				display: grid;
 				justify-items: end;
@@ -1273,17 +1271,12 @@
 				['Two fields are empty.', 'var(--cozy-warning-on-inverted)', 'status'],
 			];
 			let toastIndex = 0;
-			let lastAnnouncement = '';
 			const toast = (text, color, role = 'status') => {
-				let message = text;
-				if (message === lastAnnouncement) message += '\u00A0';
-				lastAnnouncement = message;
-
 				const el = document.createElement('div');
 				el.className = 'cozy-toast';
 				el.setAttribute('role', role);
 				el.innerHTML = `<span class="toast-dot" style="background: ${color}"></span><span></span>`;
-				el.lastElementChild.textContent = message;
+				el.lastElementChild.textContent = text;
 				if (supportsPopover && !toasts.matches(':popover-open')) toasts.showPopover();
 				toasts.append(el);
 				while (toasts.children.length > 3) toasts.firstElementChild.remove();
@@ -1308,6 +1301,7 @@
 			});
 
 			// Copy a token.
+			// Embedded frames often deny clipboard-write. The old command still works there.
 			const legacyCopy = (text) => {
 				const previousFocus = document.activeElement;
 				const area = document.createElement('textarea');
