@@ -236,3 +236,32 @@ describe('cozy-motion DOM helpers', () => {
 		}
 	});
 });
+
+describe('github page output', () => {
+	test('root index.html renders directly without redirect and links cache-busted root assets', () => {
+		const html = readFileSync(join(root, 'index.html'), 'utf8');
+		expect(html).not.toContain('http-equiv="refresh"');
+		expect(html).toContain('<link rel="canonical" href="https://tunglt1810.github.io/cozy/" />');
+		expect(html).toMatch(/href="tokens\/cozy\.css\?v=[0-9a-f]{8}"/);
+		expect(html).toMatch(/href="css\/effects\.css\?v=[0-9a-f]{8}"/);
+		expect(html).toMatch(/'\.\/js\/cozy-motion\.js\?v=[0-9a-f]{8}'/);
+		expect(html).not.toContain('{{BG_BODY_LIGHT}}');
+		expect(html).not.toContain('{{BG_BODY_DARK}}');
+		expect(html).not.toContain('{{VERSION}}');
+		expect(html).not.toContain('{{COZY_SPRING_LINEAR}}');
+	});
+
+	test('root index.html keeps JS fallbacks for new dialog features', () => {
+		const html = readFileSync(join(root, 'index.html'), 'utf8');
+		expect(html).toContain("'commandForElement' in HTMLButtonElement.prototype");
+		expect(html).toContain("'closedBy' in HTMLDialogElement.prototype");
+	});
+
+	test('preview/index.html redirects legacy bookmarks to root and keeps the hash', () => {
+		const html = readFileSync(join(root, 'preview/index.html'), 'utf8');
+		expect(html).toContain("location.replace('../' + location.hash)");
+		expect(html).toContain('content="0; url=../"');
+		expect(html).toContain('<link rel="canonical" href="https://tunglt1810.github.io/cozy/" />');
+	});
+});
+

@@ -4,26 +4,57 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="color-scheme" content="light dark" />
-		<title>Cozy preview</title>
+		<meta name="theme-color" content="{{BG_BODY_LIGHT}}" />
+		<title>Cozy — Warm design system</title>
 		<meta name="description" content="Warm design tokens and CSS effects for light and dark mode." />
 		<meta property="og:title" content="Cozy design system" />
 		<meta property="og:description" content="A warm design system. Light and dark mode come from one set of tokens." />
 		<meta property="og:image" content="https://tunglt1810.github.io/cozy/assets/og.png" />
-		<meta property="og:url" content="https://tunglt1810.github.io/cozy/preview/" />
+		<meta property="og:url" content="https://tunglt1810.github.io/cozy/" />
 		<meta name="twitter:card" content="summary_large_image" />
-		<!-- Generated from scripts/preview.template.html. Do not edit preview/index.html by hand. -->
+		<link rel="canonical" href="https://tunglt1810.github.io/cozy/" />
+		<!-- Generated from scripts/preview.template.html. Do not edit index.html by hand. -->
 		<script>
 			try {
 				var saved = localStorage.getItem('cozy-preview-theme');
+				var scheme = saved === 'light' || saved === 'dark' ? saved : 'light dark';
 				if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved;
+				document.querySelector('meta[name="color-scheme"]').content = scheme;
+				var isDark = saved === 'dark' || (saved !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
+				document.querySelector('meta[name="theme-color"]').content = isDark ? '{{BG_BODY_DARK}}' : '{{BG_BODY_LIGHT}}';
 			} catch (e) {}
 		</script>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" />
-		<link rel="stylesheet" href="../tokens/cozy.css" />
-		<link rel="stylesheet" href="../css/effects.css" />
+		<link rel="stylesheet" href="tokens/cozy.css" />
+		<link rel="stylesheet" href="css/effects.css" />
 		<style>
+			:root {
+				--cozy-spring-css: {{COZY_SPRING_LINEAR}};
+				--scrollbar-thumb: var(--cozy-text-disabled);
+				--scrollbar-track: var(--cozy-bg-body);
+				accent-color: var(--cozy-accent);
+				scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+			}
+			@supports not (scrollbar-color: auto) {
+				:root::-webkit-scrollbar {
+					width: 12px;
+					height: 12px;
+				}
+				:root::-webkit-scrollbar-thumb {
+					background: var(--scrollbar-thumb);
+					border-radius: var(--cozy-radius-full);
+					border: 3px solid var(--scrollbar-track);
+				}
+				:root::-webkit-scrollbar-track {
+					background: var(--scrollbar-track);
+				}
+			}
+			::selection {
+				background: var(--cozy-accent-muted);
+				color: var(--cozy-text-primary);
+			}
 			* {
 				box-sizing: border-box;
 			}
@@ -34,6 +65,36 @@
 				font-family: var(--cozy-font-family-sans);
 				font-size: var(--cozy-text-body-size);
 				line-height: var(--cozy-text-body-leading);
+			}
+			.scroll-progress {
+				display: none;
+			}
+			@media (prefers-reduced-motion: no-preference) {
+				@supports (animation-timeline: scroll()) {
+					@keyframes cozy-scroll-progress {
+						from {
+							transform: scaleX(0);
+						}
+						to {
+							transform: scaleX(1);
+						}
+					}
+					.scroll-progress {
+						display: block;
+						position: fixed;
+						inset: 0 0 auto 0;
+						height: 2px;
+						background: var(--cozy-accent);
+						transform-origin: 0 50%;
+						pointer-events: none;
+						z-index: 30;
+						animation: cozy-scroll-progress auto linear;
+						animation-timeline: scroll(root block);
+					}
+				}
+			}
+			:root[data-motion='reduce'] .scroll-progress {
+				display: none;
 			}
 			main {
 				max-width: 1120px;
@@ -46,6 +107,7 @@
 			h2,
 			h3 {
 				margin: 0;
+				text-wrap: balance;
 			}
 			h1 {
 				font-size: var(--cozy-text-display-size);
@@ -68,6 +130,15 @@
 			}
 			p {
 				margin: 0;
+			}
+			.hero p,
+			.empty p,
+			.cozy-dialog p {
+				text-wrap: pretty;
+			}
+			.section-deferred {
+				content-visibility: auto;
+				contain-intrinsic-size: auto none auto 700px;
 			}
 			code {
 				font-family: var(--cozy-font-family-mono);
@@ -297,19 +368,31 @@
 			.tab[aria-selected='true'] {
 				color: var(--cozy-text-primary);
 			}
-			.tab-underline {
+			.tab[aria-selected='true'] {
+				anchor-name: --cozy-active-tab;
+			}
+			.tablist::after {
+				content: '';
 				position: absolute;
-				bottom: 0;
-				left: 0;
-				border-bottom: 2px solid var(--cozy-accent);
-				width: var(--w, 0);
-				transform: translateX(var(--x, 0));
+				position-anchor: --cozy-active-tab;
+				inset-block-end: 0;
+				inset-inline-start: anchor(self-start);
+				inset-inline-end: anchor(self-end);
+				border-block-end: 2px solid var(--cozy-accent);
+				pointer-events: none;
+			}
+			@supports not (position-anchor: --cozy-active-tab) {
+				.tablist::after {
+					content: none;
+				}
+				.tab[aria-selected='true'] {
+					border-block-end: 2px solid var(--cozy-accent);
+					margin-block-end: -1px;
+				}
 			}
 			@media (prefers-reduced-motion: no-preference) {
-				.tab-underline {
-					transition:
-						transform 320ms var(--cozy-motion-ease-out),
-						width 320ms var(--cozy-motion-ease-out);
+				.tablist::after {
+					transition: inset 360ms var(--cozy-spring-css);
 				}
 				@keyframes panel-in {
 					from {
@@ -452,6 +535,69 @@
 				background-repeat: no-repeat;
 				padding-right: var(--cozy-space-8);
 			}
+			@supports (appearance: base-select) {
+				select.input,
+				select.input::picker(select) {
+					appearance: base-select;
+				}
+				select.input {
+					background-image: none;
+					padding-right: var(--cozy-space-3);
+					align-items: center;
+					cursor: pointer;
+				}
+				select.input::picker-icon {
+					color: var(--cozy-text-secondary);
+				}
+				select.input:open::picker-icon {
+					rotate: 180deg;
+				}
+				select.input::picker(select) {
+					background: var(--cozy-bg-surface);
+					color: var(--cozy-text-primary);
+					border: 1px solid var(--cozy-border-emphasized);
+					border-radius: var(--cozy-radius-element);
+					box-shadow: var(--cozy-shadow-high);
+					padding: var(--cozy-space-1);
+					margin-block-start: var(--cozy-space-1);
+				}
+				select.input option {
+					padding: var(--cozy-space-2) var(--cozy-space-3);
+					border-radius: var(--cozy-radius-inner);
+					cursor: pointer;
+				}
+				select.input option:hover,
+				select.input option:focus-visible {
+					background: var(--cozy-overlay-hover);
+				}
+				select.input option::checkmark {
+					color: var(--cozy-accent);
+				}
+				@media (prefers-reduced-motion: no-preference) {
+					select.input::picker-icon {
+						transition: rotate var(--cozy-motion-duration-fast) var(--cozy-motion-ease-out);
+					}
+					select.input::picker(select) {
+						opacity: 0;
+						transform: translateY(-4px);
+						transition:
+							opacity var(--cozy-motion-duration-fast) var(--cozy-motion-ease-out),
+							transform var(--cozy-motion-duration-fast) var(--cozy-motion-ease-out),
+							overlay var(--cozy-motion-duration-fast) allow-discrete,
+							display var(--cozy-motion-duration-fast) allow-discrete;
+					}
+					select.input::picker(select):popover-open {
+						opacity: 1;
+						transform: translateY(0);
+					}
+					@starting-style {
+						select.input::picker(select):popover-open {
+							opacity: 0;
+							transform: translateY(-4px);
+						}
+					}
+				}
+			}
 			.input::placeholder {
 				color: var(--cozy-text-disabled);
 			}
@@ -558,11 +704,11 @@
 				transform: translateX(1rem);
 			}
 			@media (prefers-reduced-motion: no-preference) {
-				.switch,
+				.switch {
+					transition: background-color var(--cozy-motion-duration-fast) ease;
+				}
 				.switch::after {
-					transition:
-						background-color var(--cozy-motion-duration-fast) ease,
-						transform var(--cozy-motion-duration-fast) var(--cozy-motion-ease-out);
+					transition: transform 280ms var(--cozy-spring-css);
 				}
 			}
 			.check input:focus-visible,
@@ -601,14 +747,22 @@
 			}
 			.toasts {
 				position: fixed;
-				right: var(--cozy-space-4);
-				bottom: var(--cozy-space-4);
-				left: var(--cozy-space-4);
+				inset: auto var(--cozy-space-4) var(--cozy-space-4) auto;
+				max-width: calc(100vw - 2 * var(--cozy-space-4));
+				margin: 0;
+				padding: 0;
+				border: 0;
+				background: transparent;
+				color: inherit;
+				overflow: visible;
 				display: grid;
 				justify-items: end;
 				gap: var(--cozy-space-2);
 				pointer-events: none;
 				z-index: 20;
+			}
+			.toasts[popover]:not(:popover-open) {
+				display: none;
 			}
 			.cozy-toast {
 				pointer-events: auto;
@@ -693,6 +847,7 @@
 		</style>
 	</head>
 	<body>
+		<div class="scroll-progress" aria-hidden="true"></div>
 		<main>
 			<header class="topbar">
 				<span class="brand"><span class="brand-dot" aria-hidden="true"></span>Cozy <span class="muted">{{VERSION}}</span></span>
@@ -744,7 +899,6 @@
 							<button class="tab" role="tab" type="button" id="tab-info" aria-controls="panel-info" aria-selected="true" tabindex="0">Details</button>
 							<button class="tab" role="tab" type="button" id="tab-items" aria-controls="panel-items" aria-selected="false" tabindex="-1">Items</button>
 							<button class="tab" role="tab" type="button" id="tab-history" aria-controls="panel-history" aria-selected="false" tabindex="-1">History</button>
-							<span class="tab-underline" aria-hidden="true"></span>
 						</div>
 						<div class="tabpanel" role="tabpanel" id="panel-info" aria-labelledby="tab-info" tabindex="0">
 							<ul class="list">
@@ -812,10 +966,10 @@
 						</div>
 						<div class="field">
 							<label for="f-type">Type</label>
-							<select class="input" id="f-type">
-								<option>Article</option>
-								<option>Collection</option>
-								<option>Guide</option>
+							<select class="input" id="f-type" name="type">
+								<option value="article">Article</option>
+								<option value="collection">Collection</option>
+								<option value="guide">Guide</option>
 							</select>
 						</div>
 						<div class="field">
@@ -847,7 +1001,7 @@
 					<div class="card" style="display: grid; gap: var(--cozy-space-3); align-content: start">
 						<p class="muted">Dialog and toast</p>
 						<div class="row">
-							<button class="btn btn-destructive cozy-press" type="button" id="open-dialog">Delete drafts</button>
+							<button class="btn btn-destructive cozy-press" type="button" id="open-dialog" commandfor="demo-dialog" command="show-modal">Delete drafts</button>
 							<button class="btn btn-secondary cozy-press" type="button" id="show-toast">Show toast</button>
 						</div>
 					</div>
@@ -869,7 +1023,7 @@
 					<p class="muted">Drafts show here until you publish them.</p>
 					<button class="btn btn-primary cozy-press" type="button" style="margin-top: var(--cozy-space-2)">New draft</button>
 				</div>
-				<dialog class="cozy-dialog" id="demo-dialog" aria-labelledby="dlg-title">
+				<dialog class="cozy-dialog" id="demo-dialog" closedby="any" aria-labelledby="dlg-title">
 					<h2 id="dlg-title">Delete 3 drafts?</h2>
 					<p class="muted">You cannot undo this. The drafts are not in the trash after you delete them.</p>
 					<form method="dialog" class="dialog-actions">
@@ -880,13 +1034,13 @@
 				<div class="toasts" id="toasts" role="region" aria-label="Notifications"></div>
 			</section>
 
-			<section aria-labelledby="palette">
+			<section class="section-deferred" aria-labelledby="palette">
 				<h2 id="palette">Color tokens</h2>
 				<p class="muted">Each chip shows the current mode. The labels show light · dark. Click a token to copy its CSS variable.</p>
 				<!-- SWATCHES -->
 			</section>
 
-			<section aria-labelledby="type">
+			<section class="section-deferred" aria-labelledby="type">
 				<h2 id="type">Type, radius, shadow</h2>
 				<div class="card">
 					<div class="type-row"><code>display</code><span style="font-size: var(--cozy-text-display-size); font-weight: 700; line-height: 1.2">Warm and calm</span></div>
@@ -919,19 +1073,26 @@
 		</main>
 
 		<script type="module">
-			import { splitTitle, revealTheme, rowDelayStyle, createNavIndicator } from '../js/cozy-motion.js';
+			import { splitTitle, revealTheme, rowDelayStyle, createNavIndicator } from './js/cozy-motion.js';
 
 			for (const el of document.querySelectorAll('[data-split]')) splitTitle(el);
 
 			// Theme toggle: system → light → dark → system.
 			const root = document.documentElement;
 			const toggle = document.getElementById('theme-toggle');
+			const colorSchemeMeta = document.querySelector('meta[name="color-scheme"]');
+			const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 			const order = ['system', 'light', 'dark'];
 			const media = matchMedia('(prefers-color-scheme: dark)');
 			const resolve = (m) => (m === 'system' ? (media.matches ? 'dark' : 'light') : m);
 			const themeKey = 'cozy-preview-theme';
 			let mode = root.dataset.theme ?? 'system';
-			const showMode = () => (toggle.textContent = mode === 'system' ? `Theme: system (${resolve(mode)})` : `Theme: ${mode}`);
+			const showMode = () => {
+				const resolved = resolve(mode);
+				toggle.textContent = mode === 'system' ? `Theme: system (${resolved})` : `Theme: ${mode}`;
+				if (colorSchemeMeta) colorSchemeMeta.content = mode === 'system' ? 'light dark' : mode;
+				if (themeColorMeta) themeColorMeta.content = resolved === 'dark' ? '{{BG_BODY_DARK}}' : '{{BG_BODY_LIGHT}}';
+			};
 			const setMode = (next) => {
 				if (next === 'system') delete root.dataset.theme;
 				else root.dataset.theme = next;
@@ -973,13 +1134,8 @@
 			});
 			new ResizeObserver(() => pill.sync(active(), { instant: true })).observe(navBox);
 
-			// Tabs with roving tabindex and a moving underline.
+			// Tabs with roving tabindex (underline positioned in CSS via anchor positioning).
 			const tabs = [...document.querySelectorAll('[role="tab"]')];
-			const underline = document.querySelector('.tab-underline');
-			const moveUnderline = (tab) => {
-				underline.style.setProperty('--x', `${tab.offsetLeft}px`);
-				underline.style.setProperty('--w', `${tab.offsetWidth}px`);
-			};
 			const items = document.getElementById('item-list');
 			const select = (tab) => {
 				for (const t of tabs) {
@@ -988,7 +1144,6 @@
 					t.tabIndex = on ? 0 : -1;
 					document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
 				}
-				moveUnderline(tab);
 				if (tab.id === 'tab-items') {
 					items.replaceChildren(
 						...['Welcome guide', 'Daily notes', 'Reading list', 'Weekly review', 'Archive'].map((name, i) => {
@@ -1012,10 +1167,6 @@
 					select(target);
 				});
 			}
-			const tablist = document.querySelector('[role="tablist"]');
-			const syncActiveTab = () => moveUnderline(tabs.find((t) => t.getAttribute('aria-selected') === 'true'));
-			document.fonts.ready.then(syncActiveTab);
-			new ResizeObserver(syncActiveTab).observe(tablist);
 
 			// Segmented control and chips.
 			for (const group of document.querySelectorAll('.seg')) {
@@ -1092,12 +1243,28 @@
 				syncMotionToggle();
 			});
 
-			// Dialog.
+			// Dialog fallbacks for browsers without Invoker Commands or closedby="any".
 			const dialog = document.getElementById('demo-dialog');
-			document.getElementById('open-dialog').addEventListener('click', () => dialog.showModal());
+			if (!('commandForElement' in HTMLButtonElement.prototype)) {
+				document.getElementById('open-dialog').addEventListener('click', () => dialog.showModal());
+			}
+			if (!('closedBy' in HTMLDialogElement.prototype)) {
+				dialog.addEventListener('click', (event) => {
+					if (event.target !== dialog) return;
+					const rect = dialog.getBoundingClientRect();
+					const inside =
+						rect.top <= event.clientY &&
+						event.clientY <= rect.top + rect.height &&
+						rect.left <= event.clientX &&
+						event.clientX <= rect.left + rect.width;
+					if (!inside) dialog.close();
+				});
+			}
 
-			// Toasts.
+			// Toasts (promoted to top layer via popover="manual" when supported).
 			const toasts = document.getElementById('toasts');
+			const supportsPopover = Object.hasOwn(HTMLElement.prototype, 'popover');
+			if (supportsPopover) toasts.setAttribute('popover', 'manual');
 			const toastKinds = [
 				['Saved. The changes are live.', 'var(--cozy-success-on-inverted)', 'status'],
 				['Sync runs every hour.', 'var(--cozy-info-on-inverted)', 'status'],
@@ -1110,12 +1277,16 @@
 				el.setAttribute('role', role);
 				el.innerHTML = `<span class="toast-dot" style="background: ${color}"></span><span></span>`;
 				el.lastElementChild.textContent = text;
+				if (supportsPopover && !toasts.matches(':popover-open')) toasts.showPopover();
 				toasts.append(el);
 				while (toasts.children.length > 3) toasts.firstElementChild.remove();
 				let timer;
 				const leave = () => {
 					el.classList.add('cozy-toast-leave');
-					const done = () => el.remove();
+					const done = () => {
+						el.remove();
+						if (supportsPopover && toasts.children.length === 0 && toasts.matches(':popover-open')) toasts.hidePopover();
+					};
 					if (getComputedStyle(el).animationName === 'none') done();
 					else el.addEventListener('animationend', done, { once: true });
 				};
@@ -1130,22 +1301,29 @@
 			});
 
 			// Copy a token.
+			// Embedded frames often deny clipboard-write. The old command still works there.
+			const legacyCopy = (text) => {
+				const previousFocus = document.activeElement;
+				const area = document.createElement('textarea');
+				area.value = text;
+				area.setAttribute('readonly', '');
+				area.style.cssText = 'position:fixed;inset-block-start:0;opacity:0';
+				document.body.append(area);
+				area.select();
+				try {
+					return document.execCommand('copy');
+				} finally {
+					area.remove();
+					previousFocus?.focus({ preventScroll: true });
+				}
+			};
 			for (const b of document.querySelectorAll('.swatch-copy')) {
 				b.addEventListener('click', async () => {
 					let ok = true;
 					try {
 						await navigator.clipboard.writeText(b.dataset.copy);
 					} catch {
-						// Embedded frames often deny clipboard-write. The old command still works there.
-						const area = document.createElement('textarea');
-						area.value = b.dataset.copy;
-						area.style.position = 'fixed';
-						area.style.opacity = '0';
-						document.body.append(area);
-						area.select();
-						ok = document.execCommand('copy');
-						area.remove();
-						b.focus();
+						ok = legacyCopy(b.dataset.copy);
 					}
 					if (ok) toast(`Copied ${b.dataset.copy}`, 'var(--cozy-accent-on-inverted)', 'status');
 					else toast('The browser blocked the clipboard.', 'var(--cozy-error-on-inverted)', 'alert');
