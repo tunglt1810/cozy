@@ -66,6 +66,8 @@ const splitFontStack = (stack: string): { family: string; fallbacks: string } =>
 const sansFont = splitFontStack(cozyTokens.font['family-sans']);
 const monoFont = splitFontStack(cozyTokens.font['family-mono']);
 
+const durationMs = (value: string): number => Number.parseInt(value, 10);
+
 export const cozyTheme = defineTheme({
 	name: 'cozy',
 	extends: neutralTheme,
@@ -75,7 +77,12 @@ export const cozyTheme = defineTheme({
 		heading: { ...sansFont, weights: { 3: 'bold', 4: 'bold' } },
 		code: monoFont,
 	},
-	motion: { fast: 160, medium: 360, slow: 800, ratio: 0.75 },
+	motion: {
+		fast: durationMs(cozyTokens.motion['duration-fast']),
+		medium: durationMs(cozyTokens.motion['duration-medium']),
+		slow: durationMs(cozyTokens.motion['duration-slow']),
+		ratio: 0.75,
+	},
 	tokens: {
 		...colors,
 		'--radius-inner': cozyTokens.radius.inner,

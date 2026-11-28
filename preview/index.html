@@ -21,8 +21,8 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" />
-		<link rel="stylesheet" href="../tokens/cozy.css?v=fb7bdcc7" />
-		<link rel="stylesheet" href="../css/effects.css?v=bb87a10e" />
+		<link rel="stylesheet" href="../tokens/cozy.css?v=55af582c" />
+		<link rel="stylesheet" href="../css/effects.css?v=79d3f2eb" />
 		<style>
 			* {
 				box-sizing: border-box;
@@ -376,7 +376,7 @@
 				line-height: 1.4;
 			}
 			.swatch .role {
-				color: var(--cozy-text-disabled);
+				color: var(--cozy-text-secondary);
 			}
 
 			/* Scales */
@@ -877,7 +877,7 @@
 						<button class="btn btn-destructive cozy-press" value="delete">Delete</button>
 					</form>
 				</dialog>
-				<div class="toasts" id="toasts" role="region" aria-label="Notifications"></div>
+				<div class="toasts" id="toasts" role="region" aria-label="Notifications" aria-live="polite"></div>
 			</section>
 
 			<section aria-labelledby="palette">
@@ -889,7 +889,7 @@
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-bg-surface)" aria-label="Copy var(--cozy-bg-surface)"><span class="chip" style="background: var(--cozy-bg-surface)"></span><code>bg-surface</code></button><small>#FBF1E1 · #231D16</small><small class="ratio">On bg-body: 1.05 · 1.10</small><small class="role">Cards, tables, panels, popovers</small></li>
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-bg-muted)" aria-label="Copy var(--cozy-bg-muted)"><span class="chip" style="background: var(--cozy-bg-muted)"></span><code>bg-muted</code></button><small>#F3DFC8 · #30261D</small><small class="ratio">On bg-body: 1.11 · 1.24</small><small class="role">Segmented-control track, quiet emphasis</small></li>
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-bg-inverted)" aria-label="Copy var(--cozy-bg-inverted)"><span class="chip" style="background: var(--cozy-bg-inverted)"></span><code>bg-inverted</code></button><small>#3B2A1C · #FFFEF7</small><small class="ratio">On bg-body: 11.71 · 18.14</small><small class="role">Active filter chip, inverted badge</small></li>
-				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-text-on-inverted)" aria-label="Copy var(--cozy-text-on-inverted)"><span class="chip" style="background: var(--cozy-text-on-inverted)"></span><code>text-on-inverted</code></button><small>#FBF1E1 · #231D16</small><small class="ratio">On bg-body: 1.05 · 1.10</small><small class="role">Text on bg-inverted</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-text-on-inverted)" aria-label="Copy var(--cozy-text-on-inverted)"><span class="chip" style="background: var(--cozy-text-on-inverted)"></span><code>text-on-inverted</code></button><small>#FBF1E1 · #231D16</small><small class="ratio">On bg-inverted: 12.24 · 16.50</small><small class="role">Text on bg-inverted</small></li>
 			</ul>
 			<h3>text</h3>
 			<ul class="swatches">
@@ -902,36 +902,42 @@
 			<ul class="swatches">
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-focus-ring)" aria-label="Copy var(--cozy-focus-ring)"><span class="chip" style="background: var(--cozy-focus-ring)"></span><code>focus-ring</code></button><small>#A84A24 · #F2A57E</small><small class="ratio">On bg-body: 4.89 · 9.13</small><small class="role">Keyboard focus outline</small></li>
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-accent)" aria-label="Copy var(--cozy-accent)"><span class="chip" style="background: var(--cozy-accent)"></span><code>accent</code></button><small>#EF8F63 · #EE8F64</small><small class="ratio">On bg-body: 2.05 · 7.64</small><small class="role">Primary action fill, active tab underline</small></li>
-				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-on-accent)" aria-label="Copy var(--cozy-on-accent)"><span class="chip" style="background: var(--cozy-on-accent)"></span><code>on-accent</code></button><small>#261101 · #18140E</small><small class="ratio">On bg-body: 15.44 · 1.00</small><small class="role">Text and icons on accent</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-on-accent)" aria-label="Copy var(--cozy-on-accent)"><span class="chip" style="background: var(--cozy-on-accent)"></span><code>on-accent</code></button><small>#261101 · #18140E</small><small class="ratio">On accent: 7.55 · 7.64</small><small class="role">Text and icons on accent</small></li>
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-accent-muted)" aria-label="Copy var(--cozy-accent-muted)"><span class="chip" style="background: var(--cozy-accent-muted)"></span><code>accent-muted</code></button><small>#EF8F6333 · #EE8F6438</small><small class="ratio">On bg-body: 1.15 · 1.48</small><small class="role">Selected-row tint, soft accent fill</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-accent-on-inverted)" aria-label="Copy var(--cozy-accent-on-inverted)"><span class="chip" style="background: var(--cozy-accent-on-inverted)"></span><code>accent-on-inverted</code></button><small>#EE8F64 · #A84A24</small><small class="ratio">On bg-inverted: 5.70 · 5.66</small><small class="role">Accent icon on bg-inverted</small></li>
 			</ul>
 			<h3>status</h3>
 			<ul class="swatches">
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-success)" aria-label="Copy var(--cozy-success)"><span class="chip" style="background: var(--cozy-success)"></span><code>success</code></button><small>#2D7A4D · #6FBF8E</small><small class="ratio">On bg-body: 4.49 · 8.31</small><small class="role">Success fill, border, icon</small></li>
-				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-on-success)" aria-label="Copy var(--cozy-on-success)"><span class="chip" style="background: var(--cozy-on-success)"></span><code>on-success</code></button><small>#FFFEF7 · #18140E</small><small class="ratio">On bg-body: 1.16 · 1.00</small><small class="role">Text on success</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-on-success)" aria-label="Copy var(--cozy-on-success)"><span class="chip" style="background: var(--cozy-on-success)"></span><code>on-success</code></button><small>#FFFEF7 · #18140E</small><small class="ratio">On success: 5.19 · 8.31</small><small class="role">Text on success</small></li>
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-success-muted)" aria-label="Copy var(--cozy-success-muted)"><span class="chip" style="background: var(--cozy-success-muted)"></span><code>success-muted</code></button><small>#E2DEC4 · #31392C</small><small class="ratio">On bg-body: 1.16 · 1.53</small><small class="role">Success banner background</small></li>
-				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-on-success-muted)" aria-label="Copy var(--cozy-on-success-muted)"><span class="chip" style="background: var(--cozy-on-success-muted)"></span><code>on-success-muted</code></button><small>#234930 · #C3E6CC</small><small class="ratio">On bg-body: 8.69 · 13.54</small><small class="role">Text on success-muted</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-on-success-muted)" aria-label="Copy var(--cozy-on-success-muted)"><span class="chip" style="background: var(--cozy-on-success-muted)"></span><code>on-success-muted</code></button><small>#234930 · #C3E6CC</small><small class="ratio">On success-muted: 7.49 · 8.85</small><small class="role">Text on success-muted</small></li>
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-text-success)" aria-label="Copy var(--cozy-text-success)"><span class="chip" style="background: var(--cozy-text-success)"></span><code>text-success</code></button><small>#276B43 · #82CF9E</small><small class="ratio">On bg-body: 5.49 · 9.93</small><small class="role">Success text on body or surface</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-success-on-inverted)" aria-label="Copy var(--cozy-success-on-inverted)"><span class="chip" style="background: var(--cozy-success-on-inverted)"></span><code>success-on-inverted</code></button><small>#6FBF8E · #2D7A4D</small><small class="ratio">On bg-inverted: 6.21 · 5.19</small><small class="role">Success icon on bg-inverted</small></li>
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-warning)" aria-label="Copy var(--cozy-warning)"><span class="chip" style="background: var(--cozy-warning)"></span><code>warning</code></button><small>#B87A12 · #F5C156</small><small class="ratio">On bg-body: 3.08 · 11.04</small><small class="role">Warning fill, border, icon</small></li>
-				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-on-warning)" aria-label="Copy var(--cozy-on-warning)"><span class="chip" style="background: var(--cozy-on-warning)"></span><code>on-warning</code></button><small>#261101 · #18140E</small><small class="ratio">On bg-body: 15.44 · 1.00</small><small class="role">Text on warning</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-on-warning)" aria-label="Copy var(--cozy-on-warning)"><span class="chip" style="background: var(--cozy-on-warning)"></span><code>on-warning</code></button><small>#261101 · #18140E</small><small class="ratio">On warning: 5.01 · 11.04</small><small class="role">Text on warning</small></li>
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-warning-muted)" aria-label="Copy var(--cozy-warning-muted)"><span class="chip" style="background: var(--cozy-warning-muted)"></span><code>warning-muted</code></button><small>#FAE1B5 · #443A26</small><small class="ratio">On bg-body: 1.09 · 1.64</small><small class="role">Warning banner background</small></li>
-				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-on-warning-muted)" aria-label="Copy var(--cozy-on-warning-muted)"><span class="chip" style="background: var(--cozy-on-warning-muted)"></span><code>on-warning-muted</code></button><small>#6B4408 · #FCE09B</small><small class="ratio">On bg-body: 7.31 · 14.21</small><small class="role">Text on warning-muted</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-on-warning-muted)" aria-label="Copy var(--cozy-on-warning-muted)"><span class="chip" style="background: var(--cozy-on-warning-muted)"></span><code>on-warning-muted</code></button><small>#6B4408 · #FCE09B</small><small class="ratio">On warning-muted: 6.72 · 8.66</small><small class="role">Text on warning-muted</small></li>
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-text-warning)" aria-label="Copy var(--cozy-text-warning)"><span class="chip" style="background: var(--cozy-text-warning)"></span><code>text-warning</code></button><small>#8A5406 · #F5C96B</small><small class="ratio">On bg-body: 5.36 · 11.74</small><small class="role">Warning text on body or surface</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-warning-on-inverted)" aria-label="Copy var(--cozy-warning-on-inverted)"><span class="chip" style="background: var(--cozy-warning-on-inverted)"></span><code>warning-on-inverted</code></button><small>#F5C156 · #B87A12</small><small class="ratio">On bg-inverted: 8.24 · 3.56</small><small class="role">Warning icon on bg-inverted</small></li>
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-error)" aria-label="Copy var(--cozy-error)"><span class="chip" style="background: var(--cozy-error)"></span><code>error</code></button><small>#C8433B · #F27B70</small><small class="ratio">On bg-body: 4.16 · 6.85</small><small class="role">Error fill, border, icon</small></li>
-				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-on-error)" aria-label="Copy var(--cozy-on-error)"><span class="chip" style="background: var(--cozy-on-error)"></span><code>on-error</code></button><small>#FFFEF7 · #18140E</small><small class="ratio">On bg-body: 1.16 · 1.00</small><small class="role">Text on error</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-on-error)" aria-label="Copy var(--cozy-on-error)"><span class="chip" style="background: var(--cozy-on-error)"></span><code>on-error</code></button><small>#FFFEF7 · #18140E</small><small class="ratio">On error: 4.81 · 6.85</small><small class="role">Text on error</small></li>
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-error-muted)" aria-label="Copy var(--cozy-error-muted)"><span class="chip" style="background: var(--cozy-error-muted)"></span><code>error-muted</code></button><small>#F9CFC8 · #472826</small><small class="ratio">On bg-body: 1.21 · 1.40</small><small class="role">Error banner and destructive button background</small></li>
-				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-on-error-muted)" aria-label="Copy var(--cozy-on-error-muted)"><span class="chip" style="background: var(--cozy-on-error-muted)"></span><code>on-error-muted</code></button><small>#7E211C · #F9BEB8</small><small class="ratio">On bg-body: 8.47 · 11.43</small><small class="role">Text on error-muted</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-on-error-muted)" aria-label="Copy var(--cozy-on-error-muted)"><span class="chip" style="background: var(--cozy-on-error-muted)"></span><code>on-error-muted</code></button><small>#7E211C · #F9BEB8</small><small class="ratio">On error-muted: 6.97 · 8.18</small><small class="role">Text on error-muted</small></li>
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-text-error)" aria-label="Copy var(--cozy-text-error)"><span class="chip" style="background: var(--cozy-text-error)"></span><code>text-error</code></button><small>#B0322B · #F5938A</small><small class="ratio">On bg-body: 5.38 · 8.23</small><small class="role">Error text on body or surface</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-error-on-inverted)" aria-label="Copy var(--cozy-error-on-inverted)"><span class="chip" style="background: var(--cozy-error-on-inverted)"></span><code>error-on-inverted</code></button><small>#F27B70 · #C8433B</small><small class="ratio">On bg-inverted: 5.11 · 4.81</small><small class="role">Error icon on bg-inverted</small></li>
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-info)" aria-label="Copy var(--cozy-info)"><span class="chip" style="background: var(--cozy-info)"></span><code>info</code></button><small>#3B6E9C · #8BB8E0</small><small class="ratio">On bg-body: 4.61 · 8.76</small><small class="role">Info fill, border, icon</small></li>
-				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-on-info)" aria-label="Copy var(--cozy-on-info)"><span class="chip" style="background: var(--cozy-on-info)"></span><code>on-info</code></button><small>#FFFEF7 · #18140E</small><small class="ratio">On bg-body: 1.16 · 1.00</small><small class="role">Text on info</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-on-info)" aria-label="Copy var(--cozy-on-info)"><span class="chip" style="background: var(--cozy-on-info)"></span><code>on-info</code></button><small>#FFFEF7 · #18140E</small><small class="ratio">On info: 5.33 · 8.76</small><small class="role">Text on info</small></li>
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-info-muted)" aria-label="Copy var(--cozy-info-muted)"><span class="chip" style="background: var(--cozy-info-muted)"></span><code>info-muted</code></button><small>#D2D7DA · #2B333D</small><small class="ratio">On bg-body: 1.24 · 1.44</small><small class="role">Info banner background</small></li>
-				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-on-info-muted)" aria-label="Copy var(--cozy-on-info-muted)"><span class="chip" style="background: var(--cozy-on-info-muted)"></span><code>on-info-muted</code></button><small>#234463 · #C5DEF5</small><small class="ratio">On bg-body: 8.64 · 13.22</small><small class="role">Text on info-muted</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-on-info-muted)" aria-label="Copy var(--cozy-on-info-muted)"><span class="chip" style="background: var(--cozy-on-info-muted)"></span><code>on-info-muted</code></button><small>#234463 · #C5DEF5</small><small class="ratio">On info-muted: 6.96 · 9.21</small><small class="role">Text on info-muted</small></li>
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-text-info)" aria-label="Copy var(--cozy-text-info)"><span class="chip" style="background: var(--cozy-text-info)"></span><code>text-info</code></button><small>#2F5B84 · #9BC5EA</small><small class="ratio">On bg-body: 6.09 · 10.10</small><small class="role">Info text on body or surface</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-info-on-inverted)" aria-label="Copy var(--cozy-info-on-inverted)"><span class="chip" style="background: var(--cozy-info-on-inverted)"></span><code>info-on-inverted</code></button><small>#8BB8E0 · #3B6E9C</small><small class="ratio">On bg-inverted: 6.54 · 5.33</small><small class="role">Info icon on bg-inverted</small></li>
 			</ul>
 			<h3>line</h3>
 			<ul class="swatches">
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-border)" aria-label="Copy var(--cozy-border)"><span class="chip" style="background: var(--cozy-border)"></span><code>border</code></button><small>#5B4C3B22 · #3E3831</small><small class="ratio">On bg-body: 1.22 · 1.58</small><small class="role">Default divider and outline</small></li>
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-border-emphasized)" aria-label="Copy var(--cozy-border-emphasized)"><span class="chip" style="background: var(--cozy-border-emphasized)"></span><code>border-emphasized</code></button><small>#DFCBB5 · #52493F</small><small class="ratio">On bg-body: 1.35 · 2.08</small><small class="role">Input outline, emphasized divider</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-card-border)" aria-label="Copy var(--cozy-card-border)"><span class="chip" style="background: var(--cozy-card-border)"></span><code>card-border</code></button><small>#5B4C3B14 · #FFF0DC14</small><small class="ratio">On bg-body: 1.12 · 1.21</small><small class="role">Subtle outline on elevated pastel cards</small></li>
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-overlay)" aria-label="Copy var(--cozy-overlay)"><span class="chip" style="background: var(--cozy-overlay)"></span><code>overlay</code></button><small>#26110166 · #0D0A07B3</small><small class="ratio">On bg-body: 2.51 · 1.06</small><small class="role">Modal scrim</small></li>
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-overlay-hover)" aria-label="Copy var(--cozy-overlay-hover)"><span class="chip" style="background: var(--cozy-overlay-hover)"></span><code>overlay-hover</code></button><small>#2611010D · #FFFEF70F</small><small class="ratio">On bg-body: 1.11 · 1.16</small><small class="role">Hover layer on any surface</small></li>
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-overlay-pressed)" aria-label="Copy var(--cozy-overlay-pressed)"><span class="chip" style="background: var(--cozy-overlay-pressed)"></span><code>overlay-pressed</code></button><small>#2611011A · #FFFEF71C</small><small class="ratio">On bg-body: 1.23 · 1.35</small><small class="role">Pressed layer on any surface</small></li>
@@ -943,8 +949,8 @@
 			<ul class="swatches">
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-nav-bg)" aria-label="Copy var(--cozy-nav-bg)"><span class="chip" style="background: var(--cozy-nav-bg)"></span><code>nav-bg</code></button><small>#C3CBB9 · #29332A</small><small class="ratio">On bg-body: 1.43 · 1.40</small><small class="role">Floating side navigation</small></li>
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-nav-active)" aria-label="Copy var(--cozy-nav-active)"><span class="chip" style="background: var(--cozy-nav-active)"></span><code>nav-active</code></button><small>#F8E8D3 · #404A41</small><small class="ratio">On bg-body: 1.03 · 1.99</small><small class="role">Active navigation pill</small></li>
-				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-nav-text)" aria-label="Copy var(--cozy-nav-text)"><span class="chip" style="background: var(--cozy-nav-text)"></span><code>nav-text</code></button><small>#403B26 · #FFFEF7</small><small class="ratio">On bg-body: 9.60 · 18.14</small><small class="role">Navigation label</small></li>
-				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-nav-text-muted)" aria-label="Copy var(--cozy-nav-text-muted)"><span class="chip" style="background: var(--cozy-nav-text-muted)"></span><code>nav-text-muted</code></button><small>#55503A · #B8C4B6</small><small class="ratio">On bg-body: 6.92 · 10.14</small><small class="role">Navigation group label and secondary icon</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-nav-text)" aria-label="Copy var(--cozy-nav-text)"><span class="chip" style="background: var(--cozy-nav-text)"></span><code>nav-text</code></button><small>#403B26 · #FFFEF7</small><small class="ratio">On nav-bg: 6.71 · 12.97</small><small class="role">Navigation label</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-nav-text-muted)" aria-label="Copy var(--cozy-nav-text-muted)"><span class="chip" style="background: var(--cozy-nav-text-muted)"></span><code>nav-text-muted</code></button><small>#55503A · #B8C4B6</small><small class="ratio">On nav-bg: 4.84 · 7.25</small><small class="role">Navigation group label and secondary icon</small></li>
 			</ul>
 			<h3>expressive</h3>
 			<ul class="swatches">
@@ -958,7 +964,50 @@
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-pastel-butter-icon)" aria-label="Copy var(--cozy-pastel-butter-icon)"><span class="chip" style="background: var(--cozy-pastel-butter-icon)"></span><code>pastel-butter-icon</code></button><small>#FAC76A · #D9A74E</small><small class="ratio">On bg-body: 1.34 · 8.37</small><small class="role">Stat-card icon chip</small></li>
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-pastel-mist)" aria-label="Copy var(--cozy-pastel-mist)"><span class="chip" style="background: var(--cozy-pastel-mist)"></span><code>pastel-mist</code></button><small>#D2D7DA · #2B333D</small><small class="ratio">On bg-body: 1.24 · 1.44</small><small class="role">Stat-card background</small></li>
 				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-pastel-mist-icon)" aria-label="Copy var(--cozy-pastel-mist-icon)"><span class="chip" style="background: var(--cozy-pastel-mist-icon)"></span><code>pastel-mist-icon</code></button><small>#A2B3C1 · #6D8296</small><small class="ratio">On bg-body: 1.84 · 4.61</small><small class="role">Stat-card icon chip</small></li>
-				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-on-pastel)" aria-label="Copy var(--cozy-on-pastel)"><span class="chip" style="background: var(--cozy-on-pastel)"></span><code>on-pastel</code></button><small>#261101 · #18140E</small><small class="ratio">On bg-body: 15.44 · 1.00</small><small class="role">Icon on a pastel icon chip</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-on-pastel)" aria-label="Copy var(--cozy-on-pastel)"><span class="chip" style="background: var(--cozy-on-pastel)"></span><code>on-pastel</code></button><small>#261101 · #18140E</small><small class="ratio">On pastel-sage-icon: 7.03 · 4.81</small><small class="role">Icon on a pastel icon chip</small></li>
+			</ul>
+			<h3>category</h3>
+			<ul class="swatches">
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-green-bg)" aria-label="Copy var(--cozy-green-bg)"><span class="chip" style="background: var(--cozy-green-bg)"></span><code>green-bg</code></button><small>#E2DEC4 · #31392C</small><small class="ratio">On bg-body: 1.16 · 1.53</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-green-border)" aria-label="Copy var(--cozy-green-border)"><span class="chip" style="background: var(--cozy-green-border)"></span><code>green-border</code></button><small>#B8C4A6 · #5E8C7A</small><small class="ratio">On bg-body: 1.56 · 4.81</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-green-icon)" aria-label="Copy var(--cozy-green-icon)"><span class="chip" style="background: var(--cozy-green-icon)"></span><code>green-icon</code></button><small>#3C6E58 · #8EC2AC</small><small class="ratio">On green-bg: 4.34 · 5.97</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-green-text)" aria-label="Copy var(--cozy-green-text)"><span class="chip" style="background: var(--cozy-green-text)"></span><code>green-text</code></button><small>#234930 · #C3E6CC</small><small class="ratio">On green-bg: 7.49 · 8.85</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-orange-bg)" aria-label="Copy var(--cozy-orange-bg)"><span class="chip" style="background: var(--cozy-orange-bg)"></span><code>orange-bg</code></button><small>#FBCBB4 · #432F28</small><small class="ratio">On bg-body: 1.26 · 1.46</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-orange-border)" aria-label="Copy var(--cozy-orange-border)"><span class="chip" style="background: var(--cozy-orange-border)"></span><code>orange-border</code></button><small>#EDA98B · #D97B56</small><small class="ratio">On bg-body: 1.69 · 6.04</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-orange-icon)" aria-label="Copy var(--cozy-orange-icon)"><span class="chip" style="background: var(--cozy-orange-icon)"></span><code>orange-icon</code></button><small>#B5542B · #F2A57E</small><small class="ratio">On orange-bg: 3.35 · 6.24</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-orange-text)" aria-label="Copy var(--cozy-orange-text)"><span class="chip" style="background: var(--cozy-orange-text)"></span><code>orange-text</code></button><small>#6B2B11 · #FAD1BC</small><small class="ratio">On orange-bg: 7.23 · 8.90</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-yellow-bg)" aria-label="Copy var(--cozy-yellow-bg)"><span class="chip" style="background: var(--cozy-yellow-bg)"></span><code>yellow-bg</code></button><small>#FAE1B5 · #443A26</small><small class="ratio">On bg-body: 1.09 · 1.64</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-yellow-border)" aria-label="Copy var(--cozy-yellow-border)"><span class="chip" style="background: var(--cozy-yellow-border)"></span><code>yellow-border</code></button><small>#E5C27D · #C99A44</small><small class="ratio">On bg-body: 1.45 · 7.15</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-yellow-icon)" aria-label="Copy var(--cozy-yellow-icon)"><span class="chip" style="background: var(--cozy-yellow-icon)"></span><code>yellow-icon</code></button><small>#8A5406 · #F5C96B</small><small class="ratio">On yellow-bg: 4.92 · 7.16</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-yellow-text)" aria-label="Copy var(--cozy-yellow-text)"><span class="chip" style="background: var(--cozy-yellow-text)"></span><code>yellow-text</code></button><small>#5E3904 · #FCE09B</small><small class="ratio">On yellow-bg: 8.00 · 8.66</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-blue-bg)" aria-label="Copy var(--cozy-blue-bg)"><span class="chip" style="background: var(--cozy-blue-bg)"></span><code>blue-bg</code></button><small>#D2D7DA · #2B333D</small><small class="ratio">On bg-body: 1.24 · 1.44</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-blue-border)" aria-label="Copy var(--cozy-blue-border)"><span class="chip" style="background: var(--cozy-blue-border)"></span><code>blue-border</code></button><small>#A2B3C1 · #5C7388</small><small class="ratio">On bg-body: 1.84 · 3.72</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-blue-icon)" aria-label="Copy var(--cozy-blue-icon)"><span class="chip" style="background: var(--cozy-blue-icon)"></span><code>blue-icon</code></button><small>#2F5B84 · #9BC5EA</small><small class="ratio">On blue-bg: 4.91 · 7.04</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-blue-text)" aria-label="Copy var(--cozy-blue-text)"><span class="chip" style="background: var(--cozy-blue-text)"></span><code>blue-text</code></button><small>#1F3F5C · #C5DEF5</small><small class="ratio">On blue-bg: 7.52 · 9.21</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-teal-bg)" aria-label="Copy var(--cozy-teal-bg)"><span class="chip" style="background: var(--cozy-teal-bg)"></span><code>teal-bg</code></button><small>#D7E6DF · #253834</small><small class="ratio">On bg-body: 1.10 · 1.48</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-teal-border)" aria-label="Copy var(--cozy-teal-border)"><span class="chip" style="background: var(--cozy-teal-border)"></span><code>teal-border</code></button><small>#94BDAE · #4F8B7C</small><small class="ratio">On bg-body: 1.77 · 4.64</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-teal-icon)" aria-label="Copy var(--cozy-teal-icon)"><span class="chip" style="background: var(--cozy-teal-icon)"></span><code>teal-icon</code></button><small>#205E52 · #7FCBB9</small><small class="ratio">On teal-bg: 5.84 · 6.58</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-teal-text)" aria-label="Copy var(--cozy-teal-text)"><span class="chip" style="background: var(--cozy-teal-text)"></span><code>teal-text</code></button><small>#17453C · #BCE6DC</small><small class="ratio">On teal-bg: 8.33 · 9.14</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-cyan-bg)" aria-label="Copy var(--cozy-cyan-bg)"><span class="chip" style="background: var(--cozy-cyan-bg)"></span><code>cyan-bg</code></button><small>#CDE3E6 · #21363A</small><small class="ratio">On bg-body: 1.14 · 1.44</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-cyan-border)" aria-label="Copy var(--cozy-cyan-border)"><span class="chip" style="background: var(--cozy-cyan-border)"></span><code>cyan-border</code></button><small>#86B6BD · #48818B</small><small class="ratio">On bg-body: 1.90 · 4.18</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-cyan-icon)" aria-label="Copy var(--cozy-cyan-icon)"><span class="chip" style="background: var(--cozy-cyan-icon)"></span><code>cyan-icon</code></button><small>#1F5B63 · #8ED2DB</small><small class="ratio">On cyan-bg: 5.75 · 7.49</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-cyan-text)" aria-label="Copy var(--cozy-cyan-text)"><span class="chip" style="background: var(--cozy-cyan-text)"></span><code>cyan-text</code></button><small>#154248 · #BBEAF0</small><small class="ratio">On cyan-bg: 8.26 · 9.76</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-purple-bg)" aria-label="Copy var(--cozy-purple-bg)"><span class="chip" style="background: var(--cozy-purple-bg)"></span><code>purple-bg</code></button><small>#E7DCF0 · #382E44</small><small class="ratio">On bg-body: 1.13 · 1.43</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-purple-border)" aria-label="Copy var(--cozy-purple-border)"><span class="chip" style="background: var(--cozy-purple-border)"></span><code>purple-border</code></button><small>#C5AFDB · #8D73AD</small><small class="ratio">On bg-body: 1.71 · 4.53</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-purple-icon)" aria-label="Copy var(--cozy-purple-icon)"><span class="chip" style="background: var(--cozy-purple-icon)"></span><code>purple-icon</code></button><small>#5E3D82 · #CBB3E8</small><small class="ratio">On purple-bg: 6.45 · 6.79</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-purple-text)" aria-label="Copy var(--cozy-purple-text)"><span class="chip" style="background: var(--cozy-purple-text)"></span><code>purple-text</code></button><small>#462A63 · #E2D2F5</small><small class="ratio">On purple-bg: 8.97 · 8.99</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-pink-bg)" aria-label="Copy var(--cozy-pink-bg)"><span class="chip" style="background: var(--cozy-pink-bg)"></span><code>pink-bg</code></button><small>#F3D5DB · #422830</small><small class="ratio">On bg-body: 1.17 · 1.38</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-pink-border)" aria-label="Copy var(--cozy-pink-border)"><span class="chip" style="background: var(--cozy-pink-border)"></span><code>pink-border</code></button><small>#DDA3B0 · #A85F71</small><small class="ratio">On bg-body: 1.81 · 3.96</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-pink-icon)" aria-label="Copy var(--cozy-pink-icon)"><span class="chip" style="background: var(--cozy-pink-icon)"></span><code>pink-icon</code></button><small>#94304C · #EDA0B3</small><small class="ratio">On pink-bg: 5.51 · 6.52</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-pink-text)" aria-label="Copy var(--cozy-pink-text)"><span class="chip" style="background: var(--cozy-pink-text)"></span><code>pink-text</code></button><small>#6B1E34 · #FAD0DA</small><small class="ratio">On pink-bg: 8.25 · 9.57</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-red-bg)" aria-label="Copy var(--cozy-red-bg)"><span class="chip" style="background: var(--cozy-red-bg)"></span><code>red-bg</code></button><small>#F9CFC8 · #472826</small><small class="ratio">On bg-body: 1.21 · 1.40</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-red-border)" aria-label="Copy var(--cozy-red-border)"><span class="chip" style="background: var(--cozy-red-border)"></span><code>red-border</code></button><small>#E59F95 · #C25B53</small><small class="ratio">On bg-body: 1.85 · 4.29</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-red-icon)" aria-label="Copy var(--cozy-red-icon)"><span class="chip" style="background: var(--cozy-red-icon)"></span><code>red-icon</code></button><small>#B0322B · #F5938A</small><small class="ratio">On red-bg: 4.43 · 5.89</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-red-text)" aria-label="Copy var(--cozy-red-text)"><span class="chip" style="background: var(--cozy-red-text)"></span><code>red-text</code></button><small>#7E211C · #F9BEB8</small><small class="ratio">On red-bg: 6.97 · 8.18</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-gray-bg)" aria-label="Copy var(--cozy-gray-bg)"><span class="chip" style="background: var(--cozy-gray-bg)"></span><code>gray-bg</code></button><small>#EDE0CE · #2E2720</small><small class="ratio">On bg-body: 1.11 · 1.25</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-gray-border)" aria-label="Copy var(--cozy-gray-border)"><span class="chip" style="background: var(--cozy-gray-border)"></span><code>gray-border</code></button><small>#DFCBB5 · #473E35</small><small class="ratio">On bg-body: 1.35 · 1.75</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-gray-icon)" aria-label="Copy var(--cozy-gray-icon)"><span class="chip" style="background: var(--cozy-gray-icon)"></span><code>gray-icon</code></button><small>#5B4C3B · #C2B7B1</small><small class="ratio">On gray-bg: 6.36 · 7.50</small><small class="role">Category badge</small></li>
+				<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(--cozy-gray-text)" aria-label="Copy var(--cozy-gray-text)"><span class="chip" style="background: var(--cozy-gray-text)"></span><code>gray-text</code></button><small>#3B2A1C · #E8DFD5</small><small class="ratio">On gray-bg: 10.53 · 11.17</small><small class="role">Category badge</small></li>
 			</ul>
 			</section>
 
@@ -995,7 +1044,7 @@
 		</main>
 
 		<script type="module">
-			import { splitTitle, revealTheme, rowDelayStyle, createNavIndicator } from '../js/cozy-motion.js?v=f2625cc9';
+			import { splitTitle, revealTheme, rowDelayStyle, createNavIndicator } from '../js/cozy-motion.js?v=1e40eb8d';
 
 			for (const el of document.querySelectorAll('[data-split]')) splitTitle(el);
 
@@ -1088,12 +1137,17 @@
 					select(target);
 				});
 			}
-			document.fonts.ready.then(() => moveUnderline(tabs.find((t) => t.getAttribute('aria-selected') === 'true')));
+			const tablist = document.querySelector('[role="tablist"]');
+			const syncActiveTab = () => moveUnderline(tabs.find((t) => t.getAttribute('aria-selected') === 'true'));
+			document.fonts.ready.then(syncActiveTab);
+			new ResizeObserver(syncActiveTab).observe(tablist);
 
 			// Segmented control and chips.
 			for (const group of document.querySelectorAll('.seg')) {
 				const thumb = group.querySelector('.cozy-seg-thumb');
+				const radios = [...group.querySelectorAll('[role="radio"]')];
 				const moveThumb = (b, instant = false) => {
+					if (!b) return;
 					if (instant) thumb.style.transition = 'none';
 					thumb.style.setProperty('--cozy-seg-x', `${b.offsetLeft}px`);
 					thumb.style.setProperty('--cozy-seg-w', `${b.offsetWidth}px`);
@@ -1102,13 +1156,39 @@
 						thumb.style.transition = '';
 					}
 				};
-				group.addEventListener('click', (e) => {
-					const b = e.target.closest('button');
-					if (!b) return;
-					for (const x of group.querySelectorAll('button')) x.setAttribute('aria-checked', String(x === b));
+				const selectRadio = (b) => {
+					for (const x of radios) {
+						const on = x === b;
+						x.setAttribute('aria-checked', String(on));
+						x.tabIndex = on ? 0 : -1;
+					}
 					moveThumb(b);
+				};
+				for (const r of radios) {
+					r.tabIndex = r.getAttribute('aria-checked') === 'true' ? 0 : -1;
+					r.addEventListener('keydown', (e) => {
+						const i = radios.indexOf(r);
+						const target = {
+							ArrowRight: radios[(i + 1) % radios.length],
+							ArrowDown: radios[(i + 1) % radios.length],
+							ArrowLeft: radios[(i - 1 + radios.length) % radios.length],
+							ArrowUp: radios[(i - 1 + radios.length) % radios.length],
+							Home: radios[0],
+							End: radios.at(-1),
+						}[e.key];
+						if (!target) return;
+						e.preventDefault();
+						target.focus();
+						selectRadio(target);
+					});
+				}
+				group.addEventListener('click', (e) => {
+					const b = e.target.closest('[role="radio"]');
+					if (b) selectRadio(b);
 				});
-				document.fonts.ready.then(() => moveThumb(group.querySelector('[aria-checked="true"]'), true));
+				const syncSeg = () => moveThumb(group.querySelector('[aria-checked="true"]'), true);
+				document.fonts.ready.then(syncSeg);
+				new ResizeObserver(syncSeg).observe(group);
 			}
 			for (const chip of document.querySelectorAll('.chip-btn')) {
 				chip.addEventListener('click', () => {
@@ -1118,12 +1198,14 @@
 
 			// Reduce-motion switch for this page.
 			const motionToggle = document.getElementById('motion-toggle');
+			const motionMedia = matchMedia('(prefers-reduced-motion: reduce)');
 			const setMotion = (reduce) => {
 				if (reduce) root.dataset.motion = 'reduce';
 				else delete root.dataset.motion;
 				motionToggle.setAttribute('aria-pressed', String(reduce));
 				motionToggle.textContent = reduce ? 'Motion: reduced' : 'Motion: on';
 			};
+			setMotion(root.dataset.motion === 'reduce' || motionMedia.matches);
 			motionToggle.addEventListener('click', () => setMotion(root.dataset.motion !== 'reduce'));
 
 			// Dialog.
@@ -1133,18 +1215,18 @@
 			// Toasts.
 			const toasts = document.getElementById('toasts');
 			const toastKinds = [
-				['Saved. The changes are live.', 'var(--cozy-success)'],
-				['Sync runs every hour.', 'var(--cozy-info)'],
-				['Two fields are empty.', 'var(--cozy-warning)'],
+				['Saved. The changes are live.', 'var(--cozy-success-on-inverted)', 'status'],
+				['Sync runs every hour.', 'var(--cozy-info-on-inverted)', 'status'],
+				['Two fields are empty.', 'var(--cozy-warning-on-inverted)', 'status'],
 			];
 			let toastIndex = 0;
-			const toast = (text, color) => {
+			const toast = (text, color, role = 'status') => {
 				const el = document.createElement('div');
 				el.className = 'cozy-toast';
+				el.setAttribute('role', role);
 				el.innerHTML = `<span class="toast-dot" style="background: ${color}"></span><span></span>`;
 				el.lastElementChild.textContent = text;
 				toasts.append(el);
-				document.ariaNotify?.(text);
 				while (toasts.children.length > 3) toasts.firstElementChild.remove();
 				let timer;
 				const leave = () => {
@@ -1159,8 +1241,8 @@
 				start();
 			};
 			document.getElementById('show-toast').addEventListener('click', () => {
-				const [text, color] = toastKinds[toastIndex++ % toastKinds.length];
-				toast(text, color);
+				const [text, color, role] = toastKinds[toastIndex++ % toastKinds.length];
+				toast(text, color, role);
 			});
 
 			// Copy a token.
@@ -1181,8 +1263,8 @@
 						area.remove();
 						b.focus();
 					}
-					if (ok) toast(`Copied ${b.dataset.copy}`, 'var(--cozy-accent)');
-					else toast('The browser blocked the clipboard.', 'var(--cozy-error)');
+					if (ok) toast(`Copied ${b.dataset.copy}`, 'var(--cozy-accent-on-inverted)', 'status');
+					else toast('The browser blocked the clipboard.', 'var(--cozy-error-on-inverted)', 'alert');
 				});
 			}
 		</script>

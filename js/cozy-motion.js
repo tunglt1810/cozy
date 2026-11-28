@@ -20,40 +20,57 @@ export const reducedMotion = () =>
 	(typeof document !== 'undefined' && document.documentElement.dataset.motion === 'reduce') ||
 	(typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches);
 
+const pageAnimations = new WeakMap();
+
 /**
  * Plays the page-enter animation on the element that wraps the page content: fade in and rise 8px in 200ms.
  * Call it after a route change. Do not call it on the first load.
+ * Cancels any running page-enter animation on the same element.
  * Returns the Animation, or null when the user prefers reduced motion.
  * @param {HTMLElement} el
  * @returns {Animation | null}
  */
 export function enterPage(el) {
+	pageAnimations.get(el)?.cancel();
+	pageAnimations.delete(el);
 	if (reducedMotion() || typeof el.animate !== 'function') return null;
-	return el.animate(
+	const animation = el.animate(
 		[
 			{ opacity: 0, transform: 'translateY(8px)' },
 			{ opacity: 1, transform: 'translateY(0)' },
 		],
 		{ duration: 200, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' },
 	);
+	pageAnimations.set(el, animation);
+	return animation;
 }
 
 /**
  * Controls one `.cozy-nav-indicator` inside `container`.
  * Call `sync(activeEl)` after each navigation. Call `sync(activeEl, { instant: true })` after a layout change
  * (a group opens or closes, the navigation collapses). Pass null when no item is active.
+ * Call `destroy()` on unmount to cancel any pending animation frame.
  * The container gets `.cozy-nav-indicator-on` while the pill shows. Use it to hide the own background of the selected item.
  * @param {HTMLElement} container positioned element that holds the item list and the indicator
  * @param {HTMLElement} indicator
  */
 export function createNavIndicator(container, indicator) {
 	let prevTop = null;
+	let prevLeft = null;
 	let frame = 0;
 
 	const hide = () => {
+		cancelAnimationFrame(frame);
+		frame = 0;
 		indicator.style.setProperty('--cozy-pill-opacity', '0');
 		container.classList.remove('cozy-nav-indicator-on');
 		prevTop = null;
+		prevLeft = null;
+	};
+
+	const destroy = () => {
+		cancelAnimationFrame(frame);
+		frame = 0;
 	};
 
 	/**
@@ -67,21 +84,33 @@ export function createNavIndicator(container, indicator) {
 		// A hidden item (for example inside a closed popover) has no size. Do not move the pill to it.
 		if (box.height <= 0 || item.height <= 0) return hide();
 
-		const top = item.top - box.top;
+		const borderTop = container.clientTop || 0;
+		const borderLeft = container.clientLeft || 0;
+		const scrollTop = container.scrollTop || 0;
+		const scrollLeft = container.scrollLeft || 0;
+		const top = item.top - box.top - borderTop + scrollTop;
+		const left = item.left - box.left - borderLeft + scrollLeft;
+		const contentHeight = container.clientHeight || box.height;
+		const contentWidth = container.clientWidth || box.width;
+		const bottom = contentHeight - (top + item.height);
+		const right = contentWidth - (left + item.width);
+
 		const instant = options.instant === true || prevTop === null;
 		cancelAnimationFrame(frame);
-		indicator.classList.remove('cozy-nav-dir-down', 'cozy-nav-dir-up');
+		frame = 0;
+		indicator.classList.remove('cozy-nav-dir-down', 'cozy-nav-dir-up', 'cozy-nav-dir-horizontal');
 		if (instant) {
 			indicator.classList.add('cozy-nav-instant');
 		} else {
 			indicator.classList.remove('cozy-nav-instant');
 			if (top !== prevTop) indicator.classList.add(top > prevTop ? 'cozy-nav-dir-down' : 'cozy-nav-dir-up');
+			else if (left !== prevLeft) indicator.classList.add('cozy-nav-dir-horizontal');
 		}
 
 		indicator.style.setProperty('--cozy-pill-top', `${top}px`);
-		indicator.style.setProperty('--cozy-pill-bottom', `${box.bottom - item.bottom}px`);
-		indicator.style.setProperty('--cozy-pill-left', `${item.left - box.left}px`);
-		indicator.style.setProperty('--cozy-pill-right', `${box.right - item.right}px`);
+		indicator.style.setProperty('--cozy-pill-bottom', `${bottom}px`);
+		indicator.style.setProperty('--cozy-pill-left', `${left}px`);
+		indicator.style.setProperty('--cozy-pill-right', `${right}px`);
 		indicator.style.setProperty('--cozy-pill-opacity', '1');
 		container.classList.add('cozy-nav-indicator-on');
 
@@ -91,9 +120,10 @@ export function createNavIndicator(container, indicator) {
 			frame = requestAnimationFrame(() => indicator.classList.remove('cozy-nav-instant'));
 		}
 		prevTop = top;
+		prevLeft = left;
 	};
 
-	return { sync, hide };
+	return { sync, hide, destroy };
 }
 
 /**
@@ -133,7 +163,7 @@ export function titleStepMs(charCount) {
 /**
  * Splits the text of `el` into `.cozy-title-char` spans inside `.cozy-title-char-mask` spans for the title reveal.
  * Each word stays in one `white-space: nowrap` span, so a line never breaks inside a word.
- * The element keeps its text as `aria-label`, so screen readers read words, not single letters.
+ * A `.cozy-sr-only` span keeps the plain text accessible on any element, including generic `<span>`.
  * @param {HTMLElement} el
  */
 export function splitTitle(el) {
@@ -143,8 +173,12 @@ export function splitTitle(el) {
 	const step = titleStepMs(total);
 	let index = 0;
 
-	el.setAttribute('aria-label', text);
 	el.textContent = '';
+	const sr = document.createElement('span');
+	sr.className = 'cozy-sr-only';
+	sr.textContent = text;
+	el.append(sr);
+
 	for (const token of tokens) {
 		const word = document.createElement('span');
 		word.setAttribute('aria-hidden', 'true');
@@ -171,6 +205,8 @@ export function splitTitle(el) {
 	}
 }
 
+let activeThemeReveal = 0;
+
 /**
  * Applies a theme change. The new theme grows as a circle from `origin` in 480ms.
  * The function calls `apply` directly (no animation) in these conditions:
@@ -180,27 +216,33 @@ export function splitTitle(el) {
  * `apply` must change the DOM synchronously. In React, wrap the state update in `flushSync`.
  * @param {() => void} apply
  * @param {{ x: number, y: number }} [origin] viewport point, for example the center of the toggle button
+ * @returns {ViewTransition | null}
  */
 export function revealTheme(apply, origin) {
 	if (typeof document.startViewTransition !== 'function' || reducedMotion()) {
 		apply();
-		return;
+		return null;
 	}
 
 	const x = origin?.x ?? window.innerWidth;
 	const y = origin?.y ?? 0;
 	const radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
 	const root = document.documentElement;
+	const id = ++activeThemeReveal;
 	root.classList.add('cozy-theme-transition');
 
 	const transition = document.startViewTransition(apply);
 	transition.ready
 		.then(() => {
+			if (id !== activeThemeReveal) return;
 			root.animate(
 				{ clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
 				{ duration: 480, easing: 'cubic-bezier(0.4, 0, 0.2, 1)', pseudoElement: '::view-transition-new(root)' },
 			);
 		})
 		.catch(() => undefined);
-	transition.finished.finally(() => root.classList.remove('cozy-theme-transition'));
+	transition.finished.finally(() => {
+		if (id === activeThemeReveal) root.classList.remove('cozy-theme-transition');
+	});
+	return transition;
 }

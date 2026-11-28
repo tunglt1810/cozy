@@ -8,12 +8,22 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const tokens = JSON.parse(readFileSync(join(root, 'tokens/cozy.tokens.json'), 'utf8'));
+const pkg = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'));
 const check = process.argv.includes('--check');
 const P = '--cozy-';
 
+if (tokens.version !== pkg.version) {
+	console.error(`version mismatch: tokens/cozy.tokens.json (${tokens.version}) !== package.json (${pkg.version})`);
+	process.exit(1);
+}
+
 // ---------- contrast ----------
 
+const HEX_RE = /^#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/;
 const hexToRgba = (hex) => {
+	if (typeof hex !== 'string' || !HEX_RE.test(hex)) {
+		throw new Error(`Invalid hex color: ${JSON.stringify(hex)}`);
+	}
 	const h = hex.slice(1);
 	const n = (i) => parseInt(h.slice(i, i + 2), 16);
 	return [n(0), n(2), n(4), h.length === 8 ? n(6) / 255 : 1];
@@ -26,7 +36,7 @@ const over = (fg, bg) => {
 const luminance = ([r, g, b]) => {
 	const c = [r, g, b].map((v) => {
 		const s = v / 255;
-		return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+		return s <= 0.04045 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
 	});
 	return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
 };
@@ -45,6 +55,7 @@ add(['text-primary', 'text-secondary'], ['bg-body', 'bg-surface'], 7, 'text');
 add(['text-primary', 'text-secondary'], 'bg-muted', 4.5, 'text');
 add('text-accent', ['bg-body', 'bg-surface'], 4.5, 'text');
 add('on-accent', 'accent', 7, 'text');
+add('accent-on-inverted', 'bg-inverted', 3, 'non-text');
 add('focus-ring', ['bg-body', 'bg-surface'], 3, 'non-text');
 add('text-on-inverted', 'bg-inverted', 7, 'text');
 for (const s of ['success', 'warning', 'error', 'info']) {
@@ -52,6 +63,7 @@ for (const s of ['success', 'warning', 'error', 'info']) {
 	add(`on-${s}`, s, 4.5, 'text');
 	add(`on-${s}-muted`, `${s}-muted`, 4.5, 'text');
 	add(s, ['bg-body', 'bg-surface'], 3, 'non-text');
+	add(`${s}-on-inverted`, 'bg-inverted', 3, 'non-text');
 }
 add(['nav-text', 'nav-text-muted'], ['nav-bg', 'nav-active'], 4.5, 'text');
 for (const p of ['sage', 'peach', 'butter', 'mist']) {
@@ -70,7 +82,7 @@ const rows = [];
 for (const [fg, bg, min, kind] of pairs) {
 	const cells = ['light', 'dark'].map((mode) => {
 		const r = ratio(tokens.color[fg][mode], tokens.color[bg][mode]);
-		if (min !== null && r < min) failures.push(`${fg} on ${bg} (${mode}): ${r.toFixed(2)} < ${min}`);
+		if (!Number.isFinite(r) || (min !== null && r < min)) failures.push(`${fg} on ${bg} (${mode}): ${r.toFixed(2)} < ${min}`);
 		return `${r.toFixed(2)} ${level(r)}`;
 	});
 	rows.push(`| \`${fg}\` | \`${bg}\` | ${kind} | ${min === null ? 'none' : `${min}:1`} | ${cells[0]} | ${cells[1]} |`);
@@ -138,16 +150,30 @@ const ts = `// Cozy design tokens ${tokens.version}. Generated from tokens/cozy.
 export const cozyTokens = ${JSON.stringify(tokens, null, '\t')} as const;
 
 export type CozyColorToken = keyof typeof cozyTokens.color;
+export type CozySpaceToken = keyof typeof cozyTokens.space;
+export type CozyRadiusToken = keyof typeof cozyTokens.radius;
+export type CozyShadowToken = keyof typeof cozyTokens.shadow;
+export type CozyMotionToken = keyof typeof cozyTokens.motion;
+export type CozyFontToken = keyof typeof cozyTokens.font;
 
-/** Returns the CSS custom-property reference for a color token, for example \`var(--cozy-accent)\`. */
-export function cozyVar(token: CozyColorToken): string {
+type CozyGroupedVar =
+	| \`space-\${CozySpaceToken}\`
+	| \`radius-\${CozyRadiusToken}\`
+	| \`shadow-\${CozyShadowToken}\`
+	| \`motion-\${CozyMotionToken}\`
+	| \`font-\${CozyFontToken}\`;
+
+export type CozyVarToken = CozyColorToken | CozyGroupedVar;
+
+/** Returns the CSS custom-property reference for a token, for example \`var(--cozy-accent)\` or \`var(--cozy-radius-element)\`. */
+export function cozyVar(token: CozyVarToken): string {
 	return \`var(${P}\${token})\`;
 }
 `;
 
 // ---------- palette SVG ----------
 
-const groups = ['surface', 'text', 'accent', 'status', 'line', 'nav', 'expressive'];
+const groups = ['surface', 'text', 'accent', 'status', 'line', 'nav', 'expressive', 'category'];
 const SW = 76;
 const GAP = 10;
 const COLS = 8;
@@ -185,13 +211,19 @@ ${parts.join('\n')}
 
 // ---------- preview page ----------
 
-const onBody = (name, mode) => ratio(tokens.color[name][mode], tokens.color['bg-body'][mode]).toFixed(2);
+const pairedBg = new Map();
+for (const [fg, bg] of pairs) {
+	if (!pairedBg.has(fg)) pairedBg.set(fg, bg);
+}
 const swatchHtml = groups
 	.map((g) => {
 		const items = Object.entries(tokens.color)
 			.filter(([, v]) => v.group === g)
 			.map(([name, v]) => {
-				const contrast = name === 'bg-body' ? '' : `<small class="ratio">On bg-body: ${onBody(name, 'light')} · ${onBody(name, 'dark')}</small>`;
+				const refBg = pairedBg.get(name) ?? (name === 'bg-body' ? null : 'bg-body');
+				const contrast = refBg
+					? `<small class="ratio">On ${refBg}: ${ratio(v.light, tokens.color[refBg].light).toFixed(2)} · ${ratio(v.dark, tokens.color[refBg].dark).toFixed(2)}</small>`
+					: '';
 				return `\t\t\t\t<li class="swatch"><button class="swatch-copy" type="button" data-copy="var(${P}${name})" aria-label="Copy var(${P}${name})"><span class="chip" style="background: var(${P}${name})"></span><code>${name}</code></button><small>${v.light} · ${v.dark}</small>${contrast}<small class="role">${v.role}</small></li>`;
 			})
 			.join('\n');
@@ -247,7 +279,8 @@ const dtcgFor = (mode) => {
 	const color = Object.fromEntries(
 		Object.entries(tokens.color).map(([k, v]) => [k, { $type: 'color', $value: v[mode], $description: v.role }]),
 	);
-	const dims = (obj) => Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, { $type: 'dimension', $value: v }]));
+	const dims = (obj) =>
+		Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, { $type: 'dimension', $value: v === '0' ? '0px' : v }]));
 	const motion = Object.fromEntries(
 		Object.entries(tokens.motion).map(([k, v]) =>
 			v.startsWith('cubic-bezier')

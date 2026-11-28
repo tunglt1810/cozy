@@ -82,6 +82,12 @@ export const cozyTokens = {
 			"group": "accent",
 			"role": "Selected-row tint, soft accent fill"
 		},
+		"accent-on-inverted": {
+			"light": "#EE8F64",
+			"dark": "#A84A24",
+			"group": "accent",
+			"role": "Accent icon on bg-inverted"
+		},
 		"success": {
 			"light": "#2D7A4D",
 			"dark": "#6FBF8E",
@@ -111,6 +117,12 @@ export const cozyTokens = {
 			"dark": "#82CF9E",
 			"group": "status",
 			"role": "Success text on body or surface"
+		},
+		"success-on-inverted": {
+			"light": "#6FBF8E",
+			"dark": "#2D7A4D",
+			"group": "status",
+			"role": "Success icon on bg-inverted"
 		},
 		"warning": {
 			"light": "#B87A12",
@@ -142,6 +154,12 @@ export const cozyTokens = {
 			"group": "status",
 			"role": "Warning text on body or surface"
 		},
+		"warning-on-inverted": {
+			"light": "#F5C156",
+			"dark": "#B87A12",
+			"group": "status",
+			"role": "Warning icon on bg-inverted"
+		},
 		"error": {
 			"light": "#C8433B",
 			"dark": "#F27B70",
@@ -171,6 +189,12 @@ export const cozyTokens = {
 			"dark": "#F5938A",
 			"group": "status",
 			"role": "Error text on body or surface"
+		},
+		"error-on-inverted": {
+			"light": "#F27B70",
+			"dark": "#C8433B",
+			"group": "status",
+			"role": "Error icon on bg-inverted"
 		},
 		"info": {
 			"light": "#3B6E9C",
@@ -202,6 +226,12 @@ export const cozyTokens = {
 			"group": "status",
 			"role": "Info text on body or surface"
 		},
+		"info-on-inverted": {
+			"light": "#8BB8E0",
+			"dark": "#3B6E9C",
+			"group": "status",
+			"role": "Info icon on bg-inverted"
+		},
 		"border": {
 			"light": "#5B4C3B22",
 			"dark": "#3E3831",
@@ -213,6 +243,12 @@ export const cozyTokens = {
 			"dark": "#52493F",
 			"group": "line",
 			"role": "Input outline, emphasized divider"
+		},
+		"card-border": {
+			"light": "#5B4C3B14",
+			"dark": "#FFF0DC14",
+			"group": "line",
+			"role": "Subtle outline on elevated pastel cards"
 		},
 		"overlay": {
 			"light": "#26110166",
@@ -658,7 +694,7 @@ export const cozyTokens = {
 		"med": "0 4px 10px light-dark(rgba(110, 74, 42, 0.08), rgba(0, 0, 0, 0.36)), 0 12px 28px -8px light-dark(rgba(110, 74, 42, 0.12), rgba(0, 0, 0, 0.52)), inset 0 0 0 1px light-dark(transparent, rgba(255, 240, 220, 0.09))",
 		"high": "0 6px 14px light-dark(rgba(110, 74, 42, 0.11), rgba(0, 0, 0, 0.48)), 0 18px 36px -10px light-dark(rgba(110, 74, 42, 0.16), rgba(0, 0, 0, 0.68)), inset 0 0 0 1px light-dark(transparent, rgba(255, 240, 220, 0.12))",
 		"toolbar": "0 -4px 12px -4px var(--cozy-shadow)",
-		"focus": "0 0 0 2px var(--cozy-bg-surface), 0 0 0 4px var(--cozy-focus-ring)"
+		"focus": "0 0 0 2px var(--cozy-focus-offset-bg, var(--cozy-bg-surface)), 0 0 0 4px var(--cozy-focus-ring)"
 	},
 	"motion": {
 		"ease-out": "cubic-bezier(0.22, 1, 0.36, 1)",
@@ -690,8 +726,22 @@ export const cozyTokens = {
 } as const;
 
 export type CozyColorToken = keyof typeof cozyTokens.color;
+export type CozySpaceToken = keyof typeof cozyTokens.space;
+export type CozyRadiusToken = keyof typeof cozyTokens.radius;
+export type CozyShadowToken = keyof typeof cozyTokens.shadow;
+export type CozyMotionToken = keyof typeof cozyTokens.motion;
+export type CozyFontToken = keyof typeof cozyTokens.font;
 
-/** Returns the CSS custom-property reference for a color token, for example `var(--cozy-accent)`. */
-export function cozyVar(token: CozyColorToken): string {
+type CozyGroupedVar =
+	| `space-${CozySpaceToken}`
+	| `radius-${CozyRadiusToken}`
+	| `shadow-${CozyShadowToken}`
+	| `motion-${CozyMotionToken}`
+	| `font-${CozyFontToken}`;
+
+export type CozyVarToken = CozyColorToken | CozyGroupedVar;
+
+/** Returns the CSS custom-property reference for a token, for example `var(--cozy-accent)` or `var(--cozy-radius-element)`. */
+export function cozyVar(token: CozyVarToken): string {
 	return `var(--cozy-${token})`;
 }

@@ -13,3 +13,5 @@ jobs:
       - uses: oven-sh/setup-bun@v2
       - name: Generated files are current and contrast pairs pass
         run: bun run check
+      - name: Unit tests pass
+        run: bun test

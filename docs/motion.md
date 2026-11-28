@@ -59,7 +59,7 @@ Every effect MUST stop when the user sets `prefers-reduced-motion: reduce`. The 
 | Loading block | [Skeleton](patterns.md#loading-skeleton) | Light band moves across in 1.4s, repeats | `.cozy-skeleton` |
 | Theme toggle | [Circular theme reveal](#circular-theme-reveal) | New theme grows as a circle, 480ms | `revealTheme(apply, origin)` |
 
-The expressive level uses every effect. The operational level uses only page enter, navigation indicator, row stagger, row hover, drag and drop, inline reveal, press, segment thumb, tabs and theme reveal.
+The expressive level uses every effect. The operational level uses only page enter, navigation indicator, row stagger, row hover, drag and drop, inline reveal, press, segment thumb, tabs, dialog, toast, skeleton and theme reveal.
 
 ## Page enter
 
@@ -84,7 +84,7 @@ Use it once per page, on the main heading, at the expressive level only.
 - `splitTitle()` splits by grapheme (`Intl.Segmenter`), so a letter and its diacritics move as one unit.
 - Each word stays on one line. The browser breaks lines only between words.
 - The step between characters is 26ms. For a long title, the step gets shorter, so the last character starts 240ms or less after the first one (`titleStepMs`).
-- `splitTitle()` sets `aria-label` on the heading and hides the character spans from screen readers.
+- `splitTitle()` inserts a `.cozy-sr-only` span with the plain text and hides the character spans from screen readers.
 - The mask has a small vertical padding, so stacked diacritics stay visible.
 
 ## Highlighter

@@ -132,7 +132,7 @@ A confirmation dialog names the object and the result: "Delete 3 drafts? You can
 
 - Bottom end of the window, 16px from the edges. Maximum 3 toasts. A new toast goes at the bottom.
 - `bg-inverted` fill, `text-on-inverted` text, `radius-element`, `shadow-high`, 12px × 16px padding.
-- A status icon at the start shows the type. The icon uses the dark-mode `<status>` color, so it stays visible on the inverted fill.
+- A status icon at the start shows the type. The icon uses the `<status>-on-inverted` token, so it stays visible on `bg-inverted` in both modes.
 - `role="status"` for information. `role="alert"` only for an error that needs action.
 - Hide after 5 seconds. Keep the toast while the pointer is on it or it has focus. A toast with an action stays until the user closes it.
 - Motion: rise 12px and fade in, 260ms. Leave: fade out, 160ms. Class: `.cozy-toast`, then `.cozy-toast-leave`.

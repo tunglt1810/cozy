@@ -66,6 +66,11 @@
 			"$value": "#EE8F6438",
 			"$description": "Selected-row tint, soft accent fill"
 		},
+		"accent-on-inverted": {
+			"$type": "color",
+			"$value": "#A84A24",
+			"$description": "Accent icon on bg-inverted"
+		},
 		"success": {
 			"$type": "color",
 			"$value": "#6FBF8E",
@@ -90,6 +95,11 @@
 			"$type": "color",
 			"$value": "#82CF9E",
 			"$description": "Success text on body or surface"
+		},
+		"success-on-inverted": {
+			"$type": "color",
+			"$value": "#2D7A4D",
+			"$description": "Success icon on bg-inverted"
 		},
 		"warning": {
 			"$type": "color",
@@ -116,6 +126,11 @@
 			"$value": "#F5C96B",
 			"$description": "Warning text on body or surface"
 		},
+		"warning-on-inverted": {
+			"$type": "color",
+			"$value": "#B87A12",
+			"$description": "Warning icon on bg-inverted"
+		},
 		"error": {
 			"$type": "color",
 			"$value": "#F27B70",
@@ -140,6 +155,11 @@
 			"$type": "color",
 			"$value": "#F5938A",
 			"$description": "Error text on body or surface"
+		},
+		"error-on-inverted": {
+			"$type": "color",
+			"$value": "#C8433B",
+			"$description": "Error icon on bg-inverted"
 		},
 		"info": {
 			"$type": "color",
@@ -166,6 +186,11 @@
 			"$value": "#9BC5EA",
 			"$description": "Info text on body or surface"
 		},
+		"info-on-inverted": {
+			"$type": "color",
+			"$value": "#3B6E9C",
+			"$description": "Info icon on bg-inverted"
+		},
 		"border": {
 			"$type": "color",
 			"$value": "#3E3831",
@@ -175,6 +200,11 @@
 			"$type": "color",
 			"$value": "#52493F",
 			"$description": "Input outline, emphasized divider"
+		},
+		"card-border": {
+			"$type": "color",
+			"$value": "#FFF0DC14",
+			"$description": "Subtle outline on elevated pastel cards"
 		},
 		"overlay": {
 			"$type": "color",
@@ -511,7 +541,7 @@
 	"space": {
 		"0": {
 			"$type": "dimension",
-			"$value": "0"
+			"$value": "0px"
 		},
 		"1": {
 			"$type": "dimension",
