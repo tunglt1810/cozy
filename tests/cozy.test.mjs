@@ -236,3 +236,40 @@ describe('cozy-motion DOM helpers', () => {
 		}
 	});
 });
+
+describe('github page output', () => {
+	test('root index.html renders directly without redirect and links cache-busted root assets', () => {
+		const html = readFileSync(join(root, 'index.html'), 'utf8');
+		expect(html).not.toContain('http-equiv="refresh"');
+		expect(html).toContain('<link rel="canonical" href="https://tunglt1810.github.io/cozy/" />');
+		expect(html).toMatch(/href="tokens\/cozy\.css\?v=[0-9a-f]{8}"/);
+		expect(html).toMatch(/href="css\/effects\.css\?v=[0-9a-f]{8}"/);
+		expect(html).toMatch(/'\.\/js\/cozy-motion\.js\?v=[0-9a-f]{8}'/);
+		expect(html).not.toContain('{{BG_BODY_LIGHT}}');
+		expect(html).not.toContain('{{BG_BODY_DARK}}');
+		expect(html).not.toContain('{{VERSION}}');
+	});
+
+	test('root index.html applies modern-web-guidance primitives with required fallbacks', () => {
+		const html = readFileSync(join(root, 'index.html'), 'utf8');
+		expect(html).toContain('content-visibility: auto;');
+		expect(html).toContain('contain-intrinsic-size: auto none auto 700px;');
+		expect(html).toContain('font-size-adjust: from-font;');
+		expect(html).toContain('anchor-name: --cozy-active-tab;');
+		expect(html).toContain('@supports not (position-anchor: --cozy-active-tab)');
+		expect(html).toContain('commandfor="demo-dialog" command="show-modal"');
+		expect(html).toContain("'commandForElement' in HTMLButtonElement.prototype");
+		expect(html).toContain('closedby="any"');
+		expect(html).toContain("'closedBy' in HTMLDialogElement.prototype");
+		expect(html).toContain('appearance: base-select;');
+		expect(html).toContain('scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);');
+		expect(html).toContain('animation-timeline: scroll(root block);');
+	});
+
+	test('preview/index.html redirects legacy bookmarks to root', () => {
+		const html = readFileSync(join(root, 'preview/index.html'), 'utf8');
+		expect(html).toContain('content="0; url=../"');
+		expect(html).toContain('<link rel="canonical" href="https://tunglt1810.github.io/cozy/" />');
+	});
+});
+

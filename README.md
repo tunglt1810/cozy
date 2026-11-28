@@ -23,7 +23,7 @@ There are no components here. You get tokens, CSS effects, a bit of motion JavaS
 | [`css/effects.css`](css/effects.css) | Named effects: highlighter, title reveal, list row stagger, navigation indicator, press, skeleton, dialog, toast, card lift, theme reveal |
 | [`js/cozy-motion.js`](js/cozy-motion.js) | Easing and spring presets, stagger delay, title splitter, circular theme reveal |
 | [`adapters/astryx/`](adapters/astryx/) | Optional theme for the [Astryx](https://www.npmjs.com/package/@astryxdesign/core) component library |
-| [`preview/index.html`](preview/index.html) | A page that shows every token and effect |
+| [`index.html`](index.html) | A page that shows every token and effect |
 | [`docs/`](docs/) | The rules |
 
 ## Quick start
@@ -86,7 +86,7 @@ It loads ES modules, so `file://` won't work. Serve it:
 bunx serve -l 8000
 ```
 
-Then open <http://localhost:8000/preview/>.
+Then open <http://localhost:8000/>.
 
 ## Change the tokens
 
